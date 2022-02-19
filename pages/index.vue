@@ -39,3 +39,7 @@ export default {
   name: "IndexPage",
 };
 </script>
+
+<style lang="scss" scoped>
+@import "~/assets/scss/pages/home.scss";
+</style>

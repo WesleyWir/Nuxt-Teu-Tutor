@@ -1,0 +1,80 @@
+// HEADER -------------------------------------------------------------------
+.logo {
+    width: 142px;
+    height: 142px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative;
+    padding: 20px;
+}
+
+header {
+    z-index: 999;
+    font-weight: bold;
+
+    .navbar {
+        .navbar-nav {
+            li {
+                a {
+                    color: $font-color !important;
+
+                    &:hover {
+                        color: $default-text-color-hover !important;
+                    }
+                }
+            }
+        }
+    }
+
+    #user-dropdowns {
+        width: 142px;
+        height: 142px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 20px;
+
+        nav {
+            div {
+                .navbar-collapse {
+                    .navbar-nav {
+                        .nav-item {
+                            .dropdown-custom-menu {
+                                background-color: $components-color;
+
+                                li {
+                                    a {
+                                        font-weight: 500;
+                                        background-color: $components-color;
+
+                                        &:hover {
+                                            filter: brightness(0.95);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-between(xs, md) {
+    // Phones, Large Phones and Tablets
+    header {
+        .container-fluid {
+            .row {
+                #institutional-links {
+                    display: none;
+                }
+            }
+        }
+    }
+}

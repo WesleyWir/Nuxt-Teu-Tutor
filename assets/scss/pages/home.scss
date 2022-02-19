@@ -1,0 +1,106 @@
+@import '../global/variables';
+@import '../global/medias';
+#main-page {
+    width: 100%;
+    min-height: inherit;
+    text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+
+    #search-section {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+
+        div {
+            #search-form {
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                #search-form-i-b {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    .customized-height {
+                        height: 125%;
+                    }
+                    button {
+                        background-color: $default-dark-background-color;
+
+                        &:hover {
+                            background-color: darken($default-dark-background-color, 10%);
+                        }
+                        &:active {
+                            background-color: darken($default-dark-background-color, 10%);
+                        }
+                    }
+                }
+
+                #search-form-select {
+                    select {
+                        background-color: $components-color;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-only(lg) {
+    // Desktop
+    #main-page {
+        padding: 400px 0;
+    }
+}
+
+@include media-between(xl, xxl) {
+    // Large Desktops && Extra Large Desktops
+    #main-page {
+        padding: 380px 0;
+
+        #search-section {
+            div {
+                #search-form {
+                    #search-form-i-b {
+                        button {
+                            width: 8%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-between(xs, md) {
+    // Phones, Large Phones and Tablets
+    #main-page {
+        padding: 265px 0;
+
+        #search-section {
+            div {
+                #search-form {
+                    #search-form-i-b {
+                        width: 92%;
+
+                        button {
+                            width: 16%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
