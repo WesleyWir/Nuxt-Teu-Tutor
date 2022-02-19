@@ -1,4 +1,13 @@
+require('dotenv').config()
+
 export default {
+
+    // Server
+    server: {
+      port: 3000, // default: 3000
+      host: process.env.BASE_HOST
+    },
+
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -6,7 +15,7 @@ export default {
   head: {
     title: 'teu-tutor-nuxt',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'pt-BR'
     },
     meta: [
       { charset: 'utf-8' },
@@ -21,6 +30,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/scss/global/style.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

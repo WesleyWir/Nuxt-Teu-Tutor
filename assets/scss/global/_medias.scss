@@ -1,0 +1,120 @@
+//-- A map of breakpoints --------------------------------------------------------------------------------------//
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+) !default;
+
+//-- DEFAULT ---------------------------------------------------------------------------------------------------//
+
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+    $n: index($breakpoint-names, $name);
+    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+  
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+    $min: map-get($breakpoints, $name);
+    @return if($min != 0, $min, null);
+}
+
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+    $next: breakpoint-next($name, $breakpoints);
+    @return if($next, breakpoint-min($next, $breakpoints) - .02px, null);
+}
+
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+    @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+//-- @media UP -------------------------------------------------------------------------------------------------//
+
+@mixin media-up($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+  
+//-- @media DOWN -----------------------------------------------------------------------------------------------//
+
+@mixin media-down($name, $breakpoints: $grid-breakpoints) {
+    $max: breakpoint-max($name, $breakpoints);
+    @if $max {
+        @media (max-width: $max) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+  
+//-- @media BETWEEN --------------------------------------------------------------------------------------------//
+
+@mixin media-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($lower, $breakpoints);
+    $max: breakpoint-max($upper, $breakpoints);
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max == null {
+        @include media-up($lower, $breakpoints) {
+            @content;
+        }
+    } @else if $min == null {
+        @include media-down($upper, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+//-- @media ONLY -----------------------------------------------------------------------------------------------//
+
+@mixin media-only($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    $max: breakpoint-max($name, $breakpoints);
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max == null {
+        @include media-up($name, $breakpoints) {
+            @content;
+        }
+    } @else if $min == null {
+        @include media-down($name, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+//-- EXAMPLES --------------------------------------------------------------------------------------------------//
+
+// (xs) max-width: 575px
+// (sm) min-width: 576px and max-width: 767px
+// (md) min-width: 768px and max-width: 991px
+// (lg) min-width: 992px and max-width: 1199px
+// (xl) min-width: 1200px and max-width: 1399px
+// (xxl) min-width: 1400px
+
+//-- @media ONLY ------------------------------------------------//
+
+//@include media-only(xs) {} // Phones
+//@include media-only(sm) {} // Large Phones
+//@include media-only(md) {} // Tablets
+//@include media-only(lg) {} // Desktops
+//@include media-only(xl) {} // Large Desktops
+//@include media-only(xxl) {} // Extra Large Desktops
+
+//-- @media BETWEEN ---------------------------------------------//
+
+//@include media-between(xs, sm) {} // Phones and Large Phones
+//@include media-between(md, lg) {} // Tablet and Desktops
