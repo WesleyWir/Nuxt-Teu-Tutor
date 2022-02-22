@@ -1,0 +1,97 @@
+// FOOTER ----------------------------------------------------------------------------
+
+#footer {
+    position: absolute;
+    line-height: 27px;
+    left: 0;
+    width: 100%;
+    background-color: $default-dark-green;
+    color: white;
+    text-align: center;
+
+    #main-footer {
+        display: flex;
+        flex-direction: row;
+        align-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 3%;
+
+        #logo {
+            margin-top: 3%;
+        }
+
+        #pages {
+            margin-top: 3%;
+            text-align: left;
+
+            .page-type {
+                color: $gray-font-color;
+                font-weight: bold;
+            }
+
+            .list-item {
+                text-decoration: none;
+                color: inherit;
+
+                &:hover {
+                    color: darken(#fff, 20%);
+                }
+            }
+
+            .page-item {
+                margin-right: 60px;
+            }
+
+            #inst-text {
+                h3 {
+                    color: $gray-font-color;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+@include media-between(lg, xxl) {
+    // Desktop, Large Desktops && Extra Large Desktops
+    #footer-book-icon {
+        position: absolute;
+        width: 267px;
+        z-index: 998;
+        float: right;
+        right: 10px;
+    }
+    #footer {
+        #main-footer {
+            #pages {
+                padding-left: 5%;
+            }
+            #logo {
+                margin-right: 10%;
+            }
+        }
+    }
+}
+
+@include media-between(xs, md) {
+    // Phones, Large Phones and Tablets
+    #footer-book-icon {
+        display: none;
+    }
+    #footer {
+        margin-top: 20%;
+        #main-footer {
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+
+            #pages {
+                text-align: center;
+                .page-item {
+                    margin-bottom: 5%;
+                }
+            }
+        }
+    }
+}
