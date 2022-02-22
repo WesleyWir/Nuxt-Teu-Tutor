@@ -6,12 +6,12 @@
                 <span></span>
                 <span></span>
                 <ul id="menu">
-                    <a href="#">
+                    <NuxtLink to="/about/">
                         <li>Sobre</li>
-                    </a>
-                    <a href="#">
+                    </NuxtLink>
+                    <NuxtLink to="/help/">
                         <li>Ajuda</li>
-                    </a>
+                    </NuxtLink>
                     <li class="accordion" id="sou-estudante-accordion">
                         <a class="nav-accordion" data-bs-toggle="collapse" data-bs-target="#sub-sou-estudante" aria-expanded="true" aria-controls="sub-sou-estudante">
                             Sou Estudante
@@ -19,14 +19,14 @@
                         </a>
                         <ul id="sub-sou-estudante" class="accordion-collapse collapse sub-menu-collapse" data-bs-parent="#sou-estudante-accordion">
                             <li>
-                                <a href="#">
+                                <NuxtLink to="/student-login/">
                                     Login
-                                </a>
+                                </NuxtLink>
                             </li>
                             <li>
-                                <a href="">
+                                <NuxtLink to="/student-signup/">
                                     Criar Conta
-                                </a>
+                                </NuxtLink>
                             </li>
                         </ul>
                     </li>
@@ -37,14 +37,14 @@
                         </a>
                         <ul id="sub-sou-educador" class="accordion-collapse collapse sub-menu-collapse" data-bs-parent="#sou-educador-accordion">
                             <li>
-                                <a href="#">
+                                <NuxtLink to="/educator-login/">
                                     Login
-                                </a>
+                                </NuxtLink>
                             </li>
                             <li>
-                                <a href="">
+                                <NuxtLink to="/educator-signup/">
                                     Criar Conta
-                                </a>
+                                </NuxtLink>
                             </li>
                         </ul>
                     </li>
@@ -52,6 +52,36 @@
             </div>
         </nav>
 </template>
+
+<script>
+export default {
+  mounted() {
+    document.addEventListener("DOMContentLoaded", this.navAccordionsCollapse());
+  },
+  methods: {
+    navAccordionsCollapse(e) {
+      const nav_accordions = document.getElementsByClassName("nav-accordion");
+      if (nav_accordions)
+        Object.entries(nav_accordions).forEach(([key, value]) => {
+          value.addEventListener("click", (e) => {
+            let icon =
+              e.currentTarget.getElementsByClassName("fa-angle-down")[0];
+
+            if (!icon) {
+              icon = e.currentTarget.getElementsByClassName("fa-angle-up")[0];
+            }
+
+            if (icon.classList.contains("fa-angle-down")) {
+              return icon.classList.replace("fa-angle-down", "fa-angle-up");
+            }
+
+            return icon.classList.replace("fa-angle-up", "fa-angle-down");
+          });
+        });
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 @import "~/assets/scss/components/hamburger-menu.scss";

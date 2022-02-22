@@ -3,19 +3,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-2">
-                    <a href="index.php" class="logo">
+                    <NuxtLink class="logo" to="/">
                         <img srcset="imgs/logo.png, imgs/logo-2x.png 2x" src="imgs/logo-2x.png" alt="TeuTutor" />
-                    </a>
+                    </NuxtLink>
                 </div>
 
                 <div class="col-8 hidden-sm d-md-flex justify-content-center" id="institutional-links">
                     <nav class="navbar navbar-expand-lg">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="./about.php">Sobre</a>
+                                <NuxtLink class="nav-link" to="/about/">Sobre</NuxtLink>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./help.php">Ajuda</a>
+                                <NuxtLink class="nav-link" to="/help/">Ajuda</NuxtLink>
                             </li>
                         </ul>
                     </nav>
@@ -32,8 +32,8 @@
                                             Sou Estudante
                                         </a>
                                         <ul class="dropdown-menu dropdown-custom-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="./student-login.php">Login</a></li>
-                                            <li><a class="dropdown-item" href="./student-register.php">Criar Conta</a></li>
+                                            <li><NuxtLink class="dropdown-item" to="/student-login/">Login</NuxtLink></li>
+                                            <li><NuxtLink class="dropdown-item" to="/student-signup/">Criar Conta</NuxtLink></li>
                                         </ul>
                                     </li>
 
@@ -42,8 +42,8 @@
                                             Sou Educador
                                         </a>
                                         <ul class="dropdown-menu dropdown-custom-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="./educator-login.php">Login</a></li>
-                                            <li><a class="dropdown-item" href="./educator-register.php">Criar Conta</a></li>
+                                            <li><NuxtLink class="dropdown-item" to="/educator-login/">Login</NuxtLink></li>
+                                            <li><NuxtLink class="dropdown-item" to="/educator-signup/">Criar Conta</NuxtLink></li>
                                         </ul>
                                     </li>
                                 </ul>

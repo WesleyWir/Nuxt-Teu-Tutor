@@ -7,7 +7,7 @@
       <section id="main-footer" class="container">
         <div class="row" id="logo">
           <div class="col-12">
-            <img src="/imgs/logo-2x.png" alt="" width="100px" height="100px" />
+            <img src="/imgs/logo-2x.png" alt="logo footer" width="100px" height="100px" />
           </div>
         </div>
 
@@ -15,15 +15,15 @@
           <div class="col-xs-12 col-sm-2 page-item">
             <h3 class="page-type text-uppercase">Institucionais</h3>
             <ul class="mt-1">
-              <li><a href="./about.php" class="list-item">Sobre</a></li>
-              <li><a href="./help.php" class="list-item">Ajuda</a></li>
+              <li><NuxtLink class="list-item" to="/about/">Sobre</NuxtLink></li>
+              <li><NuxtLink class="list-item" to="/help/">Ajuda</NuxtLink></li>
             </ul>
           </div>
           <div class="col-xs-12 col-sm-2 page-item">
             <h3 class="page-type text-uppercase">Buscar</h3>
             <ul class="mt-1">
-              <li><a href="#" class="list-item">Professores</a></li>
-              <li><a href="#" class="list-item">Alunos</a></li>
+              <li><NuxtLink class="list-item" to="/educator-list/">Professores</NuxtLink></li>
+              <li><NuxtLink class="list-item" to="/student-list/">Alunos</NuxtLink></li>
             </ul>
           </div>
           <div
