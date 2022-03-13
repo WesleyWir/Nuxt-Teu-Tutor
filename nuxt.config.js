@@ -1,4 +1,7 @@
 require('dotenv').config()
+import { library, config } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
 export default {
 
@@ -30,7 +33,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/scss/main.scss'
+    '~/assets/scss/main.scss',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
   styleResources: {
     scss: '~/assets/scss/global/global.scss'
@@ -47,6 +51,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     '@nuxtjs/style-resources',
+    '@nuxtjs/fontawesome'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
