@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-2">
                     <NuxtLink class="logo" to="/">
-                        <img srcset="imgs/logo.png, imgs/logo-2x.png 2x" src="imgs/logo-2x.png" alt="TeuTutor" />
+                        <img srcset="/imgs/logo.png, /imgs/logo-2x.png 2x" src="/imgs/logo-2x.png" alt="TeuTutor" />
                     </NuxtLink>
                 </div>
 
@@ -42,8 +42,8 @@
                                             Sou Educador
                                         </a>
                                         <ul class="dropdown-menu dropdown-custom-menu" aria-labelledby="navbarDropdown">
-                                            <li><NuxtLink class="dropdown-item" to="/educator-login/">Login</NuxtLink></li>
-                                            <li><NuxtLink class="dropdown-item" to="/educator-signup/">Criar Conta</NuxtLink></li>
+                                            <li><NuxtLink class="dropdown-item" to="/educator/login/">Login</NuxtLink></li>
+                                            <li><NuxtLink class="dropdown-item" to="/educator/signup/">Criar Conta</NuxtLink></li>
                                         </ul>
                                     </li>
                                 </ul>
