@@ -1,15 +1,6 @@
 <template>
   <main class="container" id="student-login">
-    <section
-      class="d-flex justify-content-center mt-3 mb-1"
-      id="im-student-title"
-    >
-      <h1 class="h1 font-weight-bold">
-        <i class="fa-solid fa-graduation-cap"></i>
-        Sou Estudante
-      </h1>
-    </section>
-
+    <TemplateFrontFormTitle title="Sou Estudante" />
     <section id="content-section">
       <section class="row">
         <section class="col-12 mb-4 mb-md-0" id="has-account">
@@ -66,57 +57,84 @@
           </div>
 
           <div class="d-flex justify-content-center" id="login-form-fields">
-            <form
-              id="login-form-fields-form"
-              @submit.stop.prevent="handleSubmit(onSubmit)"
+            <validation-observer
+              ref="observer"
+              v-slot="{ handleSubmit }"
+              slim
             >
-              <div class="form-group col-md-12 mb-4">
-                <label class="mb-3" for="email">Email</label>
-                <input
-                  type="text"
-                  name="email"
-                  v-model="form.email"
-                  class="form-control"
-                  id="email"
-                  placeholder="Email"
-                  required
-                />
-              </div>
+              <form
+                id="login-form-fields-form"
+                @submit.stop.prevent="handleSubmit(onSubmit)"
+              >
+                <div class="form-group col-md-12 mb-4">
+                  <validation-provider 
+                  v-slot="{errors, classes}"
+                  name="Email"
+                  :rules="{required: true, email: true}"
+                  slim
+                  >
+                  <label class="mb-3" for="email">Email</label>
+                  <input
+                    type="text"
+                    name="email"
+                    v-model="form.email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Email"
+                  />
+                  <div class="invalid-feedback">
+                    {{ errors[0] }}
+                  </div>
+                  </validation-provider>
+                </div>
 
-              <div class="form-group col-md-12 mb-4">
-                <label class="mb-3" for="password">Senha</label>
-                <NuxtLink class="float-end" to="/student/forgot"
-                  >Esqueceu a senha?</NuxtLink
-                >
-                <input
-                  type="password"
-                  name="password"
-                  v-model="form.password"
-                  class="form-control"
-                  id="password"
-                  required
-                />
-                <i
-                  class="far fa-eye"
-                  id="toggle-show-hidden-password"
-                  style="
-                    margin-left: 0;
-                    cursor: pointer;
-                    position: relative;
-                    float: right;
-                    margin-right: 13px;
-                    margin-top: -25px;
-                  "
-                >
-                </i>
-              </div>
+                <div class="form-group col-md-12 mb-4">
+                  <validation-provider 
+                  v-slot="{errors, classes}"
+                  name="Senha"
+                  :rules="{required: true, size: 8}"
+                  slim
+                  >
+                  <label class="mb-3" for="password">Senha</label>
+                  <NuxtLink class="float-end" to="/student/forgot"
+                    >Esqueceu a senha?</NuxtLink
+                  >
+                  <input
+                    type="password"
+                    name="password"
+                    v-model="form.password"
+                    class="form-control"
+                    id="password"
+                  />
+                  <i
+                    class="far fa-eye"
+                    id="toggle-show-hidden-password"
+                    style="
+                      margin-left: 0;
+                      cursor: pointer;
+                      position: relative;
+                      float: right;
+                      margin-right: 13px;
+                      margin-top: -25px;
+                    "
+                  >
+                  </i>
+                  <div class="invalid-feedback">
+                    {{ errors[0] }}
+                  </div>
+                  </validation-provider>
+                </div>
 
-              <div id="submit-btn" class="mt-3 d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary btn-custom-green">
-                  Entrar
-                </button>
-              </div>
-            </form>
+                <div id="submit-btn" class="mt-3 d-flex justify-content-center">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-custom-green"
+                  >
+                    Entrar
+                  </button>
+                </div>
+              </form>
+            </validation-observer>
           </div>
         </section>
 
@@ -133,8 +151,8 @@ export default {
   data() {
     return {
       form: {
-        email: '',
-        password: '',
+        email: "",
+        password: "",
       },
     };
   },
@@ -142,9 +160,7 @@ export default {
     async onSubmit() {
       try {
         console.log(this.form);
-      } catch (error) {
-        
-      }
+      } catch (error) {}
     },
   },
 };
