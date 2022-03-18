@@ -7,7 +7,7 @@
           <p><small>Não tem uma conta?</small></p>
 
           <NuxtLink
-            to="/student/signup"
+            to="/students/signup"
             class="btn btn-sm ml-2"
             id="do-login-btn"
             ><strong>Clique aqui!</strong></NuxtLink
@@ -96,7 +96,7 @@
                   slim
                   >
                   <label class="mb-3" for="password">Senha</label>
-                  <NuxtLink class="float-end" to="/student/forgot"
+                  <NuxtLink class="float-end" to="/students/forgot"
                     >Esqueceu a senha?</NuxtLink
                   >
                   <input

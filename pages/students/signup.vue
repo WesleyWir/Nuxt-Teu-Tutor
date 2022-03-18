@@ -7,7 +7,7 @@
         <section class="col-12 mb-4 mb-md-0" id="has-account">
           <p><small>Já tem uma conta?</small></p>
           <NuxtLink
-            to="/student/login/"
+            to="/students/login/"
             class="btn btn-sm ml-2"
             id="do-login-btn"
             ><strong>Faça o login.</strong></NuxtLink>
