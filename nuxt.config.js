@@ -84,8 +84,8 @@ export default {
 
   fontawesome: {
     icons: {
-      solid:true,
-      brands:true
+      solid: ['faSearch', 'faAngleDown', 'faAngleUp', 'faGraduationCap', 'faEye', 'faEyeSlash'],
+      brands: ['faFacebook', 'faGoogle']
     }
   }
 }

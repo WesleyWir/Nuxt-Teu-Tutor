@@ -1,5 +1,5 @@
-@import 'medias';
-@import 'variables'; 
+@import "medias";
+@import "variables";
 
 // HEADER LOGGEDIN -------------------------------------------------------------------
 
@@ -191,113 +191,6 @@ header {
             #has-account {
                 align-content: center;
                 justify-content: center;
-            }
-        }
-    }
-}
-
-// STUDENT | LOGIN -------------------------------------------------------------------
-
-#student-login {
-    display: flex;
-    margin-bottom: 5%;
-    align-items: center;
-    flex-direction: column;
-
-    #content-section {
-        background-color: $default-background-color;
-        background-color: #ededed;
-        padding: 5%;
-        padding-top: 2%;
-        border-radius: 20px;
-        width: 65%;
-
-        #has-account {
-            display: flex;
-            align-content: flex-end;
-            justify-content: flex-end;
-            align-items: center;
-
-            #do-login-btn {
-                margin-left: 1%;
-                background-color: $form-components-color;
-                -webkit-box-shadow: 9px 5px 4px 3px rgba(0, 0, 0, 0.32);
-                box-shadow: 9px 5px 4px 3px rgba(0, 0, 0, 0.32);
-
-                &:hover {
-                    background-color: darken($form-components-color, 4%);
-                }
-            }
-        }
-
-        #form {
-            #student-social-login-login {
-                #student-google-login {
-                    margin-right: 3%;
-
-                    #student-google-login-btn {
-                        color: #fff;
-                        background-color: $btn-google-bg-color;
-
-                        &:hover {
-                            background-color: darken($btn-google-bg-color, 4%);
-                        }
-                    }
-                }
-
-                #student-facebook-login {
-                    #student-facebook-login-btn {
-                        color: #fff;
-                        background-color: $btn-facebook-bg-color;
-
-                        &:hover {
-                            background-color: darken($btn-facebook-bg-color, 4%);
-                        }
-                    }
-                }
-            }
-
-            #login-form-fields {
-                form {
-                    width: 50%;
-
-                    #submit-btn {
-                        button {
-                            width: 40%;
-                        }
-                    }
-                }
-                label {
-                    font-weight: bold;
-                }
-            }
-        }
-    }
-}
-
-@include media-between(xs, md) {
-    // Phones, Large Phones and Tablets
-    #student-login {
-        #content-section {
-            width: 100%;
-
-            #has-account {
-                align-content: center;
-                justify-content: center;
-            }
-
-            #form {
-                #login-form-fields {
-                    form {
-                        width: 90%;
-
-                        #submit-btn {
-                            button {
-                                width: 90%;
-                            }
-                        }
-                    }
-                }
             }
         }
     }
@@ -1153,7 +1046,7 @@ header {
             border-radius: 20px;
             padding: 4%;
             margin-bottom: 5%;
-            
+
             #educators-single-date-hour-left {
                 #educators-single-date-hour-hours {
                     margin-top: 8%;

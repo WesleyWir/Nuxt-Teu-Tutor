@@ -3,8 +3,8 @@
     class="d-flex justify-content-center mt-3 mb-1"
     id="im-title"
   >
-    <h1 class="h1 font-weight-bold">
-      <i class="fa-solid fa-graduation-cap"></i>
+    <h1 class="h1 fw-bold">
+      <i :class="['fa-solid', icon]"></i>
       {{ title }}
     </h1>
   </section>
@@ -12,6 +12,6 @@
 
 <script>
 export default{
-    props: ['title']
+    props: ['title', 'icon']
 }
 </script>

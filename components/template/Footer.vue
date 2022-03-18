@@ -7,7 +7,12 @@
       <section id="main-footer" class="container">
         <div class="row" id="logo">
           <div class="col-12">
-            <img src="/imgs/logo-2x.png" alt="logo footer" width="100px" height="100px" />
+            <img
+              src="/imgs/logo-2x.png"
+              alt="logo footer"
+              width="100px"
+              height="100px"
+            />
           </div>
         </div>
 
@@ -22,20 +27,19 @@
           <div class="col-xs-12 col-sm-2 page-item">
             <h3 class="page-type text-uppercase">Buscar</h3>
             <ul class="mt-1">
-              <li><NuxtLink class="list-item" to="/educator-list/">Professores</NuxtLink></li>
-              <li><NuxtLink class="list-item" to="/student-list/">Alunos</NuxtLink></li>
+              <li>
+                <NuxtLink class="list-item" to="/educator-list/"
+                  >Professores</NuxtLink
+                >
+              </li>
+              <li>
+                <NuxtLink class="list-item" to="/student-list/"
+                  >Alunos</NuxtLink
+                >
+              </li>
             </ul>
           </div>
-          <div
-            class="
-              col-xs-12 col-sm-5
-              page-item
-              d-flex
-              justify-content-end
-              flex-column
-            "
-            id="inst-text"
-          >
+          <div class="col-xs-12 col-sm-5" id="inst-text">
             <h3 class="h3">Com dificuldades no seu ensino?</h3>
             <p>Busque um educador pra você :)</p>
           </div>

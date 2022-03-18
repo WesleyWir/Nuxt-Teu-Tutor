@@ -59,14 +59,12 @@
 }
 
 @include media-only(lg) {
-    // Desktop
     #main-page {
         padding: 400px 0;
     }
 }
 
 @include media-between(xl, xxl) {
-    // Large Desktops && Extra Large Desktops
     #main-page {
         padding: 380px 0;
 
@@ -85,7 +83,6 @@
 }
 
 @include media-between(xs, md) {
-    // Phones, Large Phones and Tablets
     #main-page {
         padding: 265px 0;
 

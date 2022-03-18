@@ -1,6 +1,6 @@
 <template>
   <main class="container" id="student-login">
-    <TemplateFrontFormTitle title="Sou Estudante" />
+    <TemplateFrontFormTitle title="Sou Estudante" icon="fa-graduation-cap" />
     <section id="content-section">
       <section class="row">
         <section class="col-12 mb-4 mb-md-0" id="has-account">
@@ -101,24 +101,13 @@
                   >
                   <input
                     type="password"
+                    autocomplete="current-password"
                     name="password"
                     v-model="form.password"
                     class="form-control"
                     id="password"
                   />
-                  <i
-                    class="far fa-eye"
-                    id="toggle-show-hidden-password"
-                    style="
-                      margin-left: 0;
-                      cursor: pointer;
-                      position: relative;
-                      float: right;
-                      margin-right: 13px;
-                      margin-top: -25px;
-                    "
-                  >
-                  </i>
+                  <TemplateTogglePasswordView input-name="password"/>
                   <div class="invalid-feedback">
                     {{ errors[0] }}
                   </div>
