@@ -156,5 +156,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/assets/scss/pages/student-login.scss";
+@import "~/assets/scss/pages/students/login.scss";
 </style>
