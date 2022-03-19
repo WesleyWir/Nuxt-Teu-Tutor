@@ -79,6 +79,7 @@
                     name="email"
                     v-model="form.email"
                     class="form-control"
+                    :class="classes"
                     id="email"
                     placeholder="Email"
                   />
@@ -92,7 +93,7 @@
                   <validation-provider 
                   v-slot="{errors, classes}"
                   name="Senha"
-                  :rules="{required: true, size: 8}"
+                  :rules="{ required: true }"
                   slim
                   >
                   <label class="mb-3" for="password">Senha</label>
@@ -105,6 +106,7 @@
                     name="password"
                     v-model="form.password"
                     class="form-control"
+                    :class="classes"
                     id="password"
                   />
                   <TemplateTogglePasswordView input-name="password"/>
@@ -117,7 +119,7 @@
                 <div id="submit-btn" class="mt-3 d-flex justify-content-center">
                   <button
                     type="submit"
-                    class="btn btn-primary btn-custom-green"
+                    class="btn btn-custom-green"
                   >
                     Entrar
                   </button>
@@ -149,7 +151,9 @@ export default {
     async onSubmit() {
       try {
         console.log(this.form);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };

@@ -32,8 +32,8 @@
                                             Sou Estudante
                                         </a>
                                         <ul class="dropdown-menu dropdown-custom-menu" aria-labelledby="navbarDropdown">
-                                            <li><NuxtLink class="dropdown-item" to="/student/login/">Login</NuxtLink></li>
-                                            <li><NuxtLink class="dropdown-item" to="/student/signup/">Criar Conta</NuxtLink></li>
+                                            <li><NuxtLink class="dropdown-item" to="/students/login/">Login</NuxtLink></li>
+                                            <li><NuxtLink class="dropdown-item" to="/students/signup/">Criar Conta</NuxtLink></li>
                                         </ul>
                                     </li>
 

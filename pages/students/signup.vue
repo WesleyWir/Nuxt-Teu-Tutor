@@ -10,7 +10,8 @@
             to="/students/login/"
             class="btn btn-sm ml-2"
             id="do-login-btn"
-            ><strong>Faça o login.</strong></NuxtLink>
+            ><strong>Faça o login.</strong></NuxtLink
+          >
         </section>
         <section id="form">
           <div class="col-12 mb-5" id="form-title">
@@ -59,110 +60,183 @@
             </div>
           </div>
           <div id="form-fields">
-            <form>
-              <div class="row" id="info-fields">
-                <div id="info-fields-title">
-                  <p class="lead"><strong>Informações Pessoais</strong></p>
-                  <hr class="my-4" />
-                </div>
-                <div class="form-group col-md-12 mb-4">
-                  <label class="mb-3" for="full_name">Nome Completo *</label>
-                  <input
-                    type="text"
-                    name="full_name"
-                    v-model="form.fullName"
-                    class="form-control"
-                    id="full_name"
-                    placeholder="Nome Sobrenome"
-                    required
-                  />
+            <validation-observer ref="observer" v-slot="{ handleSubmit }" slim>
+              <form @submit.stop.prevent="handleSubmit(onSubmit)">
+                <div class="row justify-content-center" id="info-fields">
+                  <div id="info-fields-title">
+                    <p class="lead"><strong>Informações Pessoais</strong></p>
+                    <hr class="my-4" />
+                  </div>
+                  <div class="form-group col-md-9 mb-4">
+                    <validation-provider
+                      v-slot="{ errors, classes }"
+                      name="Nome Completo"
+                      :rules="{ required: true, min: 3 }"
+                      slim
+                    >
+                      <label class="mb-3" for="full_name"
+                        >Nome Completo *</label
+                      >
+                      <input
+                        type="text"
+                        name="full_name"
+                        v-model="form.fullName"
+                        class="form-control"
+                        :class="classes"
+                        id="full_name"
+                        placeholder="Nome Sobrenome"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        {{ errors[0] }}
+                      </div>
+                    </validation-provider>
+                  </div>
+
+                  <div class="form-group col-md-6 mb-4">
+                    <validation-provider
+                      v-slot="{ errors, classes }"
+                      name="CPF"
+                      :rules="{ required: true, min: 14, max: 14 }"
+                      slim
+                    >
+                      <label class="mb-3" for="cpf">CPF *</label>
+                      <input
+                        type="text"
+                        v-mask="['###.###.###-##']"
+                        name="cpf"
+                        v-model="form.cpf"
+                        class="form-control"
+                        :class="classes"
+                        id="cpf"
+                        placeholder="000.000.000-00"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        {{ errors[0] }}
+                      </div>
+                    </validation-provider>
+                  </div>
+
+                  <div class="form-group col-md-3 mb-4">
+                    <validation-provider
+                      v-slot="{ errors, classes }"
+                      name="Data de Nascimento"
+                      :rules="{ required: true, max: Date.now() }"
+                      slim
+                    >
+                      <label class="mb-3" for="birth_date"
+                        >Data de Nascimento *</label
+                      >
+                      <input
+                        type="text"
+                        v-mask="['##/##/####']"
+                        name="birthdate"
+                        v-model="form.birthdate"
+                        class="form-control"
+                        :class="classes"
+                        id="birthdate"
+                        placeholder="00/00/0000"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        {{ errors[0] }}
+                      </div>
+                    </validation-provider>
+                  </div>
                 </div>
 
-                <div class="form-group col-md-6 mb-4">
-                  <label class="mb-3" for="cpf">CPF *</label>
-                  <input
-                    type="text"
-                    v-mask="['###.###.###-##']"
-                    name="cpf"
-                    v-model="form.cpf"
-                    class="form-control"
-                    id="cpf"
-                    placeholder="000.000.000-00"
-                    required
-                  />
+                <div class="row mt-4 justify-content-center" id="login-fields">
+                  <div id="login-fields-title">
+                    <p class="lead"><strong>Informações de Login</strong></p>
+                    <hr class="my-4" />
+                  </div>
+
+                  <div class="form-group col-md-12 mb-4">
+                    <validation-provider
+                      v-slot="{ errors, classes }"
+                      name="Email"
+                      :rules="{ required: true, email: true }"
+                      slim
+                    >
+                      <label for="email">Email</label>
+                      <input
+                        type="email"
+                        name="email"
+                        v-model="form.email"
+                        class="form-control"
+                        :class="classes"
+                        id="email"
+                        placeholder="Email"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        {{ errors[0] }}
+                      </div>
+                    </validation-provider>
+                  </div>
+
+                  <div class="form-group col-md-6 mb-4">
+                    <validation-provider
+                      v-slot="{ errors, classes }"
+                      name="Senha"
+                      :rules="{ required: true, min: 8 }"
+                      slim
+                    >
+                    <label class="mb-3" for="password">Senha *</label>
+                    <input
+                      type="password"
+                      name="password"
+                      v-model="form.password"
+                      class="form-control"
+                      :class="classes"
+                      id="password"
+                      required
+                    />
+                    <TemplateTogglePasswordView input-name="password" />
+                    <div class="invalid-feedback">
+                        {{ errors[0] }}
+                      </div>
+                    </validation-provider>
+                  </div>
+
+                  <div class="form-group col-md-6 mb-4">
+                    <validation-provider
+                      v-slot="{ errors, classes }"
+                      name="Confirme sua Senha"
+                      :rules="{ required: true, min: 8 }"
+                      slim
+                    >
+                    <label class="mb-3" for="confirm_password"
+                      >Confirme sua Senha *</label
+                    >
+                    <input
+                      type="password"
+                      name="confirm_password"
+                      v-model="form.confirmPassword"
+                      class="form-control"
+                      :class="classes"
+                      id="confirm_password"
+                      required
+                    />
+                    <TemplateTogglePasswordView input-name="confirm_password" />
+                    <div class="invalid-feedback">
+                        {{ errors[0] }}
+                      </div>
+                    </validation-provider>
+                  </div>
                 </div>
 
-                <div class="form-group col-md-3 mb-4">
-                  <label class="mb-3" for="birth_date"
-                    >Data de Nascimento *</label
+                <div id="submit-btn" class="mt-3 d-flex justify-content-center">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-custom-green"
                   >
-                  <input
-                    type="text"
-                    v-mask="['##/##/####']"
-                    name="birthdate"
-                    v-model="form.birthdate"
-                    class="form-control"
-                    id="birthdate"
-                    placeholder="00/00/0000"
-                    required
-                  />
+                    Criar Conta
+                  </button>
                 </div>
-              </div>
-
-              <div class="row mt-4" id="login-fields">
-                <div id="login-fields-title">
-                  <p class="lead"><strong>Informações de Login</strong></p>
-                  <hr class="my-4" />
-                </div>
-
-                <div class="form-group col-md-12 mb-4">
-                  <label for="email">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    v-model="form.email"
-                    class="form-control"
-                    id="email"
-                    placeholder="Email"
-                    required
-                  />
-                </div>
-
-                <div class="form-group col-md-6 mb-4">
-                  <label class="mb-3" for="password">Senha *</label>
-                  <input
-                    type="password"
-                    name="password"
-                    v-model="form.password"
-                    class="form-control"
-                    id="password"
-                    required
-                  />
-                  <TemplateTogglePasswordView input-name="password"/>
-                </div>
-
-                <div class="form-group col-md-6 mb-4">
-                  <label class="mb-3" for="confirm_password"
-                    >Confirme sua Senha *</label
-                  >
-                  <input
-                    type="password"
-                    name="confirm_password"
-                    v-model="form.confirmPassword"
-                    class="form-control"
-                    id="confirm_password"
-                    required
-                  />
-                  <TemplateTogglePasswordView input-name="confirm_password"/>
-                </div>
-              </div>
-
-              <div id="submit-btn" class="mt-3 d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary btn-custom-green">
-                  Criar Conta
-                </button>
-              </div>
-            </form>
+              </form>
+            </validation-observer>
           </div>
         </section>
 
@@ -171,7 +245,9 @@
           <div class="d-flex justify-content-center" id="privacy-policy">
             <p>
               Ao criar a conta, você concorda com nossas
-              <NuxtLink to="/privacy-policy/">Políticas de Privacidades</NuxtLink>.
+              <NuxtLink to="/privacy-policy/"
+                >Políticas de Privacidades</NuxtLink
+              >.
             </p>
           </div>
         </section>
@@ -181,7 +257,7 @@
 </template>
 
 <script>
-import { mask } from 'vue-the-mask'
+import { mask } from "vue-the-mask";
 
 export default {
   directives: { mask },
@@ -193,7 +269,7 @@ export default {
         birthdate: "",
         email: "",
         password: "",
-        confirmPassword: ""
+        confirmPassword: "",
       },
     };
   },
