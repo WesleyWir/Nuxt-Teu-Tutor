@@ -1,6 +1,9 @@
 <template>
   <main class="container" id="student-register">
-    <TemplateFrontFormTitle title="Sou Estudante" icon="fa-graduation-cap" />
+    <TemplateFrontFormTitle>
+      <i class="fa-solid fa-graduation-cap"></i>
+      Sou Estudante
+    </TemplateFrontFormTitle>
 
     <section id="content-section">
       <section class="row">
@@ -122,7 +125,7 @@
                     <validation-provider
                       v-slot="{ errors, classes }"
                       name="Data de Nascimento"
-                      :rules="{ required: true, max: Date.now() }"
+                      :rules="{ required: true, min: 10, max: Date.now() }"
                       slim
                     >
                       <label class="mb-3" for="birth_date"
@@ -183,18 +186,18 @@
                       :rules="{ required: true, min: 8 }"
                       slim
                     >
-                    <label class="mb-3" for="password">Senha *</label>
-                    <input
-                      type="password"
-                      name="password"
-                      v-model="form.password"
-                      class="form-control"
-                      :class="classes"
-                      id="password"
-                      required
-                    />
-                    <TemplateTogglePasswordView input-name="password" />
-                    <div class="invalid-feedback">
+                      <label class="mb-3" for="password">Senha *</label>
+                      <input
+                        type="password"
+                        name="password"
+                        v-model="form.password"
+                        class="form-control"
+                        :class="classes"
+                        id="password"
+                        required
+                      />
+                      <TemplateTogglePasswordView input-name="password" />
+                      <div class="invalid-feedback">
                         {{ errors[0] }}
                       </div>
                     </validation-provider>
@@ -207,20 +210,22 @@
                       :rules="{ required: true, min: 8 }"
                       slim
                     >
-                    <label class="mb-3" for="confirm_password"
-                      >Confirme sua Senha *</label
-                    >
-                    <input
-                      type="password"
-                      name="confirm_password"
-                      v-model="form.confirmPassword"
-                      class="form-control"
-                      :class="classes"
-                      id="confirm_password"
-                      required
-                    />
-                    <TemplateTogglePasswordView input-name="confirm_password" />
-                    <div class="invalid-feedback">
+                      <label class="mb-3" for="confirm_password"
+                        >Confirme sua Senha *</label
+                      >
+                      <input
+                        type="password"
+                        name="confirm_password"
+                        v-model="form.confirmPassword"
+                        class="form-control"
+                        :class="classes"
+                        id="confirm_password"
+                        required
+                      />
+                      <TemplateTogglePasswordView
+                        input-name="confirm_password"
+                      />
+                      <div class="invalid-feedback">
                         {{ errors[0] }}
                       </div>
                     </validation-provider>
