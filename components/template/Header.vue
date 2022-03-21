@@ -8,7 +8,7 @@
                     </NuxtLink>
                 </div>
 
-                <div class="col-8 hidden-sm d-md-flex justify-content-center" id="institutional-links">
+                <div class="col-8 hidden-sm hidden-md d-lg-flex justify-content-center" id="institutional-links">
                     <nav class="navbar navbar-expand-lg">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">

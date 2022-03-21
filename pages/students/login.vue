@@ -18,7 +18,7 @@
         </section>
         <section id="form">
           <div
-            class="col-12 mb-5 d-flex justify-content-center"
+            class="col-12 mb-3 d-flex justify-content-center"
             id="form-title"
           >
             <h2 class="h2 text-uppercase"><strong>Login</strong></h2>

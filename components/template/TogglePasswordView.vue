@@ -34,7 +34,7 @@ export default {
   cursor: pointer;
   position: relative;
   float: right;
-  margin-right: 13px;
+  margin-right: 14px;
   margin-top: -25px;
 }
 </style>
