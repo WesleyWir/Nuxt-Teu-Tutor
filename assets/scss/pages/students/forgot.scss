@@ -1,0 +1,71 @@
+#student-forgot-password {
+    display: flex;
+    margin-bottom: 5%;
+    align-items: center;
+    flex-direction: column;
+
+    #content-section {
+        background-color: $default-background-color;
+        background-color: #ededed;
+        padding: 5%;
+        padding-top: 2%;
+        border-radius: 20px;
+        width: 65%;
+
+        #form {
+            #student-forgot-password-form-fields {
+                form {
+                    width: 50%;
+
+                    #submit-btn {
+                        button {
+                            width: 40%;
+                        }
+                    }
+                }
+                label {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+@include media-between(xs, md) {
+    // Phones, Large Phones and Tablets
+    #student-forgot-password {
+        #content-section {
+            width: 100%;
+
+            #form {
+                #student-forgot-password-form-fields {
+                    form {
+                        width: 90%;
+
+                        #submit-btn {
+                            button {
+                                width: 90%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-between(lg, xxl) {
+    // Desktop, Large Desktops && Extra Large Desktops
+    #student-forgot-password {
+        #content-section {
+            #form {
+                #form-description {
+                    #form-description-text {
+                        width: 60%;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

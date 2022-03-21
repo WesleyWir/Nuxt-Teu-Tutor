@@ -35,7 +35,15 @@ export default {
   },
   methods: {
     onResize () {
+      this.changeWrapperMinHeight();
       this.isMobile = window.innerWidth < 992
+    },
+    changeWrapperMinHeight(){
+      let wrapper = document.getElementById('wrapper'),
+      headerHeight = document.getElementById('header').clientHeight,
+      footerHeight = document.getElementById('footer').clientHeight,
+      wrapperHeight = window.innerHeight - (headerHeight + footerHeight);
+      wrapper.style.minHeight = `${wrapperHeight}px`;
     }
   }
 }

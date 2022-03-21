@@ -1,14 +1,9 @@
 <template>
   <main class="container" id="student-forgot-password">
-    <section
-      class="d-flex justify-content-center mt-3 mb-1"
-      id="im-student-title"
-    >
-      <h1 class="h1 font-weight-bold">
-        <i class="fas fa-graduation-cap"></i>
-        Sou Estudante
-      </h1>
-    </section>
+    <TemplateFrontFormImTitle>
+      <i class="fa-solid fa-graduation-cap"></i>
+      Sou Estudante
+    </TemplateFrontFormImTitle>
 
     <section id="content-section">
       <section class="row">
@@ -36,25 +31,44 @@
             class="d-flex justify-content-center"
             id="student-forgot-password-form-fields"
           >
-            <form id="student-forgot-password-form-fields-form">
-              <div class="form-group col-md-12 mb-4">
-                <label class="mb-3" for="email">Seu Email</label>
-                <a class="float-end" href="./student-login.php">Login</a>
-                <input
-                  type="text"
-                  name="email"
-                  class="form-control"
-                  id="email"
-                  required
-                />
-              </div>
+            <validation-observer ref="observer" v-slot="{ handleSubmit }" slim>
+              <form
+                id="student-forgot-password-form-fields-form"
+                @submit.stop.prevent="handleSubmit(onSubmit)"
+              >
+                <div class="form-group col-md-12 mb-4">
+                  <validation-provider
+                    v-slot="{ errors, classes }"
+                    name="Email"
+                    :rules="{ required: true, email: true }"
+                    slim
+                  >
+                    <label class="mb-3" for="email">Seu Email</label>
+                    <NuxtLink class="float-end fw-bold" to="/students/login/"
+                      >Ir para o Login</NuxtLink
+                    >
+                    <input
+                      type="text"
+                      name="email"
+                      v-model="form.email"
+                      class="form-control"
+                      :class="classes"
+                      id="email"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      {{ errors[0] }}
+                    </div>
+                  </validation-provider>
+                </div>
 
-              <div id="submit-btn" class="mt-3 d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary btn-custom-green">
-                  Recuperar
-                </button>
-              </div>
-            </form>
+                <div id="submit-btn" class="mt-3 d-flex justify-content-center">
+                  <button type="submit" class="btn btn-custom-green">
+                    Enviar
+                  </button>
+                </div>
+              </form>
+            </validation-observer>
           </div>
         </section>
       </section>
@@ -63,8 +77,26 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      form: {
+        email: "",
+      },
+    };
+  },
+  methods: {
+    async onSubmit() {
+      try {
+        console.log(this.form);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "~/assets/scss/pages/students/forgot";
 </style>
