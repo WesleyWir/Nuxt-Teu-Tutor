@@ -1,9 +1,9 @@
 <template>
   <main class="container" id="student-login">
-    <TemplateFrontFormTitle>
+    <TemplateFrontFormImTitle>
       <i class="fa-solid fa-graduation-cap"></i>
       Sou Estudante
-    </TemplateFrontFormTitle>
+    </TemplateFrontFormImTitle>
     <section id="content-section">
       <section class="row">
         <section class="col-12 mb-4 mb-md-0" id="has-account">
