@@ -12,10 +12,10 @@
                     <nav class="navbar navbar-expand-lg">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <NuxtLink class="nav-link" to="/about/">Sobre</NuxtLink>
+                                <NuxtLink class="nav-link" to="/institutionals/about/">Sobre</NuxtLink>
                             </li>
                             <li class="nav-item">
-                                <NuxtLink class="nav-link" to="/help/">Ajuda</NuxtLink>
+                                <NuxtLink class="nav-link" to="/institutionals/help/">Ajuda</NuxtLink>
                             </li>
                         </ul>
                     </nav>

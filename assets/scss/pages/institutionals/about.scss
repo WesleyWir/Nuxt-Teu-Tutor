@@ -1,0 +1,51 @@
+#about-page {
+    width: 100%;
+    min-height: inherit;
+    text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+
+    #content-section {
+        #about-content {
+            text-align: justify;
+            font-size: 18px;
+        }
+    }
+
+    #what-doing-section {
+        background-color: $components-color;
+        border: 20px solid $components-color;
+        border-radius: 20px;
+
+        #what-doing-content {
+            text-align: justify;
+            font-size: 18px;
+        }
+    }
+}
+
+@include media-between(lg, xxl) {
+    // Desktop, Large Desktops && Extra Large Desktops
+    #about-page {
+        #what-doing-section {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+}
+
+@include media-between(xs, md) {
+    // Phones, Large Phones and Tablets
+    #about-page {
+        #what-doing-section {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
