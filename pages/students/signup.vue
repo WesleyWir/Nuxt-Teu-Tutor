@@ -108,7 +108,7 @@
                         type="text"
                         v-mask="['###.###.###-##']"
                         name="cpf"
-                        v-model="form.cpf"
+                        v-model.trim="form.cpf"
                         class="form-control"
                         :class="classes"
                         id="cpf"
@@ -132,7 +132,7 @@
                         >Data de Nascimento *</label
                       >
                       <input
-                        type="text"
+                        type="tel"
                         v-mask="['##/##/####']"
                         name="birthdate"
                         v-model="form.birthdate"
@@ -166,7 +166,7 @@
                       <input
                         type="email"
                         name="email"
-                        v-model="form.email"
+                        v-model.trim="form.email"
                         class="form-control"
                         :class="classes"
                         id="email"
@@ -190,7 +190,7 @@
                       <input
                         type="password"
                         name="password"
-                        v-model="form.password"
+                        v-model.trim="form.password"
                         class="form-control"
                         :class="classes"
                         id="password"
@@ -216,7 +216,7 @@
                       <input
                         type="password"
                         name="confirm_password"
-                        v-model="form.confirmPassword"
+                        v-model.trim="form.confirmPassword"
                         class="form-control"
                         :class="classes"
                         id="confirm_password"

@@ -50,7 +50,7 @@
                     <input
                       type="text"
                       name="email"
-                      v-model="form.email"
+                      v-model.trim="form.email"
                       class="form-control"
                       :class="classes"
                       id="email"
