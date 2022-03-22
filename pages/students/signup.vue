@@ -87,7 +87,6 @@
                         class="form-control"
                         :class="classes"
                         id="full_name"
-                        placeholder="Nome Sobrenome"
                         required
                       />
                       <div class="invalid-feedback">
@@ -162,7 +161,7 @@
                       :rules="{ required: true, email: true }"
                       slim
                     >
-                      <label for="email">Email</label>
+                      <label class="mb-3" for="email">Email</label>
                       <input
                         type="email"
                         name="email"
