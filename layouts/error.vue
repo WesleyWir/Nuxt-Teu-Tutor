@@ -11,7 +11,7 @@
       <span class="display-1 fw-bold">404</span>
       <p class="mt-4">Oooops!</p>
       <h1 class="mb-4"><b>Página não encontrada!</b></h1>
-      <nuxt-link :to="{ name: 'index' }" id="page-404-return">
+      <nuxt-link to="/" id="page-404-return">
         Voltar para a página inicial <i class="fas fa-undo" />
       </nuxt-link>
       <img
