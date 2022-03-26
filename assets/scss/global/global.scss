@@ -492,7 +492,7 @@ header {
 
                         a {
                             background-color: $btn-default-color;
-                            color: $color-7;
+                            color: $color-font-white;
                             font-size: larger;
                             font-weight: bold;
                         }
@@ -774,7 +774,7 @@ header {
 
                 #hire-btn {
                     background-color: $btn-default-color;
-                    color: $color-7;
+                    color: $color-font-white;
                     font-size: x-large;
                     font-weight: bold;
                     height: 180%;
@@ -842,7 +842,7 @@ header {
                             margin-top: 20px;
 
                             .hour-check-label {
-                                background-color: $color-7;
+                                background-color: $color-font-white;
                                 display: flex;
                                 justify-content: center;
                                 -webkit-box-shadow: 5px 11px 19px -1px rgba(0, 0, 0, 0.53);
@@ -852,13 +852,13 @@ header {
                                 font-weight: 700;
 
                                 &:hover {
-                                    background-color: darken($color-7, 10%);
+                                    background-color: darken($color-font-white, 10%);
                                 }
                             }
 
                             .hour-check-label-checked {
                                 background-color: $dark-green-font-color;
-                                color: $color-7;
+                                color: $color-font-white;
                                 display: flex;
                                 justify-content: center;
                                 -webkit-box-shadow: 5px 11px 19px -1px rgba(0, 0, 0, 0.53);
@@ -938,7 +938,7 @@ header {
 
                     #hire-btn {
                         background-color: $btn-default-color;
-                        color: $color-7;
+                        color: $color-font-white;
                         font-weight: bold;
                         width: 63%;
                     }

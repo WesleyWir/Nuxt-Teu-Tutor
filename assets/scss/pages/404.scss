@@ -1,0 +1,29 @@
+.page-404{
+    .container{
+        font-size: 1.2rem;
+
+        #page-404-return{
+            background-color: $components-color;
+            color: $color-font-white;
+            border: solid 20px $components-color;
+            border-radius: 10px;
+
+            &:hover{
+                background-color: darken($components-color, 20%);
+                border-color: darken($components-color, 20%);
+            }
+        }
+    }
+}
+
+@include media-between(xs, md) {
+    .page-404{
+        .container{
+            font-size: 1.2rem;
+
+            #page-404-illustration{
+                display: none;
+            }
+        }
+    }    
+}
