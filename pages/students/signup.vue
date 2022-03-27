@@ -206,7 +206,7 @@
                     <validation-provider
                       v-slot="{ errors, classes }"
                       name="Confirme sua Senha"
-                      :rules="{ required: true, min: 8 }"
+                      :rules="{ required: true, min: 8, confirmed: 'Senha' }"
                       slim
                     >
                       <label class="mb-3" for="confirm_password"
