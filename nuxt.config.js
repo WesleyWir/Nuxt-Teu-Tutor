@@ -73,7 +73,15 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios'
   ],
+
+  "compilerOptions": {
+    "types": [
+      "@nuxt/types",
+      "@nuxtjs/axios"
+    ]
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
