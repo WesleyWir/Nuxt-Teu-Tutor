@@ -14,7 +14,7 @@
 <script>
 import Vue from 'vue'
 import { config, dom } from '@fortawesome/fontawesome-svg-core'
-import global from '~/mixins'
+import global from '~/mixins/global.js'
 
 Vue.mixin(global)
 

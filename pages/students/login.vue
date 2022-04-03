@@ -146,7 +146,7 @@ export default {
   methods: {
     async onSubmit() {
       try {
-        console.log(this.form);
+        // this.$auth.loginWith('local', this.form)
       } catch (error) {
         console.log(error);
       }

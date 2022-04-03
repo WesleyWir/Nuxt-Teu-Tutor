@@ -77,16 +77,14 @@
                       :rules="{ required: true, min: 3 }"
                       slim
                     >
-                      <label class="mb-3" for="full_name"
-                        >Nome Completo *</label
-                      >
+                      <label class="mb-3" for="name">Nome Completo *</label>
                       <input
                         type="text"
-                        name="full_name"
-                        v-model="form.fullName"
+                        name="name"
+                        v-model="form.name"
                         class="form-control"
                         :class="classes"
-                        id="full_name"
+                        id="name"
                         required
                       />
                       <div class="invalid-feedback">
@@ -268,7 +266,7 @@ export default {
   data() {
     return {
       form: {
-        fullName: "",
+        name: "",
         cpf: "",
         birthdate: "",
         email: "",
@@ -276,6 +274,19 @@ export default {
         confirmPassword: "",
       },
     };
+  },
+  methods: {
+    async onSubmit() {
+      this.$axios
+        .post("/students/", this.form)
+        .then((data) => {
+          // this.$auth.loginWith('local', this.form)
+          // redirect to post-signup
+        })
+        .catch(({ response }) => {
+          this.showMultipleErrors(response.data.errors)
+        });
+    },
   },
 };
 </script>

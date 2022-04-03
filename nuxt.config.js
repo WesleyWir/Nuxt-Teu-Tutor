@@ -58,8 +58,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/bootstrap.js',
-    '~/plugins/vee-validate.js'
+    '@/plugins/bootstrap.js',
+    '@/plugins/vee-validate.js',
+    '@/plugins/axios'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -73,7 +74,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'vue-sweetalert2/nuxt'
   ],
 
   "compilerOptions": {

@@ -88,6 +88,7 @@ export default {
   methods: {
     async onSubmit() {
       try {
+        await this.$axios.post('/signup/students/', this.form)
         console.log(this.form);
       } catch (error) {
         console.error(error);
