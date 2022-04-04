@@ -1,6 +1,6 @@
 export default {
     methods: {
-        swalToast(args = {}) {
+        async swalToast(args = {}) {
             const defaults = {
                 icon: 'info',
                 title: '',
@@ -19,25 +19,19 @@ export default {
             const params = {
                 ...defaults, ...args
             }
-            this.$swal.fire(params)
+            await this.$swal.fire(params)
         },
-        showMultipleErrors(errors = []) {
+        async showMultipleErrors(errors = []) {
             if (!(errors.length)) {
                 return;
             }
-            const message = document.createElement('ul')
 
             for (const error of errors) {
-                let liMessage = document.createElement('li')
-                liMessage.innerText = error.message
-                message.appendChild(liMessage)
+                await this.swalToast({
+                    icon: "error",
+                    title: error.message,
+                })
             }
-
-            return this.swalToast({
-                icon: "error",
-                title: "Erro",
-                html: message,
-            })
         }
     }
 }

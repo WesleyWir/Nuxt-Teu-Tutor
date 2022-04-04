@@ -5,11 +5,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 
 export default {
 
-    // Server
-    server: {
-      port: 3000, // default: 3000
-      host: process.env.BASE_HOST
-    },
+  // Server
+  server: {
+    port: 3000, // default: 3000
+    host: process.env.BASE_HOST
+  },
 
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -75,8 +75,37 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
     'vue-sweetalert2/nuxt'
   ],
+
+  auth: {
+    strategies: {
+      local_student: {
+        scheme: 'local',
+        token: {
+          global: true,
+          required: true,
+          type: 'Bearer'
+        },
+        user: {
+          property: 'user',
+          autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/sessions/students', method: 'post' },
+          logout: { url: '/sessions/students', method: 'delete' },
+          user: { url: '/sessions/students', method: 'get' }
+        }
+      }
+    },
+    redirect: {
+      login: '/auth/not-loggedin',
+      logout: '/auth/sucess-logout',
+      callback: '/auth/not-loggedin',
+      home: '/'
+    }
+  },
 
   "compilerOptions": {
     "types": [

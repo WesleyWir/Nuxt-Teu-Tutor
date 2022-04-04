@@ -279,11 +279,14 @@ export default {
     async onSubmit() {
       this.$axios
         .post("/students/", this.form)
-        .then((data) => {
-          // this.$auth.loginWith('local', this.form)
+        .then(async (data) => {
+          let loginData = { email: this.email, password: this.email };
+          let response = await this.$auth.loginWith('local_student', { data: { loginData}})
+          console.log(response)
           // redirect to post-signup
         })
         .catch(({ response }) => {
+          console.log(response.data.errors);
           this.showMultipleErrors(response.data.errors)
         });
     },
