@@ -286,7 +286,6 @@ export default {
           // redirect to post-signup
         })
         .catch(({ response }) => {
-          console.log(response.data.errors);
           this.showMultipleErrors(response.data.errors)
         });
     },

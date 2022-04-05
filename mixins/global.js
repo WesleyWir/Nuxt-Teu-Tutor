@@ -32,6 +32,20 @@ export default {
                     title: error.message,
                 })
             }
+        },
+        async catchReponseError(response){
+            if(response.status === 500){
+                this.swalToast({ icon: 'error', title: 'Houve um erro interno :('})
+                return this.$router.push('/')
+            }
+
+            if(response.data.errors){
+                return this.showMultipleErrors(response.data.errors)
+            }
+
+            if(response.data.message){
+                return this.swalToast({ icon: 'error', title: response.data.message})
+            }
         }
     }
 }

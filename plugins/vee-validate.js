@@ -17,20 +17,5 @@ Object.keys(rules).forEach((rule) => {
   })
 })
 
-extend('validPhone', (value, length) => {
-  return value.length >= length ? true : '{_field_} inválido'
-})
-
-extend('validMultSelect', (value, args) => {
-  if (value.length >= args[0] && value.length <= args[1]) {
-    return true
-  }
-  return `Máximo de categorias: ${args[1]}`
-})
-
-extend('validZipCode', (value, length) => {
-  return value.length === length[0] ? true : 'Formato 99.999-999'
-})
-
 Vue.component('ValidationObserver', ValidationObserver)
 Vue.component('ValidationProvider', ValidationProvider)

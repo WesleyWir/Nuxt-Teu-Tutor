@@ -84,18 +84,24 @@ export default {
       local_student: {
         scheme: 'local',
         token: {
+          property: 'token',
           global: true,
           required: true,
           type: 'Bearer'
         },
+        // refreshToken: {  // it sends request automatically when the access token expires, and its expire time has set on the Back-end and does not need to we set it here, because is useless
+        //        property: "refresh_token", // property name that the Back-end sends for you as a refresh token for saving on localStorage and cookie of user browser
+        //        data: "refresh_token", // data can be used to set the name of the property you want to send in the request.
+        //      },
         user: {
-          property: 'user',
+          property: 'student',
           autoFetch: true
         },
         endpoints: {
           login: { url: '/sessions/students', method: 'post' },
+          // refresh: { url: "/sessions/students/refresh", method: "post" },
           logout: { url: '/sessions/students', method: 'delete' },
-          user: { url: '/sessions/students', method: 'get' }
+          user: { url: '/sessions/students/me', method: 'get' }
         }
       }
     },

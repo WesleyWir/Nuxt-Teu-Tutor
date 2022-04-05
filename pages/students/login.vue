@@ -146,11 +146,9 @@ export default {
   methods: {
     async onSubmit() {
       try {
-        let response = await this.$auth.loginWith('local_student', { data: this.form})
-        console.log(response)
-        // this.$auth.loginWith('local', this.form)
+        await this.$auth.loginWith('local_student', { data: this.form})
       } catch ({ response }) {
-        console.error(response);
+        this.catchReponseError(response)
       }
     },
   },
