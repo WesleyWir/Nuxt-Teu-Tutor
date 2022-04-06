@@ -58,8 +58,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/bootstrap.js',
-    '@/plugins/vee-validate.js',
+    '@/plugins/bootstrap',
+    '@/plugins/vee-validate',
     '@/plugins/axios'
   ],
 
@@ -76,7 +76,8 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
-    'vue-sweetalert2/nuxt'
+    'vue-sweetalert2/nuxt',
+    'vue-wait/nuxt'
   ],
 
   auth: {

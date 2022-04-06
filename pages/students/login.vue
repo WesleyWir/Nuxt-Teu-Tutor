@@ -116,9 +116,14 @@
                 </div>
 
                 <div id="submit-btn" class="mt-3 d-flex justify-content-center">
-                  <button type="submit" class="btn btn-custom-green">
-                    Entrar
-                  </button>
+                  <v-wait for="login submit">
+                    <template slot="waiting">
+                        <UiSpinner />
+                    </template>
+                    <button type="submit" class="btn btn-custom-green">
+                      Entrar
+                    </button>
+                  </v-wait>
                 </div>
               </form>
             </validation-observer>
@@ -146,10 +151,14 @@ export default {
   methods: {
     async onSubmit() {
       try {
-        await this.$auth.loginWith('local_student', { data: this.form})
+        this.$wait.start('login submit');
+        await this.$auth.loginWith("local_student", { data: this.form });
       } catch ({ response }) {
-        this.catchReponseError(response)
+        this.catchReponseError(response);
       }
+      setTimeout(() => {
+        this.$wait.end('login submit');
+      }, 1000)
     },
   },
 };

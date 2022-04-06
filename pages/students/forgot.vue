@@ -88,8 +88,8 @@ export default {
   methods: {
     async onSubmit() {
       try {
-        await this.$axios.post('/signup/students/', this.form)
-        console.log(this.form);
+        const response = await this.$axios.post('/students/forgot/', this.form)
+        console.log(response);
       } catch (error) {
         console.error(error);
       }
