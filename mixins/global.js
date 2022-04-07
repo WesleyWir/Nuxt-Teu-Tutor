@@ -21,6 +21,12 @@ export default {
             }
             await this.$swal.fire(params)
         },
+        async showSuccessMessage(message = ''){
+            await this.swalToast({
+                icon: "success",
+                title: message,
+            })
+        },
         async showMultipleErrors(errors = []) {
             if (!(errors.length)) {
                 return;

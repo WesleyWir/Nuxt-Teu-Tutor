@@ -158,7 +158,7 @@ export default {
       }
       setTimeout(() => {
         this.$wait.end('login submit');
-      }, 1000)
+      }, 500)
     },
   },
 };
