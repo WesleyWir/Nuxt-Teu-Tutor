@@ -5,6 +5,6 @@
       Sou Estudante
     </TemplateFrontFormImTitle>
 
-    <UsersForgotPasswordForm route="/students/forgot/"/>
+    <UsersForgotPasswordForm route="/students"/>
   </main>
 </template>

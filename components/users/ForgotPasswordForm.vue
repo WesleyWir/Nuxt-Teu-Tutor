@@ -38,7 +38,7 @@
                   slim
                 >
                   <label class="mb-3" for="email">Seu Email</label>
-                  <NuxtLink class="float-end fw-bold" to="/students/login/"
+                  <NuxtLink class="float-end fw-bold" :to="`${route}/login/`"
                     >Ir para o Login</NuxtLink
                   >
                   <input
@@ -88,7 +88,7 @@ export default {
     async onSubmit() {
       try {
         this.$wait.start('submit');
-        await this.$axios.post(this.route, this.form);
+        await this.$axios.post(`${this.route}/forgot/`, this.form);
         this.showSuccessMessage('Enviado ao email com sucesso!')
       } catch ({ response }) {
         this.catchReponseError(response);
