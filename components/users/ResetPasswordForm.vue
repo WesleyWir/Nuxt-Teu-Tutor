@@ -38,7 +38,7 @@
                   slim
                 >
                   <label class="mb-3" for="email">Senha</label>
-                  <NuxtLink class="float-end fw-bold" :to="`${route}/forgot/`"
+                  <NuxtLink class="float-end fw-bold" :to="`/${route}/forgot/`"
                     >Enviar pedido novamente</NuxtLink
                   >
                   <input
@@ -123,7 +123,7 @@ export default {
           this.form
         );
         this.showSuccessMessage(response.data.message);
-        this.$router.push(`${this.route}/login/`);
+        this.$router.push(`/${this.route}/login/`);
       } catch ({ response }) {
         this.catchReponseError(response);
       }

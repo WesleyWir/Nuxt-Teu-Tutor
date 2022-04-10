@@ -8,7 +8,7 @@
       Sou Estudante
     </TemplateFrontFormImTitle>
 
-    <UsersResetPasswordForm route="/students" />
+    <UsersResetPasswordForm route="students" />
   </main>
 </template>
 
