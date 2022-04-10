@@ -30,24 +30,13 @@
                       aria-expanded="false"
                     >
                       <i class="caret fas fa-angle-down fa-xl md-2"></i>
-                      <div id="rounded-profile-image">
-                        <img
-                          src="/imgs/user/default-profile.png"
-                          alt="Profile Image"
-                          class="img"
-                        />
-                      </div>
+                      <TemplateLoggedinStudentsHeaderProfileImage />
                     </a>
                     <ul
                       class="dropdown-menu dropdown-loggedin-custom-menu"
                       aria-labelledby="navbarDropdown"
                     >
-                      <li><a class="dropdown-item" href="#">Meu Perfil</a></li>
-                      <li>
-                        <a class="dropdown-item" href="#">Minhas Aulas</a>
-                      </li>
-                      <li><a class="dropdown-item" href="#">Criar Post</a></li>
-                      <li><a class="dropdown-item" href="#">Meus Posts</a></li>
+                      <TemplateLoggedinStudentsMenuOptions />
                     </ul>
                   </li>
                 </ul>
@@ -63,7 +52,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+ 
+};
 </script>
 
 <style lang="scss">

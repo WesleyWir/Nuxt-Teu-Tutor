@@ -21,6 +21,8 @@ export default {
     async onLoginSubmit(form) {
       try {
         await this.$auth.loginWith("local_student", { data: form });
+        return await this.$router.go('/students/in/profile');
+        // await this.$router.push()
       } catch ({ response }) {
         this.catchReponseError(response);
       }

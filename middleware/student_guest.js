@@ -3,5 +3,5 @@ export default function ({ redirect, $auth }) {
     if (!$auth.loggedIn) {
         return
     }
-    return redirect(`/students/in/${$auth.user.id}`)
+    return redirect('/students/in/profile')
 }

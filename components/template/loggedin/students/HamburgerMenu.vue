@@ -15,13 +15,7 @@
             aria-controls="sub-sou-estudante"
             v-on:click="navAccordionsCollapse()"
           >
-            <div id="rounded-profile-image">
-              <img
-                src="/imgs/user/default-profile.png"
-                alt="Profile Image"
-                class="img"
-              />
-            </div>
+            <TemplateLoggedinStudentsHeaderProfileImage />
             <div id="angle-down-profile">
               <i class="caret fas fa-xl" :class="[angle_profile_icon]"></i>
             </div>
@@ -31,18 +25,7 @@
             class="accordion-collapse collapse sub-menu-collapse"
             data-bs-parent="#sou-estudante-accordion"
           >
-            <li>
-              <NuxtLink to="/students/in/profile/" > Meu Perfil </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/students/in/classes/"> Minhas Aulas </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/students/in/posts/create"> Criar Post </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/students/in/posts/"> Meus Posts </NuxtLink>
-            </li>
+            <TemplateLoggedinStudentsMenuOptions />
           </ul>
         </li>
         <hr style="color: #000" />
@@ -67,10 +50,10 @@ export default {
   methods: {
     navAccordionsCollapse() {
       if (this.angle_profile_icon === "fa-angle-down") {
-        return this.angle_profile_icon = "fa-angle-up";
+        return (this.angle_profile_icon = "fa-angle-up");
       }
 
-      return this.angle_profile_icon = "fa-angle-down";
+      return (this.angle_profile_icon = "fa-angle-down");
     },
   },
 };

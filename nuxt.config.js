@@ -130,7 +130,7 @@ export default {
 
   fontawesome: {
     icons: {
-      solid: ['faSearch', 'faAngleDown', 'faAngleUp', 'faGraduationCap', 'faEye', 'faEyeSlash', 'faUndo'],
+      solid: ['faSearch', 'faAngleDown', 'faAngleUp', 'faGraduationCap', 'faEye', 'faEyeSlash', 'faUndo', 'faSignOut', 'faCamera'],
       brands: ['faFacebook', 'faGoogle']
     }
   }
