@@ -103,17 +103,17 @@ export default {
           // refresh: { url: "/sessions/students/refresh", method: "post" },
           logout: { url: '/sessions/students', method: 'delete' },
           user: { url: '/sessions/students/me', method: 'get' }
-        }
+        },
       }
     },
     redirect: {
       login: '/auth/not-loggedin',
       logout: '/auth/sucess-logout',
       callback: '/auth/not-loggedin',
-      home: '/'
+      home: false
     }
   },
-
+  
   "compilerOptions": {
     "types": [
       "@nuxt/types",

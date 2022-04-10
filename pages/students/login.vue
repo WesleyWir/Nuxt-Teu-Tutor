@@ -16,6 +16,7 @@
 
 <script>
 export default {
+  middleware: ['student_guest'],
   methods: {
     async onLoginSubmit(form) {
       try {

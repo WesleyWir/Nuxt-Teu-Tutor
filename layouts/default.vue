@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <TemplateHeader />
+    <TemplateLoggedinStudentsHeader v-if="this.$auth.loggedIn"/>
+    <TemplateHeader v-else/>
     <!-- <HeaderMobile v-if="isMobile" /> -->
     <main id="wrapper" tabindex="-1">
       <transition name="fade" mode="out-in">
@@ -34,13 +35,13 @@ export default {
     window.addEventListener('resize', this.onResize, { passive: true })
   },
   methods: {
-    onResize () {
-      this.changeWrapperMinHeight();
+    async onResize () {
+      await this.changeWrapperMinHeight();
       this.isMobile = window.innerWidth < 992
     },
-    changeWrapperMinHeight(){
+    async changeWrapperMinHeight(){
       let wrapper = document.getElementById('wrapper'),
-      headerHeight = document.getElementById('header').clientHeight,
+      headerHeight = document.getElementsByTagName('header').clientHeight,
       footerHeight = document.getElementById('footer').clientHeight,
       wrapperHeight = window.innerHeight - (headerHeight + footerHeight);
       wrapper.style.minHeight = `${wrapperHeight}px`;

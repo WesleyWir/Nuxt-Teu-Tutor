@@ -1,0 +1,51 @@
+
+header {
+    font-weight: bold;
+
+    #user-loggedin-dropdowns {
+        width: 190px;
+        height: 142px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 20px;
+
+        nav {
+            .nav-item {
+                #navbarDropdown{
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    align-content: center;
+                    justify-content: center;
+                    align-items: center;
+                    #rounded-profile-image{
+                        margin-left: 10%;
+                        img{
+                            border-radius: 50%;
+                        }
+                    }
+                    .dropdown-loggedin-custom-menu {
+                        background-color: $default-background-color;
+    
+                        li {
+                            a {
+                                background-color: $default-background-color;
+    
+                                i {
+                                    color: $font-color;
+                                }
+    
+                                &:hover {
+                                    filter: brightness(0.95);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
