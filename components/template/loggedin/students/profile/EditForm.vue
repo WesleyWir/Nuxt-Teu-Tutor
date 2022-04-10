@@ -9,22 +9,26 @@
             class="form-control"
             id="name"
             aria-describedby="name"
-            placeholder="Nome"
-            disabled
+            :disabled="!isEdit"
           />
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label for="exampleInputPassword1">Senha</label>
+          <input type="password" class="form-control" id="password" :disabled="!isEdit"/>
+          <small id="password-help" class="form-text text-muted">Esse campo não é obrigatório.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Confirme a senha</label>
           <input
             type="password"
             class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
+            id="password_confirm"
+            :disabled="!isEdit"
           />
         </div>
         <div class="buttons mt-3">
-          <button type="submit" class="btn btn-primary">Editar</button>
-          <button type="submit" class="btn btn-success">Salvar</button>
+          <button type="button" class="btn btn-primary" v-on:click="isEdit = !isEdit"><strong>Editar</strong></button>
+          <button type="submit" class="btn btn-success" :disabled="!isEdit"><strong>Salvar</strong></button>
         </div>
       </form>
     </div>
@@ -32,13 +36,17 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isEdit: false,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 #profile-info {
-  //   position: relative;
-  //   top: -20px;
   border: solid $default-background-color 10px;
   border-radius: 10px;
   background-color: $default-background-color;
@@ -52,6 +60,17 @@ export default {};
       justify-content: space-evenly;
       margin: 0 auto;
       width: 50%;
+    }
+  }
+}
+
+@include media-between(xs, md) {
+  // Phones, Large Phones and Tablets
+  #profile-info {
+    #profile-info-form {
+      form {
+        width: 100%;
+      }
     }
   }
 }
