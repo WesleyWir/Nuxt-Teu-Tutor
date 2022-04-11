@@ -26,7 +26,9 @@
             Excluir
           </button>
         </div>
-        <div class="card-footer text-muted">Criado em: {{post.created_at | format_mysql_date_and_hour}}</div>
+        <div class="card-footer text-muted">
+          Criado em: {{ post.created_at | format_mysql_date_and_hour }}
+        </div>
       </div>
     </div>
     <div class="d-flex justify-content-around mt-3">
@@ -45,6 +47,8 @@
 </template>
 
 <script>
+import toasts from '~/mixins/toasts.js'
+Vue.mixin(toasts)
 export default {
   data() {
     return {
@@ -58,12 +62,17 @@ export default {
       );
       this.posts = data;
     } catch ({ response }) {
-      console.error(response);
+      catchReponseError(response);
     }
   },
   methods: {
-    deletePost(postId) {
-      console.log(postId);
+    async deletePost(postId) {
+      try {
+        await this.$axios.delete(`/posts/students/${postId}`);
+        showSuccessMessage('Post deletado com sucesso!');
+      } catch ({ response }) {
+        catchReponseError(response);
+      }
     },
   },
 };
