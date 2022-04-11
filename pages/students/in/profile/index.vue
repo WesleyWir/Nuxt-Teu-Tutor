@@ -8,12 +8,8 @@
 
 <script>
 export default {
-  middleware: 'auth'
+  layout: "internal",
+  middleware: 'auth',
+  auth: 'local_student'
 };
 </script>
-
-<style lang="scss" scoped>
-#students-profile{
-    height: 100%
-}
-</style>

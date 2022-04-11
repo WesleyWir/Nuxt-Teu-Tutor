@@ -3,7 +3,7 @@
     <div id="profile-info-form">
       <form>
         <div class="form-group">
-          <label for="exampleInputEmail1">Nome</label>
+          <label for="name">Nome</label>
           <input
             type="text"
             class="form-control"
@@ -27,7 +27,7 @@
           />
         </div>
         <div class="buttons mt-3">
-          <button type="button" class="btn btn-primary" v-on:click="isEdit = !isEdit"><strong>Editar</strong></button>
+          <button type="button" class="btn btn-primary" v-on:click="isEdit = !isEdit"><strong>Ativar Edição</strong></button>
           <button type="submit" class="btn btn-success" :disabled="!isEdit"><strong>Salvar</strong></button>
         </div>
       </form>

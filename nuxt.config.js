@@ -60,7 +60,8 @@ export default {
   plugins: [
     '@/plugins/bootstrap',
     '@/plugins/vee-validate',
-    '@/plugins/axios'
+    '@/plugins/axios',
+    '@/plugins/filter-date.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -77,7 +78,8 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     'vue-sweetalert2/nuxt',
-    'vue-wait/nuxt'
+    'vue-wait/nuxt',
+    'vue2-editor/nuxt'
   ],
 
   auth: {
