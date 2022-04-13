@@ -8,14 +8,22 @@
             type="text"
             class="form-control"
             id="name"
+            v-model="student.name"
             aria-describedby="name"
             :disabled="!isEdit"
           />
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Senha</label>
-          <input type="password" class="form-control" id="password" :disabled="!isEdit"/>
-          <small id="password-help" class="form-text text-muted">Esse campo não é obrigatório.</small>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            :disabled="!isEdit"
+          />
+          <small id="password-help" class="form-text text-muted"
+            >Esse campo não é obrigatório.</small
+          >
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Confirme a senha</label>
@@ -27,8 +35,16 @@
           />
         </div>
         <div class="buttons mt-3">
-          <button type="button" class="btn btn-primary" v-on:click="isEdit = !isEdit"><strong>Ativar Edição</strong></button>
-          <button type="submit" class="btn btn-success" :disabled="!isEdit"><strong>Salvar</strong></button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            v-on:click="isEdit = !isEdit"
+          >
+            <strong>Ativar Edição</strong>
+          </button>
+          <button type="submit" class="btn btn-success" :disabled="!isEdit">
+            <strong>Atualizar</strong>
+          </button>
         </div>
       </form>
     </div>
@@ -40,7 +56,19 @@ export default {
   data() {
     return {
       isEdit: false,
+      student: {},
     };
+  },
+  fetch() {
+    this.student = this.$auth.user;
+  },
+  async onSubmit() {
+    try {
+      await this.$axios.put("/students/", $this.student);
+      this.showSuccessMessage("Perfil Atualizado!");
+    } catch ({ response }) {
+      await this.catchReponseError(response);
+    }
   },
 };
 </script>

@@ -3,9 +3,9 @@
     <div id="post-info-title" class="d-flex justify-content-center">
       <h2 class="h2"><strong>Posts</strong></h2>
     </div>
-    <div id="posts">
-      <div class="card text-center" v-for="post in posts" :key="post.id">
-        <div class="card-header">{{ post.title }}</div>
+    <div id="posts" class="d-flex justify-content-center">
+      <div class="card text-center w-75" v-for="post in posts" :key="post.id">
+        <div class="card-header link-primary">{{ post.title }}</div>
         <div class="card-body">
           <h5 class="card-title" v-if="post.subject">
             <strong>Matéria: </strong>{{ post.subject.subject }}
@@ -47,8 +47,6 @@
 </template>
 
 <script>
-import toasts from '~/mixins/toasts.js'
-Vue.mixin(toasts)
 export default {
   data() {
     return {
@@ -68,10 +66,13 @@ export default {
   methods: {
     async deletePost(postId) {
       try {
-        await this.$axios.delete(`/posts/students/${postId}`);
-        showSuccessMessage('Post deletado com sucesso!');
+        this.displayConfirmMessage('Você quer realmente deletar o post?', '', async () => {
+          await this.$axios.delete(`/posts/students/${postId}`);
+          this.showSuccessMessage('Post deletado com sucesso!');
+          this.$fetch()
+        });
       } catch ({ response }) {
-        catchReponseError(response);
+        this.catchReponseError(response);
       }
     },
   },

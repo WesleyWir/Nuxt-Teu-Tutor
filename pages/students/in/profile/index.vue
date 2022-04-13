@@ -9,7 +9,7 @@
 <script>
 export default {
   layout: "internal",
-  middleware: 'auth',
-  auth: 'local_student'
+  middleware: "auth",
+  auth: "local_student",
 };
 </script>

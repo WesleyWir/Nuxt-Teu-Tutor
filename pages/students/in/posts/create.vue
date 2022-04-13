@@ -108,7 +108,8 @@ export default {
     async onSubmit() {
       try {
         const { data } = await this.$axios.post("/posts/students/", this.form);
-        console.log(data);
+        this.showSuccessMessage('Post criado com sucesso')
+        this.$router.push('/students/in/posts')
       } catch ({ response }) {
         this.catchReponseError(response);
       }

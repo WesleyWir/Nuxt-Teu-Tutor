@@ -21,7 +21,7 @@ export default {
             }
             await this.$swal.fire(params)
         },
-        async showSuccessMessage(message = ''){
+        async showSuccessMessage(message = '') {
             await this.swalToast({
                 icon: "success",
                 title: message,
@@ -39,19 +39,35 @@ export default {
                 })
             }
         },
-        async catchReponseError(response){
-            if(response.status === 500){
-                this.swalToast({ icon: 'error', title: 'Houve um erro interno :('})
+        async catchReponseError(response) {
+            if (response.status === 500) {
+                this.swalToast({ icon: 'error', title: 'Houve um erro interno :(' })
                 return this.$router.push('/')
             }
 
-            if(response.data.errors){
+            if (response.data.errors) {
                 return this.showMultipleErrors(response.data.errors)
             }
 
-            if(response.data.message){
-                return this.swalToast({ icon: 'error', title: response.data.message})
+            if (response.data.message) {
+                return this.swalToast({ icon: 'error', title: response.data.message })
             }
+        },
+        async displayConfirmMessage(title, text = '', confirmedFn, icon = 'warning') {
+            this.$swal.fire({
+                title: title,
+                text: text,
+                icon: icon,
+                showCancelButton: true,
+                confirmButtonColor: '#198754',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim',
+                cancelButtonText: 'Não'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    await confirmedFn();
+                }
+            })
         }
     }
 }
