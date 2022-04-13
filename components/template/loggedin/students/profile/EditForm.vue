@@ -1,7 +1,7 @@
 <template>
   <section id="profile-info">
     <div id="profile-info-form">
-      <form>
+      <form @submit.stop.prevent="handleSubmit(onEditSubmit)">
         <div class="form-group">
           <label for="name">Nome</label>
           <input
@@ -59,10 +59,17 @@ export default {
       student: {},
     };
   },
-  fetch() {
-    this.student = this.$auth.user;
+  async fetch() {
+    try {
+      const { data } = await this.$axios.get(
+        `/students/${this.$auth.user.id}/edit`
+      );
+      this.student = data;
+    } catch ({ response }) {
+      await this.catchReponseError(response);
+    }
   },
-  async onSubmit() {
+  async onEditSubmit() {
     try {
       await this.$axios.put("/students/", $this.student);
       this.showSuccessMessage("Perfil Atualizado!");
