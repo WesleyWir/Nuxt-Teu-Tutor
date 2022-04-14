@@ -1,5 +1,7 @@
 @import "~bootstrap/scss/functions"; // Required
 @import "global/variables";
+@import "~bootstrap/scss/bootstrap";
+@import 'bootstrap/scss/bootstrap.scss';
 @import "~bootstrap/scss/variables"; // Required
 @import "~bootstrap/scss/mixins"; // Required
 @import "~bootstrap/scss/utilities"; // Required
@@ -23,7 +25,7 @@
 @import "~bootstrap/scss/accordion";
 @import "~bootstrap/scss/breadcrumb";
 // @import "~bootstrap/scss/pagination";
-// @import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/badge";
 @import "~bootstrap/scss/alert";
 @import "~bootstrap/scss/progress";
 @import "~bootstrap/scss/list-group";

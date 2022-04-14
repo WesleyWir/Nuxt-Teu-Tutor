@@ -101,15 +101,15 @@ export default {
       const { data } = await this.$axios.get("/subjects");
       this.possible_subjects = data;
     } catch ({ response }) {
-      console.error(response);
+      this.catchReponseError(response);
     }
   },
   methods: {
     async onSubmit() {
       try {
         const { data } = await this.$axios.post("/posts/students/", this.form);
-        this.showSuccessMessage('Post criado com sucesso')
-        this.$router.push('/students/in/posts')
+        this.showSuccessMessage("Post criado com sucesso");
+        this.$router.push("/students/in/posts");
       } catch ({ response }) {
         this.catchReponseError(response);
       }
@@ -140,7 +140,6 @@ export default {
 }
 
 @include media-between(xs, md) {
-  // Phones, Large Phones and Tablets
   #create-post-form {
     form {
       width: 100%;

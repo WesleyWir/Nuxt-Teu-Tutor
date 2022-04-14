@@ -86,6 +86,12 @@ export default {
     strategies: {
       local_student: {
         scheme: 'local',
+        cookie: {
+          prefix: 'auth.',
+          options: {
+            path: '/'
+          }
+        },
         token: {
           property: 'token',
           global: true,
