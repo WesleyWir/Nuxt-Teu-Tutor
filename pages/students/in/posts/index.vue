@@ -33,6 +33,7 @@ export default {
   },
   methods:{
     executeFetchPosts(){
+      console.log('fetch post event')
       this.$fetch()
     }
   }

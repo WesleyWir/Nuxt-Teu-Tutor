@@ -1,6 +1,6 @@
 <template>
   <section id="empty-posts">
-      Tá vazio
+      <h2 class="h2 fw-bold">{{ $t('posts.empty') }}</h2>
   </section>
 </template>
 

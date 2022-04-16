@@ -3,7 +3,7 @@
     <div class="post-title col-12">
       <NuxtLink :to="`/students/posts/${post.id}`" class="fw-bold"
         >{{ post.title }} |
-        {{ post.title | format_mysql_date_and_hour }}</NuxtLink
+        {{ post.created_at | format_mysql_date_and_hour }}</NuxtLink
       >
     </div>
     <TemplateStudentsPostListAuthor v-if="showAvatar" />
@@ -17,6 +17,7 @@
     </div>
     <TemplateStudentsPostListInternalButtons
       v-if="showInternalBtns"
+      :post_id="post.id"
       v-on:delete="deleteEvent()"
     />
   </div>
@@ -34,7 +35,7 @@ export default {
           async () => {
             await this.$axios.delete(`/posts/students/${this.post.id}`);
             this.showSuccessMessage("Post deletado com sucesso!");
-            this.$fetch();
+            this.emitFetchPosts();
           }
         );
       } catch ({ response }) {

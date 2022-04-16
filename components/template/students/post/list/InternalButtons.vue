@@ -1,8 +1,8 @@
 <template>
   <div class="post-in-buttons mt-3 col-4">
-    <button type="submit" class="btn btn-primary">
+    <NuxtLink :to="`/students/in/posts/${post_id}/edit/`" class="btn btn-primary">
       <strong>Editar</strong>
-    </button>
+    </NuxtLink>
     <button type="button" v-on:click="onDeleteButton()" class="btn btn-danger">
       <strong>Deletar</strong>
     </button>
@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  props: ["post_id"],
   methods: {
     onDeleteButton() {
       this.$emit("delete");

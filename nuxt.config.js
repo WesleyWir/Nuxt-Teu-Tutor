@@ -79,8 +79,25 @@ export default {
     '@nuxtjs/auth-next',
     'vue-sweetalert2/nuxt',
     'vue-wait/nuxt',
-    'vue2-editor/nuxt'
+    'vue2-editor/nuxt',
+    '@nuxtjs/i18n'
   ],
+
+  i18n: {
+    locales: [
+      {
+        code: 'pt',
+        file: 'pt-BR.js'
+      },
+      {
+        code: 'en',
+        file: 'en-US.js'
+      }
+    ],
+    lazy: true,
+    langDir: 'locales/',
+    defaultLocale: 'pt'
+  },
 
   auth: {
     strategies: {
@@ -121,7 +138,7 @@ export default {
       home: false
     }
   },
-  
+
   "compilerOptions": {
     "types": [
       "@nuxt/types",
@@ -138,8 +155,8 @@ export default {
 
   fontawesome: {
     icons: {
-      solid: ['faSearch', 'faAngleDown', 'faAngleUp', 'faGraduationCap', 'faEye', 
-      'faEyeSlash', 'faUndo', 'faSignOut', 'faCamera', 'faCirclePlus'],
+      solid: ['faSearch', 'faAngleDown', 'faAngleUp', 'faGraduationCap', 'faEye',
+        'faEyeSlash', 'faUndo', 'faSignOut', 'faCamera', 'faCirclePlus'],
       brands: ['faFacebook', 'faGoogle']
     }
   }
