@@ -1,17 +1,23 @@
 <template>
-  <section>
+  <section class="container">
     <TemplateStudentsPostList>
-        <TemplateStudentsPostListEmpty v-if="!posts.length" />
-        <TemplateStudentsPostListItem
-          v-else
-          v-for="post in posts"
-          v-bind:key="post.id"
-          :post="post"
-          :showInternalBtns="true"
-          :showAvatar="false"
-          v-on:fetchPosts="$fetch"
-        />
+      <TemplateStudentsPostListEmpty v-if="!posts.length" />
+      <TemplateStudentsPostListItem
+        v-else
+        v-for="post in posts"
+        v-bind:key="post.id"
+        :post="post"
+        :showInternalBtns="true"
+        :showAvatar="false"
+        v-on:fetchPosts="$fetch"
+      />
     </TemplateStudentsPostList>
+    <div class="fixed-bottom d-flex justify-content-end">
+      <NuxtLink to="/students/in/posts/create" class="btn btn-success rounded-pill m-5">
+        <i class="fa-solid fa-circle-plus"></i>
+        <span class="fw-bold">Criar Post</span>
+      </NuxtLink>
+    </div>
   </section>
 </template>
 
@@ -27,16 +33,16 @@ export default {
   },
   async fetch() {
     const { data } = await this.$axios.get(
-      `/posts/students/student/${this.$auth.user.id}`
+      `/posts/students/student/${this.$auth.user.id}?limit=1&page=2`
     );
     this.posts = data;
   },
-  methods:{
-    executeFetchPosts(){
-      console.log('fetch post event')
-      this.$fetch()
-    }
-  }
+  methods: {
+    executeFetchPosts() {
+      console.log("fetch post event");
+      this.$fetch();
+    },
+  },
 };
 </script>
 
