@@ -6,11 +6,16 @@
     >
       <slot></slot>
     </section>
+    <section class="d-flex justify-content-center" v-if="showPaginationBtn">
+      <button class="btn btn btn-custom-green" v-on:click="$emit('paginate')">Ver Mais</button>
+    </section>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['showPaginationBtn'],
+};
 </script>
 
 <style lang="scss" scoped>

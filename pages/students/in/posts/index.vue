@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <TemplateStudentsPostList>
+    <TemplateStudentsPostList v-on:paginate="paginate()" :showPaginationBtn="showPaginationBtn">
       <TemplateStudentsPostListEmpty v-if="!posts.length" />
       <TemplateStudentsPostListItem
         v-else
@@ -10,13 +10,19 @@
         :showInternalBtns="true"
         :showAvatar="false"
         v-on:fetchPosts="$fetch"
+        v-on:paginate="paginate()"
       />
     </TemplateStudentsPostList>
-    <div class="fixed-bottom d-flex justify-content-end">
-      <NuxtLink to="/students/in/posts/create" class="btn btn-success rounded-pill m-5">
-        <i class="fa-solid fa-circle-plus"></i>
-        <span class="fw-bold">Criar Post</span>
-      </NuxtLink>
+    <div class="fixed-bottom w-25 float-end mx-auto me-3 mb-3">
+      <div class="float-end me-3 mb-3">
+        <NuxtLink
+          to="/students/in/posts/create"
+          class="btn btn-success rounded-pill m-5"
+        >
+          <i class="fa-solid fa-circle-plus"></i>
+          <span class="fw-bold">Criar Post</span>
+        </NuxtLink>
+      </div>
     </div>
   </section>
 </template>
@@ -29,67 +35,42 @@ export default {
   data() {
     return {
       posts: [],
+      pagination_meta: [],
+      queries: {
+        limit: 2,
+        page: 1,
+      },
+      showPaginationBtn: true,
     };
   },
   async fetch() {
     const { data } = await this.$axios.get(
-      `/posts/students/student/${this.$auth.user.id}?limit=1&page=2`
+      `/posts/students/student/${this.$auth.user.id}`,
+      { params: this.queries }
     );
-    this.posts = data;
+    for (const d of data.data) {
+      this.posts.push(d);
+    }
+    this.pagination_meta = data.meta;
+  },
+  watch: {
+    posts() {
+      if(this.queries.page >= this.pagination_meta.last_page){
+        this.showPaginationBtn = false;
+      }
+    }
   },
   methods: {
     executeFetchPosts() {
-      console.log("fetch post event");
+      this.$fetch();
+    },
+    paginate() {
+      this.queries.page++;
       this.$fetch();
     },
   },
 };
 </script>
 
-// <style lang="scss" scoped>
-//   #posts-list {
-//     .post-item {
-//       width: 75%;
-//       padding: 3%;
-//       border-radius: 2ch;
-//       border: 1px solid hsl(0 0% 83%);
-//       .post-title {
-//         font-size: 2rem;
-//       }
-//       .post-author {
-//         .post-author-avatar {
-//           margin: 10px 0;
-//           margin-right: 20px;
-//           width: 5%;
-//           border-radius: 50%;
-//         }
-//       }
-//       .post-content {
-//         text-align: justify;
-//         overflow: hidden;
-//         display: -webkit-box;
-//         -webkit-line-clamp: 3;
-//         -webkit-box-orient: vertical;
-//       }
-//       .post-subject {
-//         .post-subject-badge {
-//           background-color: $dark-green-font-color;
-//         }
-//       }
-//     }
-//   }
-// }
-// #posts {
-//   @include media-between(xs, md) {
-//     #posts-list {
-//       .post-item {
-//         width: 100%;
-//         .post-title {
-//           font-size: 1.5rem;
-//         }
-//       }
-//     }
-//   }
-
-//
+<style lang="scss" scoped>
 </style>

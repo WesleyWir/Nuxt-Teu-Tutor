@@ -30,7 +30,7 @@ export default {
     deleteEvent() {
       try {
         this.displayConfirmMessage(
-          "Você quer realmente deletar o post?",
+          `Você quer realmente deletar ${this.post.title}?`,
           "",
           async () => {
             await this.$axios.delete(`/posts/students/${this.post.id}`);

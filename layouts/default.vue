@@ -3,7 +3,7 @@
     <TemplateLoggedinStudentsHeader v-if="this.$auth.loggedIn"/>
     <TemplateHeader v-else/>
     <!-- <HeaderMobile v-if="isMobile" /> -->
-    <main id="wrapper" tabindex="-1">
+    <main id="wrapper" tabindex="-1" style="height: 400px; overflow: auto;">
       <transition name="fade" mode="out-in">
         <nuxt />
       </transition>
