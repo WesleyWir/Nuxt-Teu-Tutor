@@ -10,10 +10,7 @@
   </div>
 </template>
 <script>
-import Vue from 'vue'
 import { config, dom } from '@fortawesome/fontawesome-svg-core'
-import toasts from '~/mixins/toasts.js'
-Vue.mixin(toasts)
 
 export default {
   name: 'Default',

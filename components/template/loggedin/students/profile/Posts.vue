@@ -57,6 +57,7 @@ export default {
       posts: [],
       posts_queries: {
         limit: 3,
+        page: 1
       },
     };
   },
@@ -64,9 +65,9 @@ export default {
     try {
       const { data } = await this.$axios.get(
       `/posts/students/student/${this.$auth.user.id}`,
-      { params: this.queries }
+      { params: this.posts_queries }
     );
-      this.posts = data;
+      this.posts = data.data;
     } catch ({ response }) {
       catchReponseError(response);
     }
@@ -75,11 +76,11 @@ export default {
     async deletePost(postId) {
       try {
         this.displayConfirmMessage(
-          "Você quer realmente deletar o post?",
+          "Você quer realmente deletar esse post?",
           "",
           async () => {
             await this.$axios.delete(`/posts/students/${postId}`);
-            this.showSuccessMessage("Post deletado com sucesso!");
+            this.showSuccessMessage('Post deletado com sucesso!');
             this.$fetch();
           }
         );

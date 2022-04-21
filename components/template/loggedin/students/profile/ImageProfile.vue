@@ -2,11 +2,7 @@
   <section id="profile-image">
     <div id="div-profile-image">
       <label for="profile-input">
-        <img
-          src="/imgs/user/default-profile.png"
-          alt="Profile Image"
-          class="img"
-        />
+        <img :src="avatar" alt="Profile Image" class="img-thumbnail" />
         <div class="overlay">
           <div class="content">
             <div class="icon"><i class="fas fa-camera"></i></div>
@@ -16,13 +12,47 @@
           </div>
         </div>
       </label>
-      <input id="profile-input" type="file" />
+      <input
+        id="profile-input"
+        type="file"
+        v-on:change="onFileUpload($event)"
+      />
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      avatar: "/imgs/user/default-profile.png",
+    };
+  },
+  async fetch() {
+    this.avatar = await this.getImageFromBackend(
+      this.$auth.user.avatar,
+      "/imgs/user/default-profile.png"
+    );
+  },
+  methods: {
+    async onFileUpload(event) {
+      var formData = new FormData();
+      formData.append("avatar", event.target.files[0]);
+      try {
+        const { data } = await this.$axios.post("/avatar/students/", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        this.showSuccessMessage("Imagem enviada com sucesso!", "top");
+        await this.$auth.fetchUser();
+        this.$fetch();
+      } catch ({ response }) {
+        await this.catchReponseError(response);
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -30,6 +60,7 @@ export default {};
   display: flex;
   justify-content: center;
   #div-profile-image {
+    min-height: 100%;
     width: 15%;
     position: relative;
     display: inline-block;
@@ -38,10 +69,16 @@ export default {};
     }
 
     img {
-      display: block;
       width: 100%;
-      height: auto;
+      height: 200px;
+      display: block;
       border-radius: 5%;
+      width: 190px;
+      height: 190px;
+      -o-object-fit: cover;
+      object-fit: cover;
+      -o-object-position: center;
+      object-position: center;
     }
     .overlay {
       position: absolute;
@@ -65,8 +102,8 @@ export default {};
         align-content: center;
         justify-content: center;
         align-items: center;
-        .text{
-            text-align: center;
+        .text {
+          text-align: center;
         }
       }
     }

@@ -5,6 +5,12 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 
 export default {
 
+
+  env: {
+    baseUrl: process.env.BASE_URL,
+    serverImagesHost: process.env.SERVER_IMAGES_HOST
+  },
+
   // Server
   server: {
     port: 3000, // default: 3000
@@ -61,6 +67,7 @@ export default {
     '@/plugins/bootstrap',
     '@/plugins/vee-validate',
     '@/plugins/axios',
+    '@/plugins/global-mixins-setup.js',
     '@/plugins/filter-date.js'
   ],
 

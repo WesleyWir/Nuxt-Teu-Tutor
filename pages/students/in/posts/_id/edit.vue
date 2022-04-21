@@ -101,7 +101,7 @@ export default {
       },
     };
   },
-  async asyncData({ $axios, route }) {
+  async asyncData({ $axios, route, error }) {
     try {
       const { data } = await $axios.get(
         `/posts/students/${route.params.id}/edit`
@@ -109,8 +109,9 @@ export default {
       const post = data;
       const form = {title: post.title, subject: post.subject_id, content: post.content};
       return { post, form };
-    } catch ({ response }) {
-        console.error(response);
+    } catch (error) {
+        console.error(error);
+        error();
     }
   },
   async fetch() {

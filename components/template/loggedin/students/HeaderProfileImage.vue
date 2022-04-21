@@ -1,6 +1,6 @@
 <template>
-  <div id="rounded-profile-image">
-    <img :src="profileImage" alt="Profile Image" class="img" />
+  <div class="ms-2">
+    <img :src="avatar" alt="Profile Image" class="rounded-circle" />
   </div>
 </template>
 
@@ -8,17 +8,22 @@
 export default {
   data() {
     return {
-      profileImage: "/imgs/user/default-profile.png",
+      avatar: "/imgs/user/default-profile.png",
     };
   },
-  mounted() {
-    if (this.$auth.user.avatar) {
-      this.profileImage =
-        process.env.SERVER_IMAGES_HOST + this.$auth.user.avatar;
-    }
+  async fetch() {
+    this.avatar = await this.getImageFromBackend(
+      this.$auth.user.avatar,
+      "/imgs/user/default-profile.png"
+    );
   },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+img {
+  width: 7ch;
+  object-fit: cover;
+  height: 6ch;
+}
 </style>
