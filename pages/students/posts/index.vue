@@ -7,8 +7,8 @@
         v-for="post in posts"
         v-bind:key="post.id"
         :post="post"
-        :showInternalBtns="true"
-        :showAvatar="false"
+        :showInternalBtns="false"
+        :showAvatar="true"
         v-on:fetchPosts="$fetch"
         v-on:paginate="paginate()"
       />
@@ -29,9 +29,6 @@
 
 <script>
 export default {
-  layout: "internal",
-  middleware: "auth",
-  auth: "local_student",
   data() {
     return {
       posts: [],
@@ -45,7 +42,7 @@ export default {
   },
   async fetch() {
     const { data } = await this.$axios.get(
-      `/posts/students/student/${this.$auth.user.id}`,
+      `/posts/students/`,
       { params: this.queries }
     );
     for (const d of data.data) {

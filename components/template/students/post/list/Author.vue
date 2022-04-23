@@ -1,16 +1,18 @@
 <template>
   <div class="post-author d-flex align-items-center">
     <img
-      src="/imgs/default/default-user.png"
-      alt=""
-      class="img post-author-avatar"
+      :src="getImageFromBackend(student.avatar, '/imgs/user/default-profile.png')"
+      :alt="'Avatar '+student.name"
+      class="img post-author-avatar rounded-circle"
     />
-    <p class="fw-light">Por: estudante x</p>
+    <p class="fw-light">{{ student.name }}</p>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["student"],
+};
 </script>
 
 <style lang="scss" scoped>
@@ -18,8 +20,8 @@ export default {};
   .post-author-avatar {
     margin: 10px 0;
     margin-right: 20px;
-    width: 5%;
-    border-radius: 50%;
+    width: 5ch;
+    height: 5ch;
   }
 }
 </style>

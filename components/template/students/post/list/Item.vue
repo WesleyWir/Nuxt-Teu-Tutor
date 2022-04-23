@@ -6,7 +6,7 @@
         {{ post.created_at | format_mysql_date_and_hour }}</NuxtLink
       >
     </div>
-    <TemplateStudentsPostListAuthor v-if="showAvatar" />
+    <TemplateStudentsPostListAuthor v-if="showAvatar" :student="this.post.student" />
     <div class="post-content mt-4 col-12" v-html="post.content"></div>
     <div class="post-subject mt-3 col-8">
       <NuxtLink
