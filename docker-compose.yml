@@ -1,0 +1,27 @@
+version: '3'
+services:
+
+  #Node Container
+  node:
+    image: node:14.18.1
+    container_name: teu-tutor-nuxt-node
+    tty: true
+    user: "node:node"
+    working_dir: /var/www
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/var/www
+    networks:
+      - app-network
+    environment:
+      HOST: 0.0.0.0
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#Volumes
+volumes:
+  teu-tutor-nuxt-dbdata:
+    driver: local

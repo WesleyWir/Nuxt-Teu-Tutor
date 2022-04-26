@@ -9,7 +9,7 @@
         :post="post"
         :showInternalBtns="true"
         :showAvatar="false"
-        v-on:fetchPosts="$fetch"
+        v-on:fetchPosts="executeFetchPosts()"
         v-on:paginate="paginate()"
       />
     </TemplateStudentsPostList>
@@ -44,6 +44,7 @@ export default {
     };
   },
   async fetch() {
+    this.posts = []
     const { data } = await this.$axios.get(
       `/posts/students/student/${this.$auth.user.id}`,
       { params: this.queries }
@@ -66,7 +67,7 @@ export default {
     },
     paginate() {
       this.queries.page++;
-      this.$fetch();
+      this.executeFetchPosts();
     },
   },
 };
