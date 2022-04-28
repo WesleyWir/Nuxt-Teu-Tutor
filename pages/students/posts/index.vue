@@ -1,8 +1,6 @@
 <template>
   <section class="container">
-    <TemplateStudentsPostListSearch
-      v-on:eventSearch="executeEventSearch($event)"
-    />
+    <TemplateStudentsPostListSearch />
     <div class="row">
       <div class="fixed col-4 d-none d-md-block">
         <TemplateStudentsPostListFiltersDesktop />
@@ -16,7 +14,7 @@
           <TemplateStudentsPostListItem
             v-else
             v-for="post in posts"
-            v-bind:key="post.id"
+            :key="post.id"
             :post="post"
             :showInternalBtns="false"
             :showAvatar="true"
@@ -35,53 +33,48 @@ export default {
     return {
       posts: [],
       pagination_meta: [],
-      queries: {
+      hiddenQueries: {
         limit: 2,
         page: 1,
       },
+      queries: {},
       showPaginationBtn: true,
     };
   },
   async fetch() {
+    this.resetPostsAndHiddenQueries();
     const { data } = await this.$axios.get(`/posts/students/`, {
-      params: this.queries,
+      params: { ...this.hiddenQueries, ...this.$route.query },
     });
-    for (const post of data.data) {
-      this.posts.push(post);
-    }
+    this.posts = data.data;
     this.pagination_meta = data.meta;
   },
   watch: {
     posts() {
-      if (this.queries.page >= this.pagination_meta.last_page) {
+      if (this.hiddenQueries.page >= this.pagination_meta.last_page) {
         this.showPaginationBtn = false;
       }
     },
     "$route.query": "$fetch",
   },
-  created(){
-    this.queries = { ...this.queries, ...this.$route.query }; 
-  },
   methods: {
-    paginate() {
-      this.queries.page++;
-      this.updateQueries()
-    },
-    executeEventSearch(search) {
-      this.queries.search = search;
-      this.resetPostsAndQueries()
-      this.updateQueries()
-    },
-    updateQueries() {
-      this.$router.replace({
-        path: this.$route.path,
-        query: this.queries,
+    async paginate() {
+      await this.increasePage();
+      const { data } = await this.$axios.get(`/posts/students/`, {
+        params: { ...this.hiddenQueries, ...this.$route.query },
       });
+      for (const post of data.data) {
+        this.posts.push(post);
+      }
+      this.pagination_meta = data.meta;
     },
-    resetPostsAndQueries(){
-      this.queries.page = 1
-      this.posts = []
-    }
+    async increasePage(){
+      this.hiddenQueries.page++;
+    },
+    resetPostsAndHiddenQueries() {
+      this.hiddenQueries.page = 1;
+      this.posts = [];
+    },
   },
 };
 </script>

@@ -4,10 +4,8 @@
       <div class="row p-3">
         <div class="col-12">
           <label for="subject">Subject:</label>
-          <select class="form-select" name="subject" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
+          <select class="form-select" name="subject" aria-label="Default select example" v-on:change="updateFilterInQuery($event)">
+            <option v-for="subj in subjects" :value="subj.id" :key="subj.id">{{ subj.subject }}</option>
             <option value="3">Three</option>
           </select>
         </div>
@@ -17,7 +15,26 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return {
+      subjects: []
+    }
+  },
+  async fetch(){
+    try{
+      const { data } = await this.$axios.get("/subjects");
+      this.subjects = data
+    }catch({ response }){
+      console.error(response);
+    }
+  },
+  methods: {
+    updateFilterInQuery(){
+      this.$router.push({ query: { ...this.$route.query, search: this.search }})
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

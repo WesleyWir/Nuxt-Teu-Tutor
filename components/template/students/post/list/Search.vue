@@ -11,7 +11,12 @@
             v-model="search"
           />
         </div>
-        <button type="button" class="btn" id="search-btn" @click="onSubmitSeach()">
+        <button
+          type="button"
+          class="btn"
+          id="search-btn"
+          @click="onSubmitSeach()"
+        >
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -21,16 +26,16 @@
 
 <script>
 export default {
-    data(){
-        return{
-            search: ''
-        }
+  data() {
+    return {
+      search: '',
+    };
+  },
+  methods: {
+    onSubmitSeach() {
+      this.$router.push({ query: { ...this.$route.query, search: this.search }})
     },
-    methods: {
-        onSubmitSeach(){
-            this.$emit('eventSearch', this.search)
-        }
-    }
+  },
 };
 </script>
 
@@ -47,8 +52,8 @@ export default {
       border-radius: 10px;
       background-color: #fff;
 
-      &:hover{
-        background-color: darken(#fff, 20);  
+      &:hover {
+        background-color: darken(#fff, 20);
       }
     }
   }
