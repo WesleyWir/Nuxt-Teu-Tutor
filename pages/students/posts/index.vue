@@ -6,22 +6,30 @@
         <TemplateStudentsPostListFiltersDesktop />
       </div>
       <div class="col-md-8 col-sm-12">
-        <TemplateStudentsPostList
-          v-on:paginate="paginate()"
-          :showPaginationBtn="showPaginationBtn"
-        >
-          <TemplateStudentsPostListEmpty v-if="!posts.length" />
-          <TemplateStudentsPostListItem
-            v-else
-            v-for="post in posts"
-            :key="post.id"
-            :post="post"
-            :showInternalBtns="false"
-            :showAvatar="true"
-            v-on:fetchPosts="$fetch"
+        <div class="col-12">
+          <TemplateStudentsPostListFiltersOrders />
+        </div>
+        <div class="col-12">
+          <TemplateStudentsPostList
             v-on:paginate="paginate()"
-          />
-        </TemplateStudentsPostList>
+            :showPaginationBtn="showPaginationBtn"
+          >
+            <TemplateStudentsPostListFetchPending v-if="$fetchState.pending" />
+            <TemplateStudentsPostListEmpty
+              v-if="!posts.length && !$fetchState.pending"
+            />
+            <TemplateStudentsPostListItem
+              v-else
+              v-for="post in posts"
+              :key="post.id"
+              :post="post"
+              :showInternalBtns="false"
+              :showAvatar="true"
+              v-on:fetchPosts="$fetch"
+              v-on:paginate="paginate()"
+            />
+          </TemplateStudentsPostList>
+        </div>
       </div>
     </div>
   </section>
@@ -68,12 +76,13 @@ export default {
       }
       this.pagination_meta = data.meta;
     },
-    async increasePage(){
+    async increasePage() {
       this.hiddenQueries.page++;
     },
     resetPostsAndHiddenQueries() {
-      this.hiddenQueries.page = 1;
-      this.posts = [];
+      this.hiddenQueries.page = 1
+      this.posts = []
+      this.showPaginationBtn = true
     },
   },
 };
