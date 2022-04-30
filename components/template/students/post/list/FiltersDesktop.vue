@@ -39,7 +39,7 @@ export default {
 #filters {
   background-color: $components-color;
   width: 100%;
-  height: 100%;
+  height: 300px;
   max-width: 100%;
   border: solid $components-color 5px;
   border-radius: 10px;

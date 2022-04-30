@@ -1,25 +1,22 @@
 <template>
   <div id="search" class="row w-100 mb-4">
     <div class="col-12">
-      <div class="input-group d-flex justify-content-center">
-        <div class="form-outline w-50 me-2">
-          <input
-            type="search"
-            id="search-input"
-            class="form-control input-lg"
-            placeholder="Buscar por posts..."
-            v-model="search"
-          />
+      <form @submit.stop.prevent="onSubmitSearch()">
+        <div class="input-group d-flex justify-content-center">
+          <div class="form-outline w-50 me-2">
+            <input
+              type="search"
+              id="search-input"
+              class="form-control input-lg"
+              placeholder="Buscar por posts..."
+              v-model="search"
+            />
+          </div>
+          <button type="button" class="btn" id="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
-        <button
-          type="button"
-          class="btn"
-          id="search-btn"
-          @click="onSubmitSeach()"
-        >
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
+      </form>
     </div>
   </div>
 </template>
@@ -28,12 +25,19 @@
 export default {
   data() {
     return {
-      search: '',
+      search: "",
     };
   },
+  created() {
+    if (this.$route.query.search) {
+      this.search = this.$route.query.search;
+    }
+  },
   methods: {
-    onSubmitSeach() {
-      this.$router.push({ query: { ...this.$route.query, search: this.search }})
+    onSubmitSearch() {
+      this.$router.push({
+        query: { ...this.$route.query, search: this.search || undefined },
+      });
     },
   },
 };

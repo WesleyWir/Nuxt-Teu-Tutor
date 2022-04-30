@@ -1,6 +1,6 @@
 <template>
   <section id="fetch-pending">
-    <UiSpinner />
+    <UiRoundedSpinner />
   </section>
 </template>
 

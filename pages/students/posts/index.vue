@@ -42,7 +42,7 @@ export default {
       posts: [],
       pagination_meta: [],
       hiddenQueries: {
-        limit: 2,
+        limit: 12,
         page: 1,
       },
       queries: {},

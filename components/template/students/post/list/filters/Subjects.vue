@@ -8,7 +8,7 @@
       v-on:change="updateFilterInQuery($event)"
     >
       <option value="" selected>Selecione uma matéria</option>
-      <option v-for="subj in subjects" :value="subj.id" :key="subj.id">
+      <option v-for="subj in subjects" :value="subj.id" :key="subj.id" :selected="$route.query.subject == subj.id">
         {{ subj.subject }}
       </option>
     </select>
@@ -18,27 +18,28 @@
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      subjects: []
-    }
+      subjects: [],
+    };
   },
-  async fetch(){
-    try{
+  async fetch() {
+    try {
       const { data } = await this.$axios.get("/subjects");
-      this.subjects = data
-    }catch({ response }){
+      this.subjects = data;
+    } catch ({ response }) {
       console.error(response);
     }
   },
   methods: {
-    updateFilterInQuery(event){
+    updateFilterInQuery(event) {
       const value = event.target.value
-      this.$emit('emitSubjectFilter', {
-          subject: value
-      })
-    }
-  }
+
+      this.$emit("emitSubjectFilter", {
+        subject: value || undefined,
+      });
+    },
+  },
 };
 </script>
 

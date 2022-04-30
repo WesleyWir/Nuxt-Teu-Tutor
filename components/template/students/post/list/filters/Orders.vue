@@ -6,11 +6,12 @@
         aria-label="Default select example"
         v-on:change="updateOrder($event)"
       >
-        <option selected>Ordenar</option>
+        <option value="" selected>Ordenar</option>
         <option
           v-for="ord in orders"
           :value="`${ord.order}-${ord.orderBy}`"
           :key="`${ord.order}-${ord.orderBy}`"
+          :selected="$route.query.order == ord.order && $route.query.orderBy == ord.orderBy"
         >
           {{ ord.label }}
         </option>
@@ -45,8 +46,8 @@ export default {
       const values = event.target.value.split("-");
       if (values.length) {
         const params = {
-          order: values[0],
-          orderBy: values[1],
+          order: values[0] || undefined,
+          orderBy: values[1] || undefined,
         };
         this.$router.push({
           query: { ...this.$route.query, ...params },
@@ -57,5 +58,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+#orders {
+  left: 2%;
+  position: relative;
+  width: 99%;
+}
 </style>
