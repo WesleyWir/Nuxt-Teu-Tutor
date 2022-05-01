@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      avatar: "/imgs/user/default-profile.png",
+      avatar: '/imgs/user/default-profile.png',
     };
   },
   async fetch() {
@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 img {
-  width: 7ch;
+  width: 6ch;
   object-fit: cover;
   height: 6ch;
 }

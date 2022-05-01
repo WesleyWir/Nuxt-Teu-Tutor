@@ -12,7 +12,7 @@
               v-model="search"
             />
           </div>
-          <button type="button" class="btn" id="search-btn">
+          <button type="submit" class="btn" id="search-btn">
             <i class="fas fa-search"></i>
           </button>
         </div>
