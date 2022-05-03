@@ -24,7 +24,14 @@
         </div>
       </div>
       <div id="post-content" class="col-12">
+        <section class="title d-flex justify-content-center mb-4">
+          <h2 class="h2 fw-bold text-uppercase">
+            {{ post.title }}
+          </h2>
+        </section>
         <div v-html="post.content" class="content"></div>
+        <TemplateStudentsPostSingleInterestButton v-if="this.$auth.loggedIn && this.$auth.$state.strategy == 'local_educator'" />
+        <TemplateStudentsPostSingleInterestEducators :post="post" v-if="this.$auth.loggedIn && this.$auth.$state.strategy == 'local_student'" />
       </div>
     </div>
   </section>
@@ -36,12 +43,14 @@ export default {
     try {
       const { data } = await $axios.get(`/posts/students/${route.params.id}/`);
       const post = data;
-      console.log(post);
       return { post };
     } catch (error) {
       error();
     }
   },
+  mounted(){
+
+  }
 };
 </script>
 
@@ -71,9 +80,9 @@ export default {
     border: solid 2px $light-gray-background-color;
     border-radius: 10px;
     padding: 5% 15%;
-    .content{
-        line-height: 1.6;
-        text-align: justify;
+    .content {
+      line-height: 1.6;
+      text-align: justify;
     }
   }
 }
