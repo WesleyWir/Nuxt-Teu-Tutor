@@ -28,12 +28,12 @@
             <h3 class="page-type text-uppercase">Buscar</h3>
             <ul class="mt-1">
               <li>
-                <NuxtLink class="list-item" to="/educator/lists/"
+                <NuxtLink class="list-item" to="/educator/"
                   >Professores</NuxtLink
                 >
               </li>
               <li>
-                <NuxtLink class="list-item" to="/student/lists/"
+                <NuxtLink class="list-item" to="/student/posts/"
                   >Alunos</NuxtLink
                 >
               </li>
