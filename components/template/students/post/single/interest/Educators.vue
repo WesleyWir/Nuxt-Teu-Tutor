@@ -41,15 +41,13 @@ export default {
     };
   },
   async fetch() {
-    console.log(this.post);
     try {
       const { data } = await this.$axios.get(
         `/post-interest/educators/${this.post.id}`
       );
       this.educators = data;
-      console.log(this.educators);
     } catch ({ response }) {
-      console.error(response);
+      // just continue?
     }
   },
 };
