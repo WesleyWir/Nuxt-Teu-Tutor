@@ -33,7 +33,7 @@
                 >
               </li>
               <li>
-                <NuxtLink class="list-item" to="/student/posts/"
+                <NuxtLink class="list-item" to="/students/posts/"
                   >Alunos</NuxtLink
                 >
               </li>

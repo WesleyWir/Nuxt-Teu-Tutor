@@ -1,0 +1,202 @@
+.educators-list-item {
+    display: flex;
+    flex-direction: column;
+    background: #ededed;
+    border: 17px solid #ededed;
+    border-radius: 20px;
+    padding-bottom: 3%;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.33);
+    .educators-list-item-img {
+        display: flex;
+        margin-right: 3%;
+
+        img {
+            width: 80%;
+        }
+    }
+
+    .educators-list-item-info {
+        padding: 1% 0%;
+        padding-right: 2%;
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        align-items: flex-start;
+
+        .educators-list-item-info-subj-name-rating {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: nowrap;
+            text-align: initial;
+
+            .educators-list-item-info-subj-name {
+                display: flex;
+                flex-direction: column;
+                align-content: flex-start;
+                align-items: flex-start;
+
+                .educators-list-item-info-subj {
+                    font-weight: 900;
+                    color: $dark-green-font-color;
+                    margin-bottom: 2%;
+                }
+
+                .educators-list-item-info-name {
+                    font-weight: bold;
+                    margin-bottom: 2%;
+                    color: $default-text-color;
+
+                    &:hover {
+                        text-decoration: underline;
+                        color: $default-text-color-hover;
+                    }
+                }
+            }
+
+            .educators-list-item-info-rating {
+                .educators-list-item-info-rating-rate {
+                    font-weight: 700;
+                }
+
+                .educators-list-item-info-rating-star {
+                    color: $star-rate-color;
+                }
+            }
+        }
+
+        .educators-list-item-lec-info {
+            display: flex;
+            flex-direction: column;
+            align-content: flex-start;
+            align-items: flex-start;
+            font-weight: 700;
+
+            .educators-list-item-lec-info-address {
+                text-align: initial;
+            }
+        }
+
+        .educators-list-item-single-btn {
+            width: 100%;
+
+            a {
+                background-color: $btn-default-color;
+                color: $color-font-white;
+                font-size: larger;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+@include media-between(xl, xxl) {
+    .educators-list-item {
+        width: 28%;
+        margin-bottom: 2%;
+        margin: 1% 2%;
+
+        .educators-list-item-img {
+            align-content: center;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .educators-list-item-info {
+            width: 100%;
+            margin-top: 2%;
+
+            .educators-list-item-info-subj-name-rating {
+                .educators-list-item-info-subj-name {
+                    .educators-list-item-info-subj {
+                        font-size: large;
+                    }
+
+                    .educators-list-item-info-name {
+                        font-size: larger;
+                    }
+                }
+
+                .educators-list-item-info-rating {
+                    .educators-list-item-info-rating-rate {
+                        font-size: xx-large;
+                    }
+
+                    .educators-list-item-info-rating-star {
+                        font-size: xx-large;
+                    }
+                }
+            }
+
+            .educators-list-item-single-btn {
+                display: flex;
+                margin-top: 5%;
+                justify-content: flex-end;
+
+                a {
+                    width: 40%;
+
+                    &:hover {
+                        background-color: darken($btn-default-color, 10%);
+                        border-color: darken($btn-default-color, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-between(xs, md) {
+    .educators-list-item {
+        align-items: center;
+        width: 80%;
+        margin-bottom: 6%;
+
+        .educators-list-item-img {
+            justify-content: flex-start;
+            width: 70%;
+        }
+
+        .educators-list-item-info {
+            .educators-list-item-info-subj-name-rating {
+                margin-bottom: 10%;
+
+                .educators-list-item-info-subj-name {
+                    .educators-list-item-info-subj {
+                        font-size: x-large;
+                    }
+
+                    .educators-list-item-info-name {
+                        font-size: x-large;
+                    }
+                }
+
+                .educators-list-item-info-rating {
+                    width: 25%;
+                    .educators-list-item-info-rating-rate {
+                        font-size: x-large;
+                    }
+
+                    .educators-list-item-info-rating-star {
+                        font-size: x-large;
+                    }
+                }
+            }
+
+            .educators-list-item-single-btn {
+                margin-top: 12%;
+
+                a {
+                    width: 100%;
+
+                    &:active {
+                        background-color: darken($btn-default-color, 10%);
+                        border-color: darken($btn-default-color, 10%);
+                    }
+                }
+            }
+        }
+    }
+}

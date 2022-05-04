@@ -164,7 +164,8 @@ export default {
   fontawesome: {
     icons: {
       solid: ['faSearch', 'faAngleDown', 'faAngleUp', 'faGraduationCap', 'faEye',
-        'faEyeSlash', 'faUndo', 'faSignOut', 'faCamera', 'faCirclePlus'],
+        'faEyeSlash', 'faUndo', 'faSignOut', 'faCamera', 'faCirclePlus', 'faMapMarkerAlt',
+        'faStar'],
       brands: ['faFacebook', 'faGoogle']
     }
   }

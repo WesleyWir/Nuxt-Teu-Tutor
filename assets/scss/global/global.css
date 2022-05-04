@@ -1,0 +1,414 @@
+#educator-register {
+  margin-bottom: 5%;
+}
+
+#educator-register #content-section {
+  background-color: #EDEDED;
+  padding: 5%;
+  padding-top: 2%;
+  border-radius: 20px;
+}
+
+#educator-register #content-section #has-account {
+  display: flex;
+  align-content: flex-end;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#educator-register #content-section #has-account #do-login-btn {
+  margin-left: 1%;
+  background-color: #CBCBCB;
+  -webkit-box-shadow: 9px 5px 4px 3px rgba(0, 0, 0, 0.32);
+  box-shadow: 9px 5px 4px 3px rgba(0, 0, 0, 0.32);
+}
+
+#educator-register #content-section #has-account #do-login-btn:hover {
+  background-color: #c1c1c1;
+}
+
+#educator-register #content-section #form #educator-social-login-register #educator-google-register {
+  margin-right: 3%;
+}
+
+#educator-register #content-section #form #educator-social-login-register #educator-google-register #educator-google-register-btn {
+  color: #fff;
+  background-color: #157DFE;
+}
+
+#educator-register #content-section #form #educator-social-login-register #educator-google-register #educator-google-register-btn:hover {
+  background-color: #0172fe;
+}
+
+#educator-register #content-section #form #educator-social-login-register #educator-facebook-register #educator-facebook-register-btn {
+  color: #fff;
+  background-color: #3B5998;
+}
+
+#educator-register #content-section #form #educator-social-login-register #educator-facebook-register #educator-facebook-register-btn:hover {
+  background-color: #355089;
+}
+
+#educator-register #content-section #form #form-fields label {
+  font-weight: bold;
+}
+
+#educator-register #content-section #form-footer #privacy-policy p {
+  text-align: center;
+  font-style: italic;
+}
+
+@media (max-width: 991.98px) {
+  #educator-register #content-section #has-account {
+    align-content: center;
+    justify-content: center;
+  }
+}
+
+#educator-login {
+  display: flex;
+  margin-bottom: 5%;
+  align-items: center;
+  flex-direction: column;
+}
+
+#educator-login #content-section {
+  background-color: #EDEDED;
+  background-color: #ededed;
+  padding: 5%;
+  padding-top: 2%;
+  border-radius: 20px;
+  width: 65%;
+}
+
+#educator-login #content-section #has-account {
+  display: flex;
+  align-content: flex-end;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#educator-login #content-section #has-account #do-login-btn {
+  margin-left: 1%;
+  background-color: #CBCBCB;
+  -webkit-box-shadow: 9px 5px 4px 3px rgba(0, 0, 0, 0.32);
+  box-shadow: 9px 5px 4px 3px rgba(0, 0, 0, 0.32);
+}
+
+#educator-login #content-section #has-account #do-login-btn:hover {
+  background-color: #c1c1c1;
+}
+
+#educator-login #content-section #form #educator-social-login-login #educator-google-login {
+  margin-right: 3%;
+}
+
+#educator-login #content-section #form #educator-social-login-login #educator-google-login #educator-google-login-btn {
+  color: #fff;
+  background-color: #157DFE;
+}
+
+#educator-login #content-section #form #educator-social-login-login #educator-google-login #educator-google-login-btn:hover {
+  background-color: #0172fe;
+}
+
+#educator-login #content-section #form #educator-social-login-login #educator-facebook-login #educator-facebook-login-btn {
+  color: #fff;
+  background-color: #3B5998;
+}
+
+#educator-login #content-section #form #educator-social-login-login #educator-facebook-login #educator-facebook-login-btn:hover {
+  background-color: #355089;
+}
+
+#educator-login #content-section #form #login-form-fields form {
+  width: 50%;
+}
+
+#educator-login #content-section #form #login-form-fields form #submit-btn button {
+  width: 40%;
+}
+
+#educator-login #content-section #form #login-form-fields label {
+  font-weight: bold;
+}
+
+@media (max-width: 991.98px) {
+  #educator-login #content-section {
+    width: 100%;
+  }
+  #educator-login #content-section #has-account {
+    align-content: center;
+    justify-content: center;
+  }
+  #educator-login #content-section #form #login-form-fields form {
+    width: 90%;
+  }
+  #educator-login #content-section #form #login-form-fields form #submit-btn button {
+    width: 90%;
+  }
+}
+
+#educator-forgot-password {
+  display: flex;
+  margin-bottom: 5%;
+  align-items: center;
+  flex-direction: column;
+}
+
+#educator-forgot-password #content-section {
+  background-color: #EDEDED;
+  background-color: #ededed;
+  padding: 5%;
+  padding-top: 2%;
+  border-radius: 20px;
+  width: 65%;
+}
+
+#educator-forgot-password #content-section #form #educator-forgot-password-form-fields form {
+  width: 50%;
+}
+
+#educator-forgot-password #content-section #form #educator-forgot-password-form-fields form #submit-btn button {
+  width: 40%;
+}
+
+#educator-forgot-password #content-section #form #educator-forgot-password-form-fields label {
+  font-weight: bold;
+}
+
+@media (max-width: 991.98px) {
+  #educator-forgot-password #content-section {
+    width: 100%;
+  }
+  #educator-forgot-password #content-section #form #educator-forgot-password-form-fields form {
+    width: 90%;
+  }
+  #educator-forgot-password #content-section #form #educator-forgot-password-form-fields form #submit-btn button {
+    width: 90%;
+  }
+}
+
+@media (min-width: 992px) {
+  #educator-forgot-password #content-section #form #form-description #form-description-text {
+    width: 60%;
+    text-align: center;
+  }
+}
+
+#educators-single #educators-single-header #educators-single-header-img img {
+  width: 352px;
+  height: 352px;
+}
+
+#educators-single #educators-single-header #educators-single-header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#educators-single #educators-single-header #educators-single-header-info #educators-single-header-info-name-subj #info-name {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+#educators-single #educators-single-header #educators-single-header-info #educators-single-header-info-name-subj #info-subj {
+  color: #4F775C;
+  font-weight: 900;
+}
+
+#educators-single #educators-single-header #educators-single-header-info #educators-single-header-info-value-localization {
+  font-weight: 500;
+}
+
+#educators-single #educators-single-header #educators-single-header-rate-hire-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#educators-single #educators-single-header #educators-single-header-rate-hire-btn #rate {
+  display: flex;
+  flex-direction: row;
+}
+
+#educators-single #educators-single-header #educators-single-header-rate-hire-btn #rate h2 {
+  font-size: 4em;
+}
+
+#educators-single #educators-single-header #educators-single-header-rate-hire-btn #rate .rating-star {
+  color: #FFC700;
+}
+
+#educators-single #educators-single-header #educators-single-header-rate-hire-btn #hire {
+  position: fixed;
+  top: 40%;
+  height: 5%;
+  z-index: 99999999999999;
+}
+
+#educators-single #educators-single-header #educators-single-header-rate-hire-btn #hire #hire-btn {
+  background-color: #4A94DE;
+  color: #F8F8F8;
+  font-size: x-large;
+  font-weight: bold;
+  height: 180%;
+  width: 180%;
+}
+
+#educators-single #educators-single-header #educators-single-header-rate-hire-btn #hire #hire-btn:hover {
+  background-color: #267bcf;
+  border-color: #267bcf;
+}
+
+#educators-single #educators-single-content {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #E5E5E5;
+}
+
+#educators-single #educators-single-content #educators-single-content-about {
+  display: flex;
+  justify-content: center;
+  text-align: justify;
+  font-size: 22px;
+  width: 60%;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour {
+  border-radius: 20px;
+  padding: 4%;
+  margin-bottom: 5%;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-left #educators-single-date-hour-hours {
+  margin-top: 8%;
+  display: flex;
+  flex-direction: column;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-left #educators-single-date-hour-hours #educators-single-date-hour-hours-title {
+  font-weight: bold;
+  font-size: x-large;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-left #educators-single-date-hour-hours #educators-single-date-hour-hours-checks {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-left #educators-single-date-hour-hours #educators-single-date-hour-hours-checks .hour {
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-left #educators-single-date-hour-hours #educators-single-date-hour-hours-checks .hour .hour-check-label {
+  background-color: #F8F8F8;
+  display: flex;
+  justify-content: center;
+  -webkit-box-shadow: 5px 11px 19px -1px rgba(0, 0, 0, 0.53);
+  box-shadow: 5px 11px 19px -1px rgba(0, 0, 0, 0.53);
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: 700;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-left #educators-single-date-hour-hours #educators-single-date-hour-hours-checks .hour .hour-check-label:hover {
+  background-color: #dfdfdf;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-left #educators-single-date-hour-hours #educators-single-date-hour-hours-checks .hour .hour-check-label-checked {
+  background-color: #4F775C;
+  color: #F8F8F8;
+  display: flex;
+  justify-content: center;
+  -webkit-box-shadow: 5px 11px 19px -1px rgba(0, 0, 0, 0.53);
+  box-shadow: 5px 11px 19px -1px rgba(0, 0, 0, 0.53);
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: 700;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-left #educators-single-date-hour-hours #educators-single-date-hour-hours-checks .hour .hour-check-label-checked:hover {
+  background-color: #3b5844;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-right #educators-single-date-hour-right-title {
+  font-weight: bold;
+  font-size: x-large;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-right #educators-single-date-hour-right-dates {
+  height: 500px;
+  overflow-y: auto;
+  padding-right: 20px;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-right #educators-single-date-hour-right-dates .hour-selected {
+  margin-top: 30px;
+}
+
+#educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-right #educators-single-date-hour-right-dates .hour-selected .hour-selected-date .hour-selected-day {
+  font-weight: 700;
+}
+
+@media (min-width: 1200px) {
+  #educators-single #educators-single-content {
+    margin-top: -6%;
+    padding-top: 12%;
+  }
+  #educators-single #educators-single-content #educators-single-date-hour {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 991.98px) {
+  #educators-single #educators-single-header #educators-single-header-img img {
+    width: 223px;
+    height: 223px;
+  }
+  #educators-single #educators-single-header #educators-single-header-rate-hire-btn #hire {
+    position: fixed;
+    top: 91%;
+    left: 0;
+    width: 160%;
+  }
+  #educators-single #educators-single-header #educators-single-header-rate-hire-btn #hire #hire-btn {
+    background-color: #4A94DE;
+    color: #F8F8F8;
+    font-weight: bold;
+    width: 63%;
+  }
+  #educators-single #educators-single-content {
+    margin-top: -90%;
+    padding-top: 95%;
+  }
+  #educators-single #educators-single-content #educators-single-content-about {
+    font-size: 16px;
+    width: 90%;
+    text-align: justify;
+  }
+  #educators-single #educators-single-content #educators-single-date-hour {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  #educators-single #educators-single-content #educators-single-date-hour #educators-single-date-hour-right {
+    margin-top: 20%;
+  }
+}

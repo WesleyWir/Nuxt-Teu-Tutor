@@ -1,0 +1,199 @@
+// EDUCATORS LIST -------------------------------------------------------------------
+#educators-list {
+    width: 100%;
+    min-height: inherit;
+    text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+
+    #search-section {
+        position: absolute;
+        top: 24%;
+        left: 50%;
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+
+        div {
+            #search-form {
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                #search-form-i-b {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    .customized-height {
+                        height: 125%;
+                    }
+                    input {
+                        padding-left: 10%;
+                    }
+                    button {
+                        background-color: $default-dark-background-color;
+
+                        &:hover {
+                            background-color: darken($default-dark-background-color, 10%);
+                        }
+                        &:active {
+                            background-color: darken($default-dark-background-color, 10%);
+                        }
+                    }
+                }
+
+                #search-form-select {
+                    display: inline-flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    width: 100%;
+                    flex-wrap: wrap;
+
+                    .search-form-select-item {
+                        margin: 0px 10px;
+                        margin-bottom: 2%;
+                    }
+                    select {
+                        background-color: $components-color;
+                        font-weight: bold;
+                    }
+                }
+
+                #search-form-select-localization {
+                    display: inline-flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    width: 100%;
+                    flex-wrap: wrap;
+
+                    .search-form-select-localization-item {
+                        margin: 0px 10px;
+                    }
+                    select {
+                        background-color: $components-color;
+                        font-weight: bold;
+                        &:disabled {
+                            opacity: 0.6;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #educators-list-section {
+        display: flex;
+        flex-direction: column;
+        background-color: $default-background-color;
+        width: 100%;
+        padding-top: 2%;
+
+        #educators-list-section-main {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .see-more {
+            #see-more-btn {
+                font-size: 22px;
+                font-weight: 900;
+                background-color: $dark-green-font-color;
+                border: 20px solid $dark-green-font-color;
+                border-radius: 10px;
+                color: #fff;
+                width: 32vh;
+                height: 10vh;
+
+                &:hover {
+                    background-color: darken($dark-green-font-color, 10%);
+                    border-color: darken($dark-green-font-color, 10%);
+                }
+            }
+        }
+    }
+}
+
+@include media-between(xl, xxl) {
+    // Large Desktops && Extra Large Desktops
+    #educators-list {
+        padding: 200px 0;
+        padding-bottom: 50px;
+
+        #search-section {
+            div {
+                #search-form {
+                    #search-form-i-b {
+                        width: 64%;
+
+                        #search-form-i-b-icon-map {
+                            position: absolute;
+                            float: left;
+                            left: 18%;
+                            width: 5%;
+                            border-right: 1px solid #000;
+
+                            i {
+                                transition: font-size 0.5s;
+
+                                &:hover {
+                                    font-size: 2em;
+                                    transition: font-size 0.5s; /* Animation */
+                                }
+                            }
+                        }
+
+                        button {
+                            width: 8%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-between(xs, md) {
+    // Phones, Large Phones and Tablets
+    #educators-list {
+        padding: 220px 0;
+
+        #educators-list-section {
+            #educators-list-section-main {
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+
+        #search-section {
+            top: 34%;
+            div {
+                #search-form {
+                    #search-form-i-b {
+                        width: 92%;
+
+                        #search-form-i-b-icon-map {
+                            position: absolute;
+                            float: left;
+                            left: 2%;
+                            width: 11%;
+                            border-right: 1px solid #000;
+                        }
+
+                        button {
+                            width: 16%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

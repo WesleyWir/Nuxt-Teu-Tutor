@@ -1,6 +1,6 @@
 <template>
   <div class="col-12">
-    <label for="subject" class="mb-2">Matéria</label>
+    <label for="subject" class="mb-2 fw-bold">Matéria</label>
     <select
       class="form-select"
       name="subject"

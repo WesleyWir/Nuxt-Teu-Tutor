@@ -1,6 +1,6 @@
 <template>
   <div class="row" id="orders">
-    <div class="mb-3 col-3">
+    <div class="mb-3 col-md-3 col-sm-12">
       <select
         class="form-select"
         aria-label="Default select example"

@@ -50,7 +50,7 @@ export default {
       let queries = { search };
 
       if ((type == 'educators')) {
-        path = '/educators/lists/';
+        path = '/educators/';
       }
 
       return this.$router.replace({
