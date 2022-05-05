@@ -4,11 +4,9 @@
     background: #ededed;
     border: 17px solid #ededed;
     border-radius: 20px;
-    padding-bottom: 3%;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.33);
     .educators-list-item-img {
         display: flex;
-        margin-right: 3%;
 
         img {
             width: 80%;
@@ -155,7 +153,8 @@
         margin-bottom: 6%;
 
         .educators-list-item-img {
-            justify-content: flex-start;
+            display: flex;
+            justify-content: center;
             width: 70%;
         }
 
