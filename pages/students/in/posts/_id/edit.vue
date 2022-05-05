@@ -87,9 +87,7 @@ export default {
   layout: "internal",
   middleware: "auth",
   auth: "local_student",
-  //   validate(){
-
-  //   },
+  //   validate(){ },
   data() {
     return {
       possible_subjects: [],

@@ -237,6 +237,7 @@
 import { mask } from "vue-the-mask";
 
 export default {
+  middleware: ['student_loggedin'],
   directives: { mask },
   data() {
     return {
@@ -251,17 +252,23 @@ export default {
   },
   methods: {
     async onSubmit() {
-      this.$axios
-        .post("/students/", this.form)
-        .then(async (data) => {
-          let loginData = { email: this.email, password: this.email };
-          let response = await this.$auth.loginWith('local_student', { data: { loginData}})
-          console.log(response)
-          // redirect to post-signup
-        })
-        .catch(({ response }) => {
-          this.showMultipleErrors(response.data.errors)
-        });
+      try {
+        await this.$axios.post("/students/", this.form);
+        let loginData = {
+          email: this.form.email,
+          password: this.form.password,
+        };
+        this.$auth
+          .loginWith("local_student", { data: loginData })
+          .then(async () => {
+            return await this.$router.push('/students/in/profile');
+          })
+          .catch(async () => {
+            return await this.$router.push('/students/login/');
+          });
+      } catch ({ response }) {
+        this.showMultipleErrors(response.data.errors);
+      }
     },
   },
 };
