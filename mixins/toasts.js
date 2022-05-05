@@ -67,5 +67,45 @@ export default {
                 await confirmedFn();
             }
         })
+    },
+    async fetchToastConfirmPassword(title = 'Confirme sua senha:', apiRoute = '/', afterMessage = '', type = 'POST') {
+        return this.$swal.fire({
+            title: title,
+            input: "text",
+            inputAttributes: {
+                autocapitalize: "off",
+            },
+            showCancelButton: true,
+            confirmButtonText: "Deletar",
+            showLoaderOnConfirm: true,
+            preConfirm: async (password) => {
+                const passObj = {
+                    password
+                }
+                try {
+                    switch (type) {
+                        case 'POST':
+                            await this.$axios.post(apiRoute, { data: passObj })
+                            break;
+                        case 'DELETE':
+                            await this.$axios.delete(apiRoute, { data: passObj })
+                            break;
+                        case 'PATCH':
+                            await this.$axios.patch(apiRoute, { data: passObj })
+                            break;
+                    }
+
+                } catch ({ response }) {
+                    const errorMsg = Array.isArray(response.data.errors) ? response.data.errors[0].message : response.data.message
+                    this.$swal.showValidationMessage(`Erro: ${errorMsg}`);
+                }
+            },
+            allowOutsideClick: () => !this.$swal.isLoading(),
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.showSuccessMessage(afterMessage);
+            }
+            return result.isConfirmed;
+        })
     }
 }

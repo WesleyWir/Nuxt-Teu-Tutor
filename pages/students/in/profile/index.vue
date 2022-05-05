@@ -3,6 +3,7 @@
     <TemplateLoggedinStudentsProfileImageProfile />
     <TemplateLoggedinStudentsProfileEditForm />
     <TemplateLoggedinStudentsProfilePosts />
+    <TemplateLoggedinStudentsProfileDeleteAccount />
   </main>
 </template>
 

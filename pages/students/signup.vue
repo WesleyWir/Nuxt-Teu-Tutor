@@ -93,31 +93,6 @@
                     </validation-provider>
                   </div>
 
-                  <div class="form-group col-md-6 mb-4">
-                    <validation-provider
-                      v-slot="{ errors, classes }"
-                      name="CPF"
-                      :rules="{ required: true, min: 14, max: 14 }"
-                      slim
-                    >
-                      <label class="mb-3" for="cpf">CPF *</label>
-                      <input
-                        type="text"
-                        v-mask="['###.###.###-##']"
-                        name="cpf"
-                        v-model.trim="form.cpf"
-                        class="form-control"
-                        :class="classes"
-                        id="cpf"
-                        placeholder="000.000.000-00"
-                        required
-                      />
-                      <div class="invalid-feedback">
-                        {{ errors[0] }}
-                      </div>
-                    </validation-provider>
-                  </div>
-
                   <div class="form-group col-md-3 mb-4">
                     <validation-provider
                       v-slot="{ errors, classes }"
@@ -267,7 +242,6 @@ export default {
     return {
       form: {
         name: "",
-        cpf: "",
         birthdate: "",
         email: "",
         password: "",
