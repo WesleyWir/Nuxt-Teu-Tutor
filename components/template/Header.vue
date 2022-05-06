@@ -42,8 +42,8 @@
                                             Sou Educador
                                         </a>
                                         <ul class="dropdown-menu dropdown-custom-menu" aria-labelledby="navbarDropdown">
-                                            <li><NuxtLink class="dropdown-item" to="/educator/login/">Login</NuxtLink></li>
-                                            <li><NuxtLink class="dropdown-item" to="/educator/signup/">Criar Conta</NuxtLink></li>
+                                            <li><NuxtLink class="dropdown-item" to="/educators/login/">Login</NuxtLink></li>
+                                            <li><NuxtLink class="dropdown-item" to="/educators/signup/">Criar Conta</NuxtLink></li>
                                         </ul>
                                     </li>
                                 </ul>

@@ -165,7 +165,7 @@ export default {
     icons: {
       solid: ['faSearch', 'faAngleDown', 'faAngleUp', 'faGraduationCap', 'faEye',
         'faEyeSlash', 'faUndo', 'faSignOut', 'faCamera', 'faCirclePlus', 'faMapMarkerAlt',
-        'faStar'],
+        'faStar', 'faChalkboardTeacher'],
       brands: ['faFacebook', 'faGoogle']
     }
   }
