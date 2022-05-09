@@ -167,13 +167,15 @@
                         :rules="{ required: true }"
                         slim
                       >
-                        <label class="mb-3" for="email">Valor Médio da hora de aula:</label>
+                        <label class="mb-3" for="email"
+                          >Valor Médio da hora de aula:</label
+                        >
                         <input
                           type="number"
                           v-mask="['###.###.###']"
-                          min=0
+                          min="0"
                           name="average_price"
-                          v-model.trim="form.average_price "
+                          v-model.trim="form.average_price"
                           class="form-control"
                           :class="classes"
                           id="average_price"
@@ -307,13 +309,9 @@ export default {
   middleware: ["educator_loggedin"],
   directives: { mask },
   async asyncData({ $axios }) {
-    try {
-      const { data } = await $axios.get("/subjects");
-      const subjects = data;
-      return { subjects };
-    } catch ({ response }) {
-      this.catchReponseError(response);
-    }
+    const { data } = await $axios.get("/subjects");
+    const subjects = data;
+    return { subjects };
   },
   data() {
     return {
@@ -325,7 +323,7 @@ export default {
         confirmPassword: "",
         subject: 0,
         average_price: 0,
-      }
+      },
     };
   },
   methods: {

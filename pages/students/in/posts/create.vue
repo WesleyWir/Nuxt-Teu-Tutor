@@ -83,9 +83,9 @@
 
 <script>
 export default {
-  layout: "internal",
-  middleware: "auth",
-  auth: "local_student",
+  layout: 'internal',
+  middleware: ['auth', 'student_strategy'],
+  auth: 'local_student',
   data() {
     return {
       possible_subjects: [],

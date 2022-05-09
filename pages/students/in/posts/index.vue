@@ -30,7 +30,7 @@
 <script>
 export default {
   layout: "internal",
-  middleware: "auth",
+  middleware: ['auth', 'student_strategy'],
   auth: "local_student",
   data() {
     return {
