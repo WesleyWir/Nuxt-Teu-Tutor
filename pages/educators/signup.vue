@@ -150,7 +150,9 @@
                             v-for="sub in subjects"
                             :key="sub.id"
                             :value="sub.id"
-                          >{{ sub.subject }}</option>
+                          >
+                            {{ sub.subject }}
+                          </option>
                         </select>
                         <div class="invalid-feedback">
                           {{ errors[0] }}
@@ -165,12 +167,13 @@
                         :rules="{ required: true }"
                         slim
                       >
-                        <label class="mb-3" for="email">Preço Médio:</label>
+                        <label class="mb-3" for="email">Valor Médio da hora de aula:</label>
                         <input
-                          type="tel"
+                          type="number"
+                          v-mask="['###.###.###']"
+                          min=0
                           name="average_price"
-                          v-mask="['R$ ###,###,###,###']"
-                          v-model.trim="form.average_price"
+                          v-model.trim="form.average_price "
                           class="form-control"
                           :class="classes"
                           id="average_price"
@@ -322,30 +325,28 @@ export default {
         confirmPassword: "",
         subject: 0,
         average_price: 0,
-      },
+      }
     };
   },
   methods: {
     async onSubmit() {
-      console.log(this.form);
-        try {
-
-          await this.$axios.post("/educators/", this.form);
-          let loginData = {
-            email: this.form.email,
-            password: this.form.password,
-          };
-          this.$auth
-            .loginWith("local_educator", { data: loginData })
-            .then(async () => {
-              return await this.$router.push("/educators/in/profile");
-            })
-            .catch(async () => {
-              return await this.$router.push("/educators/login/");
-            });
-        } catch ({ response }) {
-          this.showMultipleErrors(response.data.errors);
-        }
+      try {
+        await this.$axios.post("/educators/", this.form);
+        let loginData = {
+          email: this.form.email,
+          password: this.form.password,
+        };
+        this.$auth
+          .loginWith("local_educator", { data: loginData })
+          .then(async () => {
+            return await this.$router.push("/educators/in/profile");
+          })
+          .catch(async () => {
+            return await this.$router.push("/educators/login/");
+          });
+      } catch ({ response }) {
+        this.showMultipleErrors(response.data.errors);
+      }
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TemplateLoggedinStudentsHeader v-if="this.$auth.loggedIn" />
+    <TemplateLoggedinHeader v-if="this.$auth.loggedIn" />
     <TemplateHeader v-else />
     <!-- <HeaderMobile v-if="isMobile" /> -->
     <main id="wrapper" tabindex="-1">

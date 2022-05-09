@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TemplateLoggedinStudentsHeader/>
+    <TemplateLoggedinHeader/>
     <main id="wrapper" tabindex="-1">
       <transition name="fade" mode="out-in">
         <nuxt />

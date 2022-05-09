@@ -68,7 +68,8 @@ export default {
     '@/plugins/vee-validate',
     '@/plugins/axios',
     '@/plugins/global-mixins-setup.js',
-    '@/plugins/filter-date.js'
+    '@/plugins/filter-date.js',
+    '@/plugins/money.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -111,12 +112,13 @@ export default {
       local_student: {
         scheme: 'local',
         cookie: {
-          prefix: 'auth.',
+          prefix: 'auth.student.',
           options: {
             path: '/'
           }
         },
         token: {
+          prefix: '_student_token.',
           property: 'token',
           global: true,
           required: true,
@@ -136,6 +138,37 @@ export default {
           // refresh: { url: "/sessions/students/refresh", method: "post" },
           logout: { url: '/sessions/students', method: 'delete' },
           user: { url: '/sessions/students/me', method: 'get' }
+        },
+      },
+      local_educator: {
+        scheme: 'local',
+        cookie: {
+          prefix: 'auth.educator.',
+          options: {
+            path: '/'
+          }
+        },
+        token: {
+          prefix: '_educator_token.',
+          property: 'token',
+          global: true,
+          required: true,
+          type: 'Bearer',
+          maxAge: 172800
+        },
+        // refreshToken: {  // it sends request automatically when the access token expires, and its expire time has set on the Back-end and does not need to we set it here, because is useless
+        //        property: "refresh_token", // property name that the Back-end sends for you as a refresh token for saving on localStorage and cookie of user browser
+        //        data: "refresh_token", // data can be used to set the name of the property you want to send in the request.
+        //      },
+        user: {
+          property: 'educator',
+          autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/sessions/educators', method: 'post' },
+          // refresh: { url: "/sessions/educators/refresh", method: "post" },
+          logout: { url: '/sessions/educators', method: 'delete' },
+          user: { url: '/sessions/educators/me', method: 'get' }
         },
       }
     },

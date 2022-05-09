@@ -30,13 +30,13 @@
                       aria-expanded="false"
                     >
                       <i class="caret fas fa-angle-down fa-xl md-2"></i>
-                      <TemplateLoggedinStudentsHeaderProfileImage />
+                      <TemplateLoggedinHeaderProfileImage />
                     </a>
                     <ul
                       class="dropdown-menu dropdown-loggedin-custom-menu"
                       aria-labelledby="navbarDropdown"
                     >
-                      <TemplateLoggedinStudentsMenuOptions />
+                      <TemplateLoggedinMenuOptions />
                     </ul>
                   </li>
                 </ul>
@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <TemplateLoggedinStudentsHamburgerMenu />
+    <TemplateLoggedinHamburgerMenu />
   </header>
 </template>
 

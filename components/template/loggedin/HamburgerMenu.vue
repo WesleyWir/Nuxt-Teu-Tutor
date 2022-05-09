@@ -15,7 +15,7 @@
             aria-controls="sub-sou-estudante"
             v-on:click="navAccordionsCollapse()"
           >
-            <TemplateLoggedinStudentsHeaderProfileImage />
+            <TemplateLoggedinHeaderProfileImage />
             <div id="angle-down-profile">
               <i class="caret fas fa-xl" :class="[angle_profile_icon]"></i>
             </div>
@@ -25,7 +25,7 @@
             class="accordion-collapse collapse sub-menu-collapse"
             data-bs-parent="#sou-estudante-accordion"
           >
-            <TemplateLoggedinStudentsMenuOptions />
+            <TemplateLoggedinMenuOptions />
           </ul>
         </li>
         <hr style="color: #000" />
