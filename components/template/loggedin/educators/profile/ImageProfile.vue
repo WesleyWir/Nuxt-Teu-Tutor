@@ -61,7 +61,6 @@ export default {
   justify-content: center;
   #div-profile-image {
     min-height: 100%;
-    width: 15%;
     position: relative;
     display: inline-block;
     input {

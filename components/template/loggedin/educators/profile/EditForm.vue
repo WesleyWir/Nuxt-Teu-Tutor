@@ -15,7 +15,7 @@
                 type="text"
                 class="form-control"
                 id="name"
-                v-model="student.name"
+                v-model="educator.name"
                 aria-describedby="name"
                 :disabled="!isEdit"
                 :class="classes"
@@ -25,6 +25,62 @@
               </div>
             </validation-provider>
           </div>
+          <div class="row">
+            <div class="form-group col-6">
+              <validation-provider
+                v-slot="{ errors, classes }"
+                name="Matéria"
+                :rules="{ required: true }"
+                slim
+              >
+                <label for="name">Matéria Principal</label>
+                <select
+                  class="form-select"
+                  :disabled="!isEdit"
+                  :class="classes"
+                  v-model="educator.subject_id"
+                  name="type"
+                  aria-label="Default select example"
+                >
+                  <option 
+                  :selected="sub.id == educator.subject_id" 
+                  :value="sub.id" 
+                  :key="sub.id" 
+                  v-for="sub in subjects"
+                  >{{ sub.subject }}</option>
+                </select>
+                <div class="invalid-feedback">
+                  {{ errors[0] }}
+                </div>
+              </validation-provider>
+            </div>
+
+            <div class="form-group col-6">
+              <validation-provider
+                v-slot="{ errors, classes }"
+                name="Preço Médio"
+                :rules="{ required: true }"
+                slim
+              >
+                <label for="name">Valor Médio da hora de aula:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-mask="['###.###.###']"
+                  id="average_price"
+                  name="average_price"
+                  v-model="educator.average_price"
+                  aria-describedby="name"
+                  :disabled="!isEdit"
+                  :class="classes"
+                />
+                <div class="invalid-feedback">
+                  {{ errors[0] }}
+                </div>
+              </validation-provider>
+            </div>
+          </div>
+
           <div class="form-group">
             <validation-provider
               v-slot="{ errors, classes }"
@@ -38,7 +94,7 @@
                 class="form-control"
                 :class="classes"
                 id="password"
-                v-model="student.password"
+                v-model="educator.password"
                 :disabled="!isEdit"
               />
               <div class="invalid-feedback">
@@ -61,7 +117,7 @@
                 name="old_password"
                 :class="classes"
                 id="old_password"
-                v-model="student.old_password"
+                v-model="educator.old_password"
                 :disabled="!isEdit"
               />
               <div class="invalid-feedback">
@@ -69,14 +125,19 @@
               </div>
             </validation-provider>
             <small id="password-help" class="form-text text-muted"
-              >Esse campo é obrigatório, apenas se a senha for ser alterada</small
+              >Esse campo é obrigatório, apenas se a senha for ser
+              alterada</small
             >
           </div>
           <div class="form-group">
             <validation-provider
               v-slot="{ errors, classes }"
               name="Confirme sua Senha"
-              :rules="{ required_if: 'Nova Senha', min: 8, confirmed: 'Nova Senha' }"
+              :rules="{
+                required_if: 'Nova Senha',
+                min: 8,
+                confirmed: 'Nova Senha',
+              }"
               slim
             >
               <label for="password">Confirme a nova senha</label>
@@ -86,7 +147,7 @@
                 class="form-control"
                 :class="classes"
                 id="password_confirm"
-                v-model="student.confirm_password"
+                v-model="educator.confirm_password"
                 :disabled="!isEdit"
               />
               <div class="invalid-feedback">
@@ -113,19 +174,26 @@
 </template>
 
 <script>
+import { mask } from "vue-the-mask";
+
 export default {
+  directives: { mask },
   data() {
     return {
       isEdit: false,
-      student: {},
+      educator: {},
+      subjects: {}
     };
   },
   async fetch() {
     try {
       const { data } = await this.$axios.get(
-        `/students/${this.$auth.user.id}/edit`
+        `/educators/${this.$auth.user.id}/edit`
       );
-      this.student = data;
+      this.educator = data;
+
+      const response = await this.$axios.get('/subjects/');
+      this.subjects = response.data;
     } catch ({ response }) {
       await this.catchReponseError(response);
     }
@@ -133,12 +201,16 @@ export default {
   methods: {
     async onEditSubmit() {
       try {
-        await this.$axios.patch(`/students/${this.student.id}`, this.student);
+        await this.$axios.patch(
+          `/educators/${this.educator.id}`,
+          this.educator
+        );
         this.showSuccessMessage("Perfil Atualizado!");
       } catch ({ response }) {
-        console.error(response);
         await this.catchReponseError(response);
       }
+
+      this.isEdit = !this.isEdit;
     },
   },
 };

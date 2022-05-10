@@ -24,7 +24,6 @@ export default {
       );
       if (deleteResult) {
         this.$auth.logout(this.$auth.$state.strategy);
-        // TODO Redirect to delete account specific
       }
     },
   },
@@ -38,8 +37,5 @@ export default {
   background-color: $default-background-color;
   padding: 20px;
   margin-top: 2%;
-
-  #danger {
-  }
 }
 </style>
