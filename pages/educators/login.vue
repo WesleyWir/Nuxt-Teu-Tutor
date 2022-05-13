@@ -20,7 +20,6 @@ export default {
   methods: {
     async onLoginSubmit(form) {
       try {
-          console.log(form)
         await this.$auth.loginWith("local_educator", { data: form });
         return await this.$router.go('/educators/in/profile');
       } catch ({ response }) {

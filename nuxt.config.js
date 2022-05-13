@@ -198,8 +198,8 @@ export default {
     icons: {
       solid: ['faSearch', 'faAngleDown', 'faAngleUp', 'faGraduationCap', 'faEye',
         'faEyeSlash', 'faUndo', 'faSignOut', 'faCamera', 'faCirclePlus', 'faMapMarkerAlt',
-        'faStar', 'faChalkboardTeacher'],
-      brands: ['faFacebook', 'faGoogle']
+        'faStar', 'faChalkboardTeacher', 'faEnvelope'],
+      brands: ['faFacebook', 'faGoogle', 'faWhatsapp', 'faLinkedin']
     }
   }
 }

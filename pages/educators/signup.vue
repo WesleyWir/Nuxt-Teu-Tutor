@@ -167,7 +167,7 @@
                         :rules="{ required: true }"
                         slim
                       >
-                        <label class="mb-3" for="email"
+                        <label class="mb-3" for="average_price"
                           >Valor Médio da hora de aula:</label
                         >
                         <input
