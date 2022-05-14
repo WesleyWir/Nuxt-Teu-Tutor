@@ -3,6 +3,7 @@
     <TemplateLoggedinEducatorsProfileImageProfile />
     <TemplateLoggedinEducatorsProfileEditForm />
     <TemplateLoggedinEducatorsProfileContactMeans />
+    <TemplateLoggedinEducatorsProfileClassType />
     <TemplateLoggedinEducatorsProfileDeleteAccount />
   </main>
 </template>

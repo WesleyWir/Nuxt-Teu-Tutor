@@ -8,7 +8,7 @@
     </section>
     <section id="contact-means" class="d-flex justify-content-center">
       <validation-observer ref="observer" v-slot="{ handleSubmit }" slim>
-        <form @submit.stop.prevent="handleSubmit(save)">
+        <form @submit.stop.prevent="handleSubmit(save)" class="d-flex justify-content-center col-12 col-md-6">
           <div class="row">
             <validation-provider
               v-slot="{ classes }"
