@@ -22,13 +22,26 @@
         </label>
       </div>
     </div>
-    <div class="col-12 d-flex justify-content-center">
-      <TemplateLoggedinEducatorsProfileAddress v-if="types[0].selected" />
+    <div
+      class="col-12 d-flex justify-content-center"
+      v-if="$store.state.classType.in_person"
+    >
+      <TemplateLoggedinEducatorsProfileAddress />
+    </div>
+    <div
+      class="col-12 d-flex justify-content-center"
+      v-if="$store.state.classType.online"
+    >
+      <TemplateLoggedinEducatorsProfileOnlineClassType />
     </div>
 
     <div class="col-12 d-flex justify-content-center mt-3">
       <div class="col-12 d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary btn-custom-green">
+        <button
+          type="button"
+          class="btn btn-primary btn-custom-green"
+          @click="saveClassType()"
+        >
           Salvar
         </button>
       </div>
@@ -37,27 +50,46 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  data() {
-    return {
-      types: [
+  computed: mapState({
+    types: (state) => {
+      return [
         {
           label: "Presencial",
           value: "in_person",
-          selected: false,
+          selected: state.classType.in_person,
         },
         {
           label: "Online",
           value: "online",
-          selected: false,
+          selected: state.classType.online,
         },
-      ],
-    };
+      ]
+    }
+  }),
+  async fetch() {
+    await this.$store.dispatch("classType/loadClassType");
   },
   methods: {
-    emitCheckbox(event) {
-      console.log(event.target.checked);
-      console.log(event.target.value);
+    async emitCheckbox(event) {
+      const value = event.target.value;
+      const checked = event.target.checked;
+      switch (value) {
+        case "in_person":
+          await this.$store.commit("classType/setClassTypeInPerson", checked);
+          break;
+        case "online":
+          await this.$store.commit("classType/setClassTypeOnline", checked);
+          break;
+        default:
+          break;
+      }
+    },
+    async saveClassType() {
+      await this.$store.dispatch("classType/saveClassType");
+      this.showSuccessMessage('Tipo de aula salvo.')
     },
   },
 };
