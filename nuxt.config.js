@@ -69,7 +69,8 @@ export default {
     '@/plugins/axios',
     '@/plugins/global-mixins-setup.js',
     '@/plugins/filter-date.js',
-    '@/plugins/money.js'
+    '@/plugins/money.js',
+    '@/plugins/v-calendar.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

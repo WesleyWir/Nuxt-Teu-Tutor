@@ -5,6 +5,7 @@
     <TemplateLoggedinEducatorsProfileContactMeans />
     <TemplateLoggedinEducatorsProfileClassType />
     <TemplateLoggedinEducatorsProfileDeleteAccount />
+    <TemplateEducatorsCalendar />
   </main>
 </template>
 
