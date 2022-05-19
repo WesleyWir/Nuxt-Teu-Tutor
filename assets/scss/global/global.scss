@@ -81,7 +81,6 @@
 }
 
 @include media-between(xs, md) {
-    // Phones, Large Phones and Tablets
     #educator-login {
         #content-section {
             width: 100%;
@@ -166,7 +165,6 @@
 }
 
 @include media-between(lg, xxl) {
-    // Desktop, Large Desktops && Extra Large Desktops
     #educator-forgot-password {
         #content-section {
             #form {

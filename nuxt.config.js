@@ -199,7 +199,7 @@ export default {
     icons: {
       solid: ['faSearch', 'faAngleDown', 'faAngleUp', 'faGraduationCap', 'faEye',
         'faEyeSlash', 'faUndo', 'faSignOut', 'faCamera', 'faCirclePlus', 'faMapMarkerAlt',
-        'faStar', 'faChalkboardTeacher', 'faEnvelope'],
+        'faStar', 'faChalkboardTeacher', 'faEnvelope', 'faTrash', 'faCalendarXmark'],
       brands: ['faFacebook', 'faGoogle', 'faWhatsapp', 'faLinkedin']
     }
   }
