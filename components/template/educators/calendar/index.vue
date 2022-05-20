@@ -4,50 +4,8 @@
     class="d-flex justify-content-center align-items-start"
   >
     <div class="row ms-3 mw-75">
-      <div class="col-12">
-        <v-date-picker
-          v-model="date"
-          :attributes="attributes"
-          @dayclick="onDayClick"
-          @update:from-page="pageChange"
-          is-expanded
-        />
-      </div>
-      <div id="time" class="col-12 m-3 row">
-        <div class="col-md-3 col-sm-6">
-          <v-date-picker
-            mode="time"
-            v-model="date"
-            :timezone="timezone"
-            is24hr
-          />
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <v-date-picker
-            mode="time"
-            v-model="date"
-            :timezone="timezone"
-            is24hr
-          />
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <input
-            type="text"
-            class="form-control"
-            v-mask="['###.###.###']"
-            id="input_price"
-            name="price"
-            placeholder="Preço"
-            aria-describedby="name"
-          />
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <button type="submit" class="btn btn-success">
-            <i class="fa-solid fa-circle-plus"></i>
-            <strong>Adicionar Horário</strong>
-          </button>
-        </div>
-      </div>
+      <TemplateEducatorsCalendarAddCalendar />
+      <TemplateEducatorsCalendarAddTime />
       <div class="col-12">
         <div id="show-calendar">
           <div class="card m-3" style="width: 18rem">
@@ -99,7 +57,6 @@ export default {
   data() {
     return {
       timezone: "",
-      days: [],
     };
   },
   computed: {
@@ -108,31 +65,6 @@ export default {
       set(date) {
         console.log(date);
       },
-    },
-    dates() {
-      return this.days.map((day) => day.date);
-    },
-    attributes() {
-      return this.dates.map((date) => ({
-        highlight: true,
-        dates: date,
-      }));
-    },
-  },
-  methods: {
-    onDayClick(day) {
-      const idx = this.days.findIndex((d) => d.id === day.id);
-      if (idx >= 0) {
-        this.days.splice(idx, 1);
-      } else {
-        this.days.push({
-          id: day.id,
-          date: day.date,
-        });
-      }
-    },
-    pageChange(page) {
-      console.log(page);
     },
   },
 };
