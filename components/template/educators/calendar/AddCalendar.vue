@@ -10,6 +10,7 @@
       :value="days"
       @dayclick="onDayClick"
       @update:from-page="pageChange"
+      :min-date='new Date()'
       is-expanded
     />
   </div>
@@ -47,7 +48,9 @@ export default {
       });
     },
     pageChange(page) {
-      console.log(page);
+      if (page.month != this.$store.state.calendar.addCalendar.month) {
+        return this.$store.dispatch("calendar/setAddCalendarMonth", page.month);
+      }
     },
   },
 };

@@ -5,6 +5,7 @@
         mode="time"
         v-model="start_date"
         :timezone="timezone"
+        :min-date='new Date()'
         is24hr
       />
     </div>
@@ -23,12 +24,14 @@
         v-mask="['###.###.###']"
         id="input_price"
         name="price"
+        v-model="price"
+        :min-date='new Date()'
         placeholder="Preço"
         aria-describedby="name"
       />
     </div>
     <div class="col-md-3 col-sm-6">
-      <button type="submit" class="btn btn-success">
+      <button type="button" class="btn btn-success" @click="submitDaysHours()">
         <i class="fa-solid fa-circle-plus"></i>
         <strong>Adicionar Horário</strong>
       </button>
@@ -49,16 +52,39 @@ export default {
   },
   computed: {
     start_date: {
-      get() {},
-      set(start_date) {
-        console.log(start_date);
+      get() {
+        return this.$store.state.calendar.addCalendar.start_time;
+      },
+      set(start_time) {
+        return this.$store.dispatch(
+          "calendar/setAddCalendarStartTime",
+          start_time
+        );
       },
     },
     end_date: {
-      get() {},
-      set(start_date) {
-        console.log(start_date);
+      get() {
+        return this.$store.state.calendar.addCalendar.end_time;
       },
+      set(end_date) {
+        return this.$store.dispatch(
+          "calendar/setAddCalendarEndTime",
+          end_date
+        );
+      },
+    },
+    price: {
+      get(){
+        return this.$store.state.calendar.addCalendar.price;
+      },
+      set(price){
+        return this.$store.dispatch('calendar/setAddCalendarPrice', price)
+      }
+    }
+  },
+  methods: {
+    async submitDaysHours() {
+      return await this.$store.dispatch("calendar/postDays");
     },
   },
 };

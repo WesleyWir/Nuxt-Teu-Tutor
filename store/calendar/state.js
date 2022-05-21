@@ -2,8 +2,11 @@ export const strict = false
 
 export default () => ({
     addCalendar: {
-        month: 2,
-        days: []
+        month: 0,
+        days: [],
+        start_time: null,
+        end_time: null,
+        price: 0
     },
     loadCalendarMonth: [
         {
