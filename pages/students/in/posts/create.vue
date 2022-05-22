@@ -54,9 +54,11 @@
                 slim
               >
                 <label for="" :class="classes">Conteúdo</label>
-                <client-only>
-                  <vue-editor v-model="form.content" />
-                </client-only>
+                  <vue-editor
+                    v-model="form.content"
+                    useCustomImageHandler
+                    @image-added="handleWysiwygImage"
+                  />
                 <div class="invalid-feedback">
                   {{ errors[0] }}
                 </div>
@@ -83,9 +85,9 @@
 
 <script>
 export default {
-  layout: 'internal',
-  middleware: ['auth', 'student_strategy'],
-  auth: 'local_student',
+  layout: "internal",
+  middleware: ["auth", "student_strategy"],
+  auth: "local_student",
   data() {
     return {
       possible_subjects: [],
