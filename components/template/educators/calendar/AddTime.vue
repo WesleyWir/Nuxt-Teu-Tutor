@@ -1,20 +1,21 @@
 <template>
   <div id="time" class="col-12 m-3 row">
     <div class="col-md-3 col-sm-6">
-      <v-date-picker
-        mode="time"
-        v-model="start_date"
-        :timezone="timezone"
-        :min-date='new Date()'
-        is24hr
+      <vue-timepicker
+        format="HH:mm"
+        input-class="skip-error-style"
+        :minute-interval="15"
+        lazy
+        v-model="start_time"
       />
     </div>
     <div class="col-md-3 col-sm-6">
-      <v-date-picker
-        mode="time"
-        v-model="end_date"
-        :timezone="timezone"
-        is24hr
+      <vue-timepicker
+        format="HH:mm"
+        input-class="skip-error-style"
+        :minute-interval="15"
+        lazy
+        v-model="end_time"
       />
     </div>
     <div class="col-md-3 col-sm-6">
@@ -25,7 +26,7 @@
         id="input_price"
         name="price"
         v-model="price"
-        :min-date='new Date()'
+        :min-date="new Date()"
         placeholder="Preço"
         aria-describedby="name"
       />
@@ -41,17 +42,14 @@
 
 
 <script>
+import VueTimepicker from "vue2-timepicker/src/vue-timepicker.vue";
 import { mask } from "vue-the-mask";
 
 export default {
+  components: { VueTimepicker },
   directives: { mask },
-  data() {
-    return {
-      timezone: "",
-    };
-  },
   computed: {
-    start_date: {
+    start_time: {
       get() {
         return this.$store.state.calendar.addCalendar.start_time;
       },
@@ -62,29 +60,40 @@ export default {
         );
       },
     },
-    end_date: {
+    end_time: {
       get() {
         return this.$store.state.calendar.addCalendar.end_time;
       },
-      set(end_date) {
-        return this.$store.dispatch(
-          "calendar/setAddCalendarEndTime",
-          end_date
-        );
+      set(end_time) {
+        if (end_time)
+          return this.$store.dispatch(
+            "calendar/setAddCalendarEndTime",
+            end_time
+          );
       },
     },
     price: {
-      get(){
+      get() {
         return this.$store.state.calendar.addCalendar.price;
       },
-      set(price){
-        return this.$store.dispatch('calendar/setAddCalendarPrice', price)
-      }
-    }
+      set(price) {
+        return this.$store.dispatch("calendar/setAddCalendarPrice", price);
+      },
+    },
   },
   methods: {
     async submitDaysHours() {
-      return await this.$store.dispatch("calendar/postDays");
+      await this.$store.dispatch("calendar/prepareToPostDays");
+      try {
+        await this.$axios.post("/calendars/educators/many/", {
+          dates: this.$store.state.calendar.addCalendar.days,
+        });
+        await this.$store.dispatch("calendar/resetAddCalendar");
+        await this.$store.dispatch("calendar/fetchLoadedCalendarDates", this.$auth.user.id);
+        return this.showSuccessMessage("Salvo com sucesso");
+      } catch ({ response }) {
+        return await this.catchReponseError(response);
+      }
     },
   },
 };

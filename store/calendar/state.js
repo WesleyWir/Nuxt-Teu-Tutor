@@ -4,21 +4,16 @@ export default () => ({
     addCalendar: {
         month: 0,
         days: [],
-        start_time: null,
-        end_time: null,
+        start_time: '',
+        end_time: '',
         price: 0
     },
-    loadCalendarMonth: [
-        {
-            month: 2,
-            days: [
-                {
-                    start_time: '00:00',
-                    end_time: '01:00',
-                    price: 10,
-                    status: 1
-                }
-            ]
-        }
-    ]
+    loadedCalendar:
+    {
+        month: 0,
+        year: 0,
+        dates: []
+    },
+    selectedMonth: 0,
+    loadedCalendarDates: []
 })

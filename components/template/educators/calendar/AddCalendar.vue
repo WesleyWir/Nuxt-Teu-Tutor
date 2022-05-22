@@ -10,7 +10,7 @@
       :value="days"
       @dayclick="onDayClick"
       @update:from-page="pageChange"
-      :min-date='new Date()'
+      :min-date="new Date()"
       is-expanded
     />
   </div>
@@ -44,13 +44,19 @@ export default {
       }
       return await this.$store.dispatch("calendar/pushToAddCalendar", {
         id: day.id,
-        date: day.date.toLocaleDateString("en-US"),
+        date: day.date.toISOString().slice(0, 19).replace("T", " "),
       });
     },
-    pageChange(page) {
-      if (page.month != this.$store.state.calendar.addCalendar.month) {
-        return this.$store.dispatch("calendar/setAddCalendarMonth", page.month);
+    async pageChange(page) {
+      if (page.month != this.$store.state.calendar.selectedMonth) {
+        await this.$store.dispatch("calendar/setAddCalendarMonth", page.month);
+        await this.$store.dispatch("calendar/setLoadedCalendarYear", page.year);
+        await this.$store.dispatch("calendar/setselectedMonth", page.month);
+        await this.loadedCalendarDates();
       }
+    },
+    async loadedCalendarDates() {
+      await this.$store.dispatch("calendar/fetchLoadedCalendarDates", this.$auth.user.id);
     },
   },
 };

@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
 export default {
-
-
+  dev: true,
+  
   env: {
     baseUrl: process.env.BASE_URL,
     serverImagesHost: process.env.SERVER_IMAGES_HOST
@@ -70,7 +70,7 @@ export default {
     '@/plugins/global-mixins-setup.js',
     '@/plugins/filter-date.js',
     '@/plugins/money.js',
-    '@/plugins/v-calendar.js'
+    '@/plugins/v-calendar.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -199,7 +199,8 @@ export default {
     icons: {
       solid: ['faSearch', 'faAngleDown', 'faAngleUp', 'faGraduationCap', 'faEye',
         'faEyeSlash', 'faUndo', 'faSignOut', 'faCamera', 'faCirclePlus', 'faMapMarkerAlt',
-        'faStar', 'faChalkboardTeacher', 'faEnvelope', 'faTrash', 'faCalendarXmark'],
+        'faStar', 'faChalkboardTeacher', 'faEnvelope', 'faTrash', 'faCalendarXmark',
+        'faPen'],
       brands: ['faFacebook', 'faGoogle', 'faWhatsapp', 'faLinkedin']
     }
   }

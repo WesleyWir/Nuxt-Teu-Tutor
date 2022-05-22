@@ -343,7 +343,7 @@ export default {
             return await this.$router.push("/educators/login/");
           });
       } catch ({ response }) {
-        this.showMultipleErrors(response.data.errors);
+        return await this.catchReponseError(response);
       }
     },
   },
