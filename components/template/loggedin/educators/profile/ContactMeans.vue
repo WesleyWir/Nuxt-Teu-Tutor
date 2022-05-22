@@ -1,11 +1,6 @@
 <template>
   <div id="contact-means-profile">
-    <section
-      id="contact-means-title"
-      class="d-flex justify-content-center fw-bold h2"
-    >
-      <h2>Formas de Contato</h2>
-    </section>
+    <UiProfileTitle title="Formas de Contato"/>
     <section id="contact-means" class="d-flex justify-content-center">
       <validation-observer ref="observer" v-slot="{ handleSubmit }" slim>
         <form @submit.stop.prevent="handleSubmit(save)" class="d-flex justify-content-center col-12 col-md-6">

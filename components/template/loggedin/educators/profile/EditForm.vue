@@ -1,5 +1,6 @@
 <template>
   <section id="profile-info">
+    <UiProfileTitle title="Informações da Conta"/>
     <div id="profile-info-form">
       <validation-observer ref="observer" v-slot="{ handleSubmit }" slim>
         <form @submit.stop.prevent="handleSubmit(onEditSubmit)">

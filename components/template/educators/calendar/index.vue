@@ -4,16 +4,18 @@
     class="d-flex justify-content-center align-items-start"
   >
     <div class="row ms-3 mw-75">
+      <UiProfileTitle title="Calendário" />
       <TemplateEducatorsCalendarAddCalendar />
       <TemplateEducatorsCalendarAddTime />
-      <TemplateEducatorsCalendarList :key="$store.state.calendar.selectedMonth" />
+      <TemplateEducatorsCalendarList
+        :key="$store.state.calendar.selectedMonth"
+      />
     </div>
   </div>
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
