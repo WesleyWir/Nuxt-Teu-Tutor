@@ -5,14 +5,14 @@
         <img
           class="img-fluid"
           src="/imgs/user/default-profile.png"
-          alt="Nome do Educador"
+          :alt="educator.name"
         />
       </div>
 
       <div id="educators-single-header-info" class="col-md-6 col-sm-12">
         <div id="educators-single-header-info-name-subj">
-          <h3 class="h3" id="info-name">Nome do Educador</h3>
-          <h4 class="h4" id="info-subj">Matéria</h4>
+          <h3 class="h3" id="info-name">{{ educator.name }}</h3>
+          <h4 class="h4" id="info-subj">{{ educator.subject.subject }}</h4>
         </div>
 
         <div id="educators-single-header-info-value-localization">
@@ -190,7 +190,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  async asyncData({ $axios, route, error }) {
+    try {
+      const id = route.params.id;
+      const { data } = await $axios.get(`/educators/${id}`);
+      const educator = data;
+      console.log(educator)
+      return { educator };
+    } catch (error) {
+      error();
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
