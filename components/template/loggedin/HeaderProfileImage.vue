@@ -1,22 +1,16 @@
 <template>
   <div class="ms-2">
-    <img :src="avatar" alt="Profile Image" class="rounded-circle" />
+    <img :src="getImageFromBackend(avatar, '/imgs/user/default-profile.png')" alt="Profile Image" class="rounded-circle" />
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
-  data() {
-    return {
-      avatar: '/imgs/user/default-profile.png',
-    };
-  },
-  async fetch() {
-    this.avatar = await this.getImageFromBackend(
-      this.$auth.user.avatar,
-      "/imgs/user/default-profile.png"
-    );
-  },
+  computed: mapState({
+    avatar: state => state.auth.user.avatar
+  })
 };
 </script>
 

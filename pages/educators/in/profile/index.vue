@@ -2,10 +2,11 @@
   <main class="container" id="educator-profile">
     <TemplateLoggedinEducatorsProfileImageProfile />
     <TemplateLoggedinEducatorsProfileEditForm />
+    <TemplateLoggedinEducatorsProfileEditDescription />
     <TemplateLoggedinEducatorsProfileContactMeans />
     <TemplateLoggedinEducatorsProfileClassType />
-    <TemplateLoggedinEducatorsProfileDeleteAccount />
     <TemplateEducatorsCalendar />
+    <TemplateLoggedinEducatorsProfileDeleteAccount />
   </main>
 </template>
 
