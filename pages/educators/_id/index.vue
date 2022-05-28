@@ -4,7 +4,7 @@
       <div id="educators-single-header-img" class="col-md-4 col-sm-12">
         <img
           class="img-fluid"
-          src="/imgs/user/default-profile.png"
+          :src="getImageFromBackend(educator.avatar, '/imgs/user/default-profile.png')"
           :alt="educator.name"
         />
       </div>
@@ -143,48 +143,7 @@
           </div>
         </div>
       </div>
-      <div id="educators-single-content-about">
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo,
-          libero. Dolore excepturi accusantium itaque corrupti impedit numquam
-          tempore! Inventore perferendis veniam nam quo quasi iusto? Porro,
-          sapiente accusamus. Harum, incidunt? Consequuntur, iusto harum.
-          Inventore id alias odit deserunt quisquam iste quibusdam eum, quam
-          labore architecto? Earum distinctio voluptate totam voluptas fugiat ex
-          vitae, in assumenda impedit unde ad esse commodi?
-        </p>
-        <br />
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo,
-          libero. Dolore excepturi accusantium itaque corrupti impedit numquam
-          tempore! Inventore perferendis veniam nam quo quasi iusto? Porro,
-          sapiente accusamus. Harum, incidunt? Consequuntur, iusto harum.
-          Inventore id alias odit deserunt quisquam iste quibusdam eum, quam
-          labore architecto? Earum distinctio voluptate totam voluptas fugiat ex
-          vitae, in assumenda impedit unde ad esse commodi?
-        </p>
-        <br />
-        <img src="/imgs/user/default-profile.png" alt="default image" />
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo,
-          libero. Dolore excepturi accusantium itaque corrupti impedit numquam
-          tempore! Inventore perferendis veniam nam quo quasi iusto? Porro,
-          sapiente accusamus. Harum, incidunt? Consequuntur, iusto harum.
-          Inventore id alias odit deserunt quisquam iste quibusdam eum, quam
-          labore architecto? Earum distinctio voluptate totam voluptas fugiat ex
-          vitae, in assumenda impedit unde ad esse commodi?
-        </p>
-        <br />
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo,
-          libero. Dolore excepturi accusantium itaque corrupti impedit numquam
-          tempore! Inventore perferendis veniam nam quo quasi iusto? Porro,
-          sapiente accusamus. Harum, incidunt? Consequuntur, iusto harum.
-          Inventore id alias odit deserunt quisquam iste quibusdam eum, quam
-          labore architecto? Earum distinctio voluptate totam voluptas fugiat ex
-          vitae, in assumenda impedit unde ad esse commodi?
-        </p>
-      </div>
+      <div id="educators-single-content-about" v-html="educator.description"></div>
     </section>
   </main>
 </template>
@@ -196,7 +155,7 @@ export default {
       const id = route.params.id;
       const { data } = await $axios.get(`/educators/${id}`);
       const educator = data;
-      console.log(educator)
+      console.log(educator);
       return { educator };
     } catch (error) {
       error();
