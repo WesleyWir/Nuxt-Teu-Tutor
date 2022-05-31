@@ -3,7 +3,9 @@
     <div class="educators-list-item-img">
       <img
         class="img-fluid"
-        src="/imgs/user/default-profile.png"
+        :src="
+          getImageFromBackend(educator.avatar, '/imgs/user/default-profile.png')
+        "
         alt="Imagem Educador"
       />
     </div>
@@ -14,12 +16,12 @@
           <a
             href="./educators-list.php?materia=materia"
             class="educators-list-item-info-subj"
-            >Matéria</a
+            >{{ educator.subject.subject }}</a
           >
-          <a
-            href="./educator-single.php"
+          <nuxt-link
+            :to="`/educators/${educator.id}`"
             class="h2 educators-list-item-info-name"
-            >Nome do Educador</a
+            >{{ educator.name }}</nuxt-link
           >
         </div>
 
@@ -30,13 +32,15 @@
       </div>
       <div class="educators-list-item-lec-info">
         <span class="educators-list-item-lec-info-value">R$ 20 /h</span>
-        <span class="educators-list-item-lec-info-address">
-          Rua localização X, Guarapuava, PR
+        <span class="educators-list-item-lec-info-address" v-for="address in educator.addresses" :key="address.id">
+          {{ address.neighborhood }}, {{ address.city }} - {{ address.state }}
         </span>
       </div>
 
       <div class="educators-list-item-single-btn">
-        <a href="./educator-single.php" class="btn">Ver Perfil</a>
+        <nuxt-link :to="`/educators/${educator.id}`" class="btn"
+          >Ver Perfil</nuxt-link
+        >
       </div>
     </div>
   </div>
@@ -44,7 +48,10 @@
 
 <script>
 export default {
-    props: ['educator']
+  props: ["educator"],
+  fetch(){
+    console.log(this.educator)
+  }
 };
 </script>
 

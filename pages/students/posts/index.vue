@@ -45,7 +45,6 @@ export default {
         limit: 12,
         page: 1,
       },
-      queries: {},
       showPaginationBtn: true,
     };
   },
