@@ -17,8 +17,8 @@
 
         <div id="educators-single-header-info-value-localization">
           <p id="info-value-localization-value">R$ 20 /h</p>
-          <p id="info-value-localization-localization">
-            Localização X, City, State, Country
+          <p id="info-value-localization-localization" v-for="address in educator.addresses" :key="address.id">
+            {{ address.neighborhood }}, {{ address.city }} - {{ address.state }}
           </p>
         </div>
       </div>
