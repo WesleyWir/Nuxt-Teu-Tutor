@@ -200,7 +200,7 @@ export default {
       solid: ['faSearch', 'faAngleDown', 'faAngleUp', 'faGraduationCap', 'faEye',
         'faEyeSlash', 'faUndo', 'faSignOut', 'faCamera', 'faCirclePlus', 'faMapMarkerAlt',
         'faStar', 'faChalkboardTeacher', 'faEnvelope', 'faTrash', 'faCalendarXmark',
-        'faPen'],
+        'faPen', 'faCaretSquareLeft', 'faCaretSquareRight'],
       brands: ['faFacebook', 'faGoogle', 'faWhatsapp', 'faLinkedin']
     }
   }

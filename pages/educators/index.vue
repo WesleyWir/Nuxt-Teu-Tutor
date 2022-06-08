@@ -91,11 +91,14 @@
 
     <section class="container" id="educators-list-section">
       <div id="educators-list-section-main">
-        <TemplateEducatorsListItem v-for="educator in educators" :key="educator.id" :educator="educator"/>
+        <UiRoundedSpinner v-if="$fetchState.pending"/>
+        <TemplateEducatorsListItem
+          v-for="educator in educators"
+          :key="educator.id"
+          :educator="educator"
+        />
       </div>
-      <div class="see-more mt-3 mb-3">
-        <button href="" class="btn" id="see-more-btn">Ver Mais</button>
-      </div>
+      <TemplateEducatorsListPagination :pagination_meta="pagination_meta" />
     </section>
   </main>
 </template>
@@ -107,20 +110,23 @@ export default {
       educators: [],
       pagination_meta: [],
       hiddenQueries: {
-        limit: 12,
+        limit: 1,
         page: 1,
       },
       queries: {},
     };
   },
   async fetch() {
-    const { data } = await this.$axios.get('/educators/', {
-      params: {  ...this.hiddenQueries, ...this.$route.query }
+    const { data } = await this.$axios.get("/educators/", {
+      params: { ...this.hiddenQueries, ...this.$route.query },
     });
 
     this.educators = data.data;
     this.pagination_meta = data.meta;
   },
+  watch: {
+    "$route.query": "$fetch"
+  }
 };
 </script>
 

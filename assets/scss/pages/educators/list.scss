@@ -102,23 +102,6 @@
             flex-direction: row;
             flex-wrap: wrap;
         }
-        .see-more {
-            #see-more-btn {
-                font-size: 22px;
-                font-weight: 900;
-                background-color: $dark-green-font-color;
-                border: 20px solid $dark-green-font-color;
-                border-radius: 10px;
-                color: #fff;
-                width: 32vh;
-                height: 10vh;
-
-                &:hover {
-                    background-color: darken($dark-green-font-color, 10%);
-                    border-color: darken($dark-green-font-color, 10%);
-                }
-            }
-        }
     }
 }
 

@@ -13,11 +13,10 @@
     <div class="educators-list-item-info">
       <div class="educators-list-item-info-subj-name-rating">
         <div class="educators-list-item-info-subj-name">
-          <a
-            href="./educators-list.php?materia=materia"
+          <a 
+            @click="$router.replace({path: '/educators/', query: {...$route.query, subject: educator.subject.id}}).catch(()=>{})"
             class="educators-list-item-info-subj"
-            >{{ educator.subject.subject }}</a
-          >
+          >{{ educator.subject.subject }}</a>
           <nuxt-link
             :to="`/educators/${educator.id}`"
             class="h2 educators-list-item-info-name"
