@@ -2,11 +2,9 @@
   <main id="educators-list">
     <section class="container" id="search-section">
       <div class="input-group d-flex justify-content-center">
-        <form
+        <div
           class="col-12"
           id="search-form"
-          method="GET"
-          action="./educators-list.php"
         >
           <div id="search-form-i-b" class="col-6 mb-3">
             <!-- Start Button trigger city select -->
@@ -37,7 +35,6 @@
           <div
             id="search-form-select-localization"
             class="col-xs-12 col-sm-2 mb-3"
-            style="display: none"
           >
             <div class="search-form-select-localization-item">
               <select
@@ -85,7 +82,7 @@
               </select>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </section>
 
