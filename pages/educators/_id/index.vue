@@ -42,7 +42,7 @@
         </div>
 
         <div id="hire">
-          <button class="btn text-uppercase" id="hire-btn">Contratar</button>
+          <nuxt-link :to="`/educators/${educator.id}/checkout/`" class="btn text-uppercase" id="hire-btn">Contratar</nuxt-link>
         </div>
       </div>
     </section>
@@ -53,6 +53,8 @@
         id="educators-single-content-about"
         v-html="educator.description"
       ></div>
+      <TemplateEducatorsSingleRatings />
+      <TemplateEducatorsSingleRelated :educator_id="educator.id" />
     </section>
   </main>
 </template>
