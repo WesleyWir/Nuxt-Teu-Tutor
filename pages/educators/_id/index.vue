@@ -42,17 +42,22 @@
         </div>
 
         <div id="hire">
-          <nuxt-link :to="`/educators/${educator.id}/checkout/`" class="btn text-uppercase" id="hire-btn">Contratar</nuxt-link>
+          <nuxt-link
+            :to="`/educators/${educator.id}/checkout/`"
+            class="btn text-uppercase"
+            id="hire-btn"
+            >Contratar</nuxt-link
+          >
         </div>
       </div>
     </section>
 
     <section id="educators-single-content">
-      <TemplateEducatorsSingleCalendar :educator_id="educator.id"/>
       <div
         id="educators-single-content-about"
         v-html="educator.description"
       ></div>
+      <TemplateEducatorsSingleCalendar :educator_id="educator.id" />
       <TemplateEducatorsSingleRatings />
       <TemplateEducatorsSingleRelated :educator_id="educator.id" />
     </section>

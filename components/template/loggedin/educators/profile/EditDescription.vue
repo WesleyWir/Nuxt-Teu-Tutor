@@ -3,10 +3,15 @@
     <UiProfileTitle title="Descreva Sua Aula" />
     <vue-editor
       id="editor"
-      v-model="content"
+      v-model="educator.description"
       useCustomImageHandler
       @image-added="handleWysiwygImage"
     />
+    <div class="buttons mt-3">
+      <button type="button" @click="onEditSubmit()" class="btn btn-success">
+        <strong>Atualizar</strong>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -14,8 +19,27 @@
 export default {
   data() {
     return {
-      content: "",
+      educator: {
+        description: ''
+      }
     };
+  },
+  async fetch() {
+    await this.$auth.fetchUser()
+    this.educator = structuredClone(this.$auth.user);
+  },
+  methods: {
+    async onEditSubmit() {
+      try {
+        await this.$axios.patch(
+          `/educators/${this.$auth.user.id}`,
+          this.educator
+        );
+        this.showSuccessMessage("Perfil Atualizado!");
+      } catch ({ response }) {
+        await this.catchReponseError(response);
+      }
+    },
   },
 };
 </script>

@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  middleware: ['student_loggedin'],
+  middleware: ['educator_loggedin'],
   methods: {
     async onLoginSubmit(form) {
       try {
