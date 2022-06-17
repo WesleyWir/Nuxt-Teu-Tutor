@@ -34,7 +34,7 @@
               v-on:click="dateWasClicked($event, hour.id)"
             />
             <label class="btn hour-check-label" :for="`hour-check_${hour.id}`"
-              >{{ hour.start_time }} - {{ hour.end_time }}</label
+              >{{ hour.start_time }} - {{ hour.end_time }} - {{ hour.checked }}</label
             >
           </div>
         </div>
@@ -92,14 +92,15 @@ export default {
       const { data } = await this.$axios.get(
         `/calendars/educators/${this.educator_id}?date=${day.id}`
       );
-      this.selectableHours = data;
 
-      for(const hour of this.selectableHours){
+      for(const hour of data){
         hour.checked = await this.$store.dispatch(
           "studentCalendar/hasClassCalendarSelected",
           hour.id
         );
       }
+
+      this.selectableHours = data;
     },
     async dateWasClicked(event, classCalendarId) {
       if (event.target.checked) {
