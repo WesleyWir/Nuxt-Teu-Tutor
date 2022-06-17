@@ -34,7 +34,7 @@
               v-on:click="dateWasClicked($event, hour.id)"
             />
             <label class="btn hour-check-label" :for="`hour-check_${hour.id}`"
-              >{{ hour.start_time }} - {{ hour.end_time }} - {{ hour.checked }}</label
+              >{{ hour.start_time }} - {{ hour.end_time }}</label
             >
           </div>
         </div>
@@ -49,7 +49,7 @@
           <div class="hour-selected-date">
             <h3 class="hour-selected-day">
               Segunda - {{ selectedDate.date.date }}
-              <button class="btn btn-danger ms-2">X</button>
+              <button class="btn btn-danger ms-2" @click="removeDayFromClassCalendar(selectedDate.educator_calendar_id)">X</button>
             </h3>
             <h3 class="hour-selected-day">{{ selectedDate.date.start_time }} - {{ selectedDate.date.end_time }}</h3>
             <h3 class="hour-selected-day">R$ 00, 00 {{ selectedDate.date.price }}</h3>
@@ -115,9 +115,12 @@ export default {
         );
       }
 
+      return await this.removeDayFromClassCalendar(classCalendarId);
+    },
+    async removeDayFromClassCalendar(id){
       return await this.$store.dispatch(
         "studentCalendar/removeFromClassCalendar",
-        classCalendarId
+        id
       );
     }
   },
