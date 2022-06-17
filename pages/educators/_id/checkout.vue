@@ -1,6 +1,8 @@
 <template>
   <div id="checkout" class="container">
-    <div class="form-group">
+    <TemplateEducatorsSingleCalendar :educator_id="educator.id" />
+
+    <div class="form-group" id="checkout-note">
       <label for="exampleFormControlTextarea1">Nota:</label>
       <textarea
         class="form-control"
@@ -13,8 +15,27 @@
 </template>
 
 <script>
-export default {};
+export default {
+  async asyncData({ $axios, route, error }) {
+    try {
+      const id = route.params.id;
+      const { data } = await $axios.get(`/educators/${id}`);
+      const educator = data;
+      return { educator };
+    } catch (error) {
+      error();
+    }
+  },
+  async fetch(){
+    return await this.$store.dispatch("studentCalendar/setEducatorId", this.educator.id);
+  }
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+#checkout-note {
+  width: 75%;
+  position: relative;
+  margin: 0 auto;
+}
 </style>

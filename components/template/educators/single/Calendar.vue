@@ -10,75 +10,31 @@
           }"
           :masks="{ L: 'YYYY-MM-DD' }"
           @dayclick="onDayClick"
-          @update:from-page="pageChange"
           :min-date="new Date()"
           is-expanded
         />
       </div>
       <div id="educators-single-date-hour-hours">
-        <div id="educators-single-date-hour-hours-title">
+        <div
+          id="educators-single-date-hour-hours-title"
+          v-if="selectableHours.length"
+        >
           <h3>Selecione os Horários:</h3>
         </div>
         <div id="educators-single-date-hour-hours-checks">
-          <div class="hour">
+          <div class="hour" v-for="hour in selectableHours" :key="hour.id">
             <input
               type="checkbox"
               class="btn-check hour-check-input"
-              id="hour-check_0800_0900"
+              :id="`hour-check_${hour.id}`"
+              :name="`hour-check_${hour.id}`"
+              v-model="hour.checked"
+              :value="hour.id"
               autocomplete="off"
+              v-on:click="dateWasClicked($event, hour.id)"
             />
-            <label
-              class="btn hour-check-label hour-check-label-checked"
-              for="hour-check_0800_0900"
-              >08:00 - 09:00</label
-            >
-          </div>
-
-          <div class="hour">
-            <input
-              type="checkbox"
-              class="btn-check hour-check-input"
-              id="hour-check_0900_1000"
-              autocomplete="off"
-            />
-            <label class="btn hour-check-label" for="hour-check_0900_1000"
-              >09:00 - 10:00</label
-            >
-          </div>
-
-          <div class="hour">
-            <input
-              type="checkbox"
-              class="btn-check hour-check-input"
-              id="hour-check_1100_1200"
-              autocomplete="off"
-            />
-            <label class="btn hour-check-label" for="hour-check_1100_1200"
-              >11:00 - 12:00</label
-            >
-          </div>
-
-          <div class="hour">
-            <input
-              type="checkbox"
-              class="btn-check hour-check-input"
-              id="hour-check_1500_1600"
-              autocomplete="off"
-            />
-            <label class="btn hour-check-label" for="hour-check_1500_1600"
-              >15:00 - 16:00</label
-            >
-          </div>
-
-          <div class="hour">
-            <input
-              type="checkbox"
-              class="btn-check hour-check-input"
-              id="hour-check_1600_1700"
-              autocomplete="off"
-            />
-            <label class="btn hour-check-label" for="hour-check_1600_1700"
-              >16:00 - 17:00</label
+            <label class="btn hour-check-label" :for="`hour-check_${hour.id}`"
+              >{{ hour.start_time }} - {{ hour.end_time }}</label
             >
           </div>
         </div>
@@ -89,28 +45,24 @@
         <h3>Horários Selecionados</h3>
       </div>
       <div class="col-12" id="educators-single-date-hour-right-dates">
-        <div class="col-12 hour-selected">
+        <div class="col-12 hour-selected" v-for="selectedDate in selectedDates" :key="selectedDate.educator_calendar_id">
           <div class="hour-selected-date">
-            <h3 class="hour-selected-day">Segunda - 00/00/2022</h3>
+            <h3 class="hour-selected-day">
+              Segunda - {{ selectedDate.date.date }}
+              <button class="btn btn-danger ms-2">X</button>
+            </h3>
+            <h3 class="hour-selected-day">{{ selectedDate.date.start_time }} - {{ selectedDate.date.end_time }}</h3>
+            <h3 class="hour-selected-day">R$ 00, 00 {{ selectedDate.date.price }}</h3>
+            <div class="form-group mt-3">
+              <label :for="`hour-selected-note-${selectedDate.educator_calendar_id}`">Nota:</label>
+              <textarea
+                class="form-control"
+                :id="`hour-selected-note-${selectedDate.educator_calendar_id}`"
+                placeholder="Escreva uma nota para o educador, referente a aula desse dia..."
+                rows="3"
+              ></textarea>
+            </div>
             <hr />
-          </div>
-          <div class="hour-selected-hours">
-            <ul>
-              <li>08:00 - 09:00 <button class="btn btn-danger">X</button></li>
-              <li>09:00 - 10:00</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-12 hour-selected">
-          <div class="hour-selected-date">
-            <h3 class="hour-selected-day">Sexta - 00/00/2022</h3>
-            <hr />
-          </div>
-          <div class="hour-selected-hours">
-            <ul>
-              <li>08:00 - 09:00</li>
-              <li>09:00 - 10:00</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -119,19 +71,53 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import ClassCalendarStatus from "~/enums/ClassStatus";
+
 export default {
   props: ["educator_id"],
   data() {
     return {
-      date: new Date(),
+      date: null,
+      selectableHours: [],
     };
   },
-  methods: {
-    async pageChange(page) {
-      console.log(page);
+  computed: mapState({
+    selectedDates: (state) => {
+      return state.studentCalendar.class_calendars
     },
-    async onDayClick(day){
-        console.log(day)
+  }),
+  methods: {
+    async onDayClick(day) {
+      const { data } = await this.$axios.get(
+        `/calendars/educators/${this.educator_id}?date=${day.id}`
+      );
+      this.selectableHours = data;
+
+      for(const hour of this.selectableHours){
+        hour.checked = await this.$store.dispatch(
+          "studentCalendar/hasClassCalendarSelected",
+          hour.id
+        );
+      }
+    },
+    async dateWasClicked(event, classCalendarId) {
+      if (event.target.checked) {
+        let classCalendar = {
+          educator_calendar_id: classCalendarId,
+          status: ClassCalendarStatus.TO_DO,
+          note: "",
+        };
+        return await this.$store.dispatch(
+          "studentCalendar/addClassCalendar",
+          classCalendar
+        );
+      }
+
+      return await this.$store.dispatch(
+        "studentCalendar/removeFromClassCalendar",
+        classCalendarId
+      );
     }
   },
 };
@@ -139,11 +125,8 @@ export default {
 
 <style lang="scss" scoped>
 #educators-single-date-hour {
-  // background-color: $form-components-color;
-  // border: 1px solid $dark-green-font-color;
   border-radius: 20px;
   padding: 4%;
-  margin-bottom: 5%;
 
   #educators-single-date-hour-left {
     #educators-single-date-hour-hours {
@@ -167,6 +150,21 @@ export default {
         .hour {
           margin-right: 10px;
           margin-top: 20px;
+          .hour-check-input:checked + .hour-check-label {
+            background-color: $dark-green-font-color;
+            color: $color-font-white;
+            display: flex;
+            justify-content: center;
+            -webkit-box-shadow: 5px 11px 19px -1px rgba(0, 0, 0, 0.53);
+            box-shadow: 5px 11px 19px -1px rgba(0, 0, 0, 0.53);
+            border-radius: 5px;
+            padding: 10px;
+            font-weight: 700;
+
+            &:hover {
+              background-color: darken($dark-green-font-color, 10%);
+            }
+          }
 
           .hour-check-label {
             background-color: $color-font-white;
@@ -184,19 +182,6 @@ export default {
           }
 
           .hour-check-label-checked {
-            background-color: $dark-green-font-color;
-            color: $color-font-white;
-            display: flex;
-            justify-content: center;
-            -webkit-box-shadow: 5px 11px 19px -1px rgba(0, 0, 0, 0.53);
-            box-shadow: 5px 11px 19px -1px rgba(0, 0, 0, 0.53);
-            border-radius: 5px;
-            padding: 10px;
-            font-weight: 700;
-
-            &:hover {
-              background-color: darken($dark-green-font-color, 10%);
-            }
           }
         }
       }
