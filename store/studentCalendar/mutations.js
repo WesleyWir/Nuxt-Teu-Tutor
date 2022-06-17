@@ -10,5 +10,8 @@ export default {
     },
     REMOVE_CLASS_CALENDAR(state, educator_calendar_id){
         state.class_calendars = state.class_calendars.filter(item => item.educator_calendar_id !== educator_calendar_id)
+    },
+    UPDATE_CLASS_CALENDAR_NOTE(state, payload){
+        state.class_calendars[payload.index].note = payload.note 
     }
 }

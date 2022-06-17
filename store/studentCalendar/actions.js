@@ -24,5 +24,8 @@ export default {
             }
         }
         return false;
+    },
+    async updateClassCalendarNote({ commit }, payload){
+        return commit('UPDATE_CLASS_CALENDAR_NOTE', payload)
     }
 }

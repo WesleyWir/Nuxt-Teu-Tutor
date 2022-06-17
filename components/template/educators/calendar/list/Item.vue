@@ -2,8 +2,10 @@
   <div class="card item m-3" style="width: 18rem">
     <div class="card-body">
       <div class="col-12 d-flex justify-content-around align-items-center">
-        <h5 class="card-title fw-bold">{{ loadedData.date | format_mysql_date_and_hour }}</h5>
-        <button class="btn btn-danger">
+        <h5 class="card-title fw-bold">
+          {{ loadedData.date | format_mysql_date_and_hour }}
+        </h5>
+        <button class="btn btn-danger" @click="deleteDate()">
           <i class="fa-solid fa-calendar-xmark"></i>
           <span class="fw-bold">Deletar</span>
         </button>
@@ -18,12 +20,6 @@
             v-model="loadedData.start_time"
             input-width="6em"
           />
-          <button class="btn btn-success">
-            <i class="fa-solid fa-pen"></i>
-          </button>
-          <button class="btn btn-danger">
-            <i class="fa-solid fa-calendar-xmark"></i>
-          </button>
         </li>
         <li class="list-group-item">
           <vue-timepicker
@@ -34,11 +30,26 @@
             v-model="loadedData.end_time"
             input-width="6em"
           />
-          <button class="btn btn-success">
+        </li>
+        <li class="list-group-item">
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              v-mask="['###.###.###']"
+              id="input_price"
+              name="price"
+              v-model="loadedData.price"
+              :min-date="new Date()"
+              placeholder="Preço"
+              aria-describedby="name"
+            />
+          </div>
+        </li>
+        <li  class="list-group-item d-flex justify-content-center">
+          <button class="btn btn-primary fw-bold">
             <i class="fa-solid fa-pen"></i>
-          </button>
-          <button class="btn btn-danger">
-            <i class="fa-solid fa-calendar-xmark"></i>
+            Atualizar
           </button>
         </li>
       </ul>
@@ -48,18 +59,28 @@
 
 <script>
 import VueTimepicker from "vue2-timepicker/src/vue-timepicker.vue";
+import { mask } from "vue-the-mask";
 
 export default {
-  props: ['date'],
+  props: ["date"],
   components: { VueTimepicker },
-  data(){
+  directives: { mask },
+  data() {
     return {
-      loadedData: {}
+      loadedData: {},
+    };
+  },
+  created() {
+    this.loadedData = { ...this.date };
+  },
+  methods: {
+    async deleteDate(){
+      await this.displayConfirmMessage('Deletar Data', 'Você realmente quer deletar?', async () => {
+          await this.$axios.delete(`/calendars/educators/${this.loadedData.id}`)
+          await this.$store.dispatch("calendar/fetchLoadedCalendarDates", this.$auth.user.id);
+      })
     }
-  },
-  created(){
-    this.loadedData = { ...this.date}
-  },
+  }
 };
 </script>
 

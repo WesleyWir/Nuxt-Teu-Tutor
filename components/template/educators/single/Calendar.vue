@@ -45,19 +45,40 @@
         <h3>Horários Selecionados</h3>
       </div>
       <div class="col-12" id="educators-single-date-hour-right-dates">
-        <div class="col-12 hour-selected" v-for="selectedDate in selectedDates" :key="selectedDate.educator_calendar_id">
+        <div
+          class="col-12 hour-selected"
+          v-for="(selectedDate, i) in selectedDates"
+          :key="selectedDate.educator_calendar_id"
+        >
           <div class="hour-selected-date">
             <h3 class="hour-selected-day">
               Segunda - {{ selectedDate.date.date }}
-              <button class="btn btn-danger ms-2" @click="removeDayFromClassCalendar(selectedDate.educator_calendar_id)">X</button>
+              <button
+                class="btn btn-danger ms-2"
+                @click="
+                  removeDayFromClassCalendar(selectedDate.educator_calendar_id)
+                "
+              >
+                X
+              </button>
             </h3>
-            <h3 class="hour-selected-day">{{ selectedDate.date.start_time }} - {{ selectedDate.date.end_time }}</h3>
-            <h3 class="hour-selected-day">R$ 00, 00 {{ selectedDate.date.price }}</h3>
+            <h3 class="hour-selected-day">
+              {{ selectedDate.date.start_time }} -
+              {{ selectedDate.date.end_time }}
+            </h3>
+            <h3 class="hour-selected-day">
+              {{ selectedDate.date.price | toBRCurrency }}
+            </h3>
             <div class="form-group mt-3">
-              <label :for="`hour-selected-note-${selectedDate.educator_calendar_id}`">Nota:</label>
+              <label
+                :for="`hour-selected-note-${selectedDate.educator_calendar_id}`"
+                >Nota:</label
+              >
               <textarea
                 class="form-control"
                 :id="`hour-selected-note-${selectedDate.educator_calendar_id}`"
+                @keyup="onClassCalendarNoteChange(i, $event.target.value)"
+                :value="selectedDate.note"
                 placeholder="Escreva uma nota para o educador, referente a aula desse dia..."
                 rows="3"
               ></textarea>
@@ -84,16 +105,19 @@ export default {
   },
   computed: mapState({
     selectedDates: (state) => {
-      return state.studentCalendar.class_calendars
+      return state.studentCalendar.class_calendars;
     },
   }),
   methods: {
     async onDayClick(day) {
+      if (!this.date) {
+        return (this.selectableHours = []);
+      }
       const { data } = await this.$axios.get(
-        `/calendars/educators/${this.educator_id}?date=${day.id}`
+        `/calendars/educators/${this.educator_id}?date=${day.id}&order_by=start_time&order=ASC`
       );
 
-      for(const hour of data){
+      for (const hour of data) {
         hour.checked = await this.$store.dispatch(
           "studentCalendar/hasClassCalendarSelected",
           hour.id
@@ -117,10 +141,16 @@ export default {
 
       return await this.removeDayFromClassCalendar(classCalendarId);
     },
-    async removeDayFromClassCalendar(id){
+    async removeDayFromClassCalendar(id) {
       return await this.$store.dispatch(
         "studentCalendar/removeFromClassCalendar",
         id
+      );
+    },
+    async onClassCalendarNoteChange(index, note){
+      return await this.$store.dispatch(
+        "studentCalendar/updateClassCalendarNote",
+        { index, note}
       );
     }
   },
