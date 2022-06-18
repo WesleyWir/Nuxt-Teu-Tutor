@@ -5,6 +5,9 @@ export default {
     async setEducatorContactMeansId({ commit }, payload) {
         return commit('SET_EDUCATOR_CONTACT_CONTACT_MEANS_ID', payload);
     },
+    async setStudentCalendarNote({ commit }, payload) {
+        return commit('SET_STUDENT_CALENDAR_NOTE', payload);
+    },
     async addClassCalendar({ commit }, payload) {
         try {
             const { data } = await this.$axios.get(`/calendars/${payload.educator_calendar_id}`)

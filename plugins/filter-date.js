@@ -5,7 +5,10 @@ export default () => {
   Vue.filter('format_mysql_date_and_hour', function (value) {
     return DateTime.fromISO(value).toLocaleString(DateTime.DATE_SHORT)
   }),
-    Vue.filter('format_date_show_month', function (value) {
+  Vue.filter('format_date_show_month', function (value) {
     return DateTime.fromISO(value).toLocaleString(DateTime.DATE_FULL)
-    })
+  }),
+  Vue.filter('get_day_from_iso', function (value) {
+    return DateTime.fromISO(value).weekdayLong
+  })
 }

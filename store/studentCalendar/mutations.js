@@ -5,6 +5,9 @@ export default {
     SET_EDUCATOR_CONTACT_CONTACT_MEANS_ID(state, id){
         state.educator_contact_means_id = id
     },
+    SET_STUDENT_CALENDAR_NOTE(state, note){
+        state.note = note
+    },
     ADD_CLASS_CALENDAR(state, classPayload){
         state.class_calendars.push(classPayload)
     },

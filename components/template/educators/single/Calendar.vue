@@ -52,7 +52,10 @@
         >
           <div class="hour-selected-date">
             <h3 class="hour-selected-day">
-              Segunda - {{ selectedDate.date.date }}
+              <span class="text-capitalize">{{
+                selectedDate.date.date | get_day_from_iso
+              }}</span>
+              - {{ selectedDate.date.date | format_mysql_date_and_hour }}
               <button
                 class="btn btn-danger ms-2"
                 @click="
@@ -147,12 +150,12 @@ export default {
         id
       );
     },
-    async onClassCalendarNoteChange(index, note){
+    async onClassCalendarNoteChange(index, note) {
       return await this.$store.dispatch(
         "studentCalendar/updateClassCalendarNote",
-        { index, note}
+        { index, note }
       );
-    }
+    },
   },
 };
 </script>
