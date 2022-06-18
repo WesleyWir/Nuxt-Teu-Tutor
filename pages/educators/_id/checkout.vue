@@ -20,6 +20,7 @@
 
 <script>
 export default {
+  // middleware: ["auth", "student_strategy"],
   async asyncData({ $axios, route }) {
     try {
       const id = route.params.id;
