@@ -21,7 +21,7 @@
             <h2 class="h2 text-uppercase"><strong>Cadastre-se</strong></h2>
           </div>
 
-          <div class="mb-3" id="form-description-div">
+          <!-- <div class="mb-3" id="form-description-div">
             <p class="font-italic">
               Registre-se com uma conta do google ou facebook, ou preencha o
               formulário abaixo.
@@ -61,7 +61,7 @@
                 <strong>Facebook</strong>
               </a>
             </div>
-          </div>
+          </div> -->
           <div id="form-fields">
             <validation-observer ref="observer" v-slot="{ handleSubmit }" slim>
               <form @submit.stop.prevent="handleSubmit(onSubmit)">

@@ -4,7 +4,7 @@
       <h2 class="h2 text-uppercase"><strong>Login</strong></h2>
     </div>
 
-    <UsersLoginSocialLogin />
+    <!-- <UsersLoginSocialLogin /> -->
 
     <div class="d-flex justify-content-center" id="login-form-fields">
       <validation-observer ref="observer" v-slot="{ handleSubmit }" slim>
