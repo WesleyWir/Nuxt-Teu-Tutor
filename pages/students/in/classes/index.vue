@@ -189,9 +189,9 @@ export default {
       try {
         this.displayConfirmMessage("Cancelar Aula", "", async () => {
           await this.$axios.delete(
-            `/classes/educators/class-calendars/cancel/${id}`
+            `/classes/students/class-calendars/cancel/${id}`
           );
-          await this.showSuccessMessage("Aula completa!", 1000);
+          await this.showSuccessMessage("Aula cancelada!", 1000);
           this.$nuxt.refresh();
         });
       } catch (e) {
@@ -205,7 +205,7 @@ export default {
           "",
           async () => {
             await this.$axios.patch(
-              `/classes/educators/class-calendars/to-do/${id}`
+              `/classes/students/class-calendars/to-do/${id}`
             );
             await this.showSuccessMessage("Aula para ser feita!", 1000);
             this.$nuxt.refresh();

@@ -209,7 +209,7 @@ export default {
           await this.$axios.delete(
             `/classes/educators/class-calendars/cancel/${id}`
           );
-          await this.showSuccessMessage("Aula completa!", 1000);
+          await this.showSuccessMessage("Aula cancelada", 1000);
           this.$nuxt.refresh();
         });
       } catch (e) {
