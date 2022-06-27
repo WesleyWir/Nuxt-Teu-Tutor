@@ -4,67 +4,30 @@
       <h2 class="h2 fw-bold">Avaliações</h2>
     </div>
     <div class="items">
-      <div class="item mb-3 row d-flex flex-row">
+      <div
+        class="item mb-3 row d-flex flex-row"
+        v-for="rate in ratings"
+        :key="rate.id"
+      >
         <div class="avatar col-4 d-flex justify-content-center">
           <img
-            src="/imgs/user/default-profile.png"
+            :src="
+              getImageFromBackend(
+                rate.student.avatar,
+                '/imgs/user/default-profile.png'
+              )
+            "
             class="rounded-circle img-thumbnail w-50"
-            alt=""
+            :alt="rate.student.name"
+            :title="rate.student.name"
           />
         </div>
         <div class="comments col-6">
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-            iusto labore sapiente placeat ullam tempore. Sit voluptatem fugit
-            illo fugiat laborum ea quae numquam quas quibusdam saepe, alias
-            ullam cum.
+          <p class="mb-3">
+            {{ rate.comment }}
           </p>
           <div class="rate">
-            <h2 class="h2 fw-bold">5</h2>
-            <i class="fas fa-star fa-2x rating-star"></i>
-          </div>
-        </div>
-      </div>
-
-      <div class="item mb-3 row d-flex flex-row-reverse">
-        <div class="avatar col-4 d-flex justify-content-center">
-          <img
-            src="/imgs/user/default-profile.png"
-            class="rounded-circle img-thumbnail w-50"
-            alt=""
-          />
-        </div>
-        <div class="comments col-6">
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-            iusto labore sapiente placeat ullam tempore. Sit voluptatem fugit
-            illo fugiat laborum ea quae numquam quas quibusdam saepe, alias
-            ullam cum.
-          </p>
-          <div class="rate">
-            <h2 class="h2 fw-bold">5</h2>
-            <i class="fas fa-star fa-2x rating-star"></i>
-          </div>
-        </div>
-      </div>
-
-      <div class="item mb-3 row d-flex flex-row">
-        <div class="avatar col-4 d-flex justify-content-center">
-          <img
-            src="/imgs/user/default-profile.png"
-            class="rounded-circle img-thumbnail w-50"
-            alt=""
-          />
-        </div>
-        <div class="comments col-6">
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-            iusto labore sapiente placeat ullam tempore. Sit voluptatem fugit
-            illo fugiat laborum ea quae numquam quas quibusdam saepe, alias
-            ullam cum.
-          </p>
-          <div class="rate">
-            <h2 class="h2 fw-bold">5</h2>
+            <h2 class="h2 fw-bold">{{ getRate(rate.rate) }}</h2>
             <i class="fas fa-star fa-2x rating-star"></i>
           </div>
         </div>
@@ -74,11 +37,46 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["educator_id"],
+  data() {
+    return {
+      ratings: [],
+    };
+  },
+  async fetch() {
+    const { data } = await this.$axios.get(
+      `/ratings/educators/${this.educator_id}`
+    );
+    this.ratings = data;
+    console.log(this.ratings);
+  },
+  methods: {
+    getRate(rate) {
+      switch (rate) {
+        case 'ZERO_STAR':
+          return 0;
+        case 'ONE_STAR':
+          return 1;
+        case 'TWO_STAR':
+          return 2;
+        case 'THREE_STAR':
+          return 3;
+        case 'FOUR_STAR':
+          return 4;
+        case 'FIVE_STAR':
+          return 5;
+        default:
+          break;
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 #ratings {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,7 +91,7 @@ export default {};
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-end;
+        align-items: flex-start;
       }
       .rate {
         display: flex;

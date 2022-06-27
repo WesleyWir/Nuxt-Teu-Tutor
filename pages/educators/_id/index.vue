@@ -57,8 +57,7 @@
         id="educators-single-content-about"
         v-html="educator.description"
       ></div>
-      <TemplateEducatorsSingleCalendar :educator_id="educator.id" />
-      <TemplateEducatorsSingleRatings />
+      <TemplateEducatorsSingleRatings :educator_id="educator.id" />
       <TemplateEducatorsSingleRelated :educator_id="educator.id" />
     </section>
   </main>
