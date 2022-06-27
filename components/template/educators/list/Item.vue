@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="educators-list-item-lec-info">
-        <span class="educators-list-item-lec-info-value">R$ 20 /h</span>
+        <span class="educators-list-item-lec-info-value">{{ educator.average_price | toBRCurrency }} /h</span>
         <span class="educators-list-item-lec-info-address" v-for="address in educator.addresses" :key="address.id">
           {{ address.neighborhood }}, {{ address.city }} - {{ address.state }}
         </span>

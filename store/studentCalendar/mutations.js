@@ -1,4 +1,10 @@
 export default {
+    RESET_STATE(state){
+        state.educator_id = null
+        state.educator_contact_means_id = null
+        state.note = ''
+        state.class_calendars = []
+    },
     SET_EDUCATOR_ID(state, id){
         state.educator_id = id
     },
@@ -16,5 +22,8 @@ export default {
     },
     UPDATE_CLASS_CALENDAR_NOTE(state, payload){
         state.class_calendars[payload.index].note = payload.note 
+    },
+    UPDATE_CLASS_CALENDAR_TYPE(state, payload){
+        state.class_calendars[payload.index].type = payload.type 
     }
 }

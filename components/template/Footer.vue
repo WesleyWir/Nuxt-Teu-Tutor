@@ -20,8 +20,8 @@
           <div class="col-xs-12 col-sm-2 page-item">
             <h3 class="page-type text-uppercase">Institucionais</h3>
             <ul class="mt-1">
-              <li><NuxtLink class="list-item" to="/about/">Sobre</NuxtLink></li>
-              <li><NuxtLink class="list-item" to="/help/">Ajuda</NuxtLink></li>
+              <li><NuxtLink class="list-item" to="/institutionals/about/">Sobre</NuxtLink></li>
+              <li><NuxtLink class="list-item" to="/institutionals/help/">Ajuda</NuxtLink></li>
             </ul>
           </div>
           <div class="col-xs-12 col-sm-2 page-item">

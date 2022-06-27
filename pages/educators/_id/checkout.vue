@@ -1,6 +1,6 @@
 <template>
   <div id="checkout" class="container">
-    <TemplateEducatorsSingleCalendar :educator_id="educator.id" />
+    <TemplateEducatorsCheckoutCalendar :educator_id="educator.id" />
 
     <TemplateEducatorsCheckoutContactMean />
 
@@ -20,7 +20,8 @@
 
 <script>
 export default {
-  // middleware: ["auth", "student_strategy"],
+  middleware: ["auth", "student_strategy"],
+  auth: "local_student",
   async asyncData({ $axios, route }) {
     try {
       const id = route.params.id;
@@ -32,6 +33,7 @@ export default {
     }
   },
   async fetch() {
+    await this.$store.dispatch("studentCalendar/resetState");
     return await this.$store.dispatch(
       "studentCalendar/setEducatorId",
       this.educator.id

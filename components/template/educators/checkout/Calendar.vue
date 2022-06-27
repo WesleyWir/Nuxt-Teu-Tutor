@@ -73,6 +73,17 @@
             <h3 class="hour-selected-day">
               {{ selectedDate.date.price | toBRCurrency }}
             </h3>
+            <div class="hour-class-type mt-3 mb-3">
+              <h3>Tipo de Aula:</h3>
+              <select
+                class="form-select"
+                @change="onClassCalendarTypeChange(i, $event.target.value)"
+              >
+                <option selected>Selecion o tipo de aula</option>
+                <option value="online">Online</option>
+                <option value="in_person">Presencial</option>
+              </select>
+            </div>
             <div class="form-group mt-3">
               <label
                 :for="`hour-selected-note-${selectedDate.educator_calendar_id}`"
@@ -155,6 +166,13 @@ export default {
       return await this.$store.dispatch(
         "studentCalendar/updateClassCalendarNote",
         { index, note }
+      );
+    },
+    async onClassCalendarTypeChange(index, type) {
+      console.log(type)
+      return await this.$store.dispatch(
+        "studentCalendar/updateClassCalendarType",
+        { index, type }
       );
     },
   },

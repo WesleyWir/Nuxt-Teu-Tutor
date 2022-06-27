@@ -21,7 +21,7 @@
         </div>
 
         <div id="educators-single-header-info-value-localization">
-          <p id="info-value-localization-value">R$ 20 /h</p>
+          <p id="info-value-localization-value">{{ educator.average_price | toBRCurrency }} /h</p>
           <p
             id="info-value-localization-localization"
             v-for="address in educator.addresses"

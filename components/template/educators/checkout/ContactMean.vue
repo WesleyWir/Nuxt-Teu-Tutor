@@ -12,23 +12,25 @@
         v-for="contactMean in possibleContactMeans"
         :key="contactMean.id"
       >
-        <input
-          class="form-check-input"
-          type="radio"
-          v-model="educator_contact_means_id"
-          :value="contactMean.id"
-          name="flexRadioDefault"
-          id="flexRadioDefault1"
-        />
-        <label class="form-check-label" for="flexRadioDefault1">
-          <i
-            :class="`fab fa-${contactMean.code}`"
-            v-if="contactMean.code != 'email'"
-          ></i>
-          <i class="fa-solid fa-envelope" v-else></i>
-          <span class="text-capitalize">{{ contactMean.code }}</span>
-          - {{ contactMean.value }}
-        </label>
+        <div v-if="contactMean.value">
+          <input
+            class="form-check-input"
+            type="radio"
+            v-model="educator_contact_means_id"
+            :value="contactMean.id"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">
+            <i
+              :class="`fab fa-${contactMean.code}`"
+              v-if="contactMean.code != 'email'"
+            ></i>
+            <i class="fa-solid fa-envelope" v-else></i>
+            <span class="text-capitalize">{{ contactMean.code }}</span>
+            - {{ contactMean.value }}
+          </label>
+        </div>
       </div>
     </div>
   </div>

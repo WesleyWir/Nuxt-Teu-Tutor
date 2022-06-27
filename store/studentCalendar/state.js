@@ -5,5 +5,5 @@ export default () => ({
     educator_id: null,
     educator_contact_means_id: null,
     note: '',
-    class_calendars: []
+    class_calendars: [],
 })

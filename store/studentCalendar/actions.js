@@ -1,4 +1,7 @@
 export default {
+    async resetState({ commit }){
+        return commit('RESET_STATE');
+    },
     async setEducatorId({ commit }, payload) {
         return commit('SET_EDUCATOR_ID', payload);
     },
@@ -30,5 +33,16 @@ export default {
     },
     async updateClassCalendarNote({ commit }, payload){
         return commit('UPDATE_CLASS_CALENDAR_NOTE', payload)
+    },
+    async updateClassCalendarType({ commit }, payload){
+        return commit('UPDATE_CLASS_CALENDAR_TYPE', payload)
+    },
+    async createClass({ state }, payload){
+        try {
+            await this.$axios.post(`/classes/students/`, state)
+        } catch ({ response }) {
+            console.error(response)
+            return this.catchReponseError(response);
+        }
     }
 }
