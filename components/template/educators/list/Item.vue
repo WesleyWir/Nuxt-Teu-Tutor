@@ -48,8 +48,6 @@
 <script>
 export default {
   props: ["educator"],
-  fetch(){
-  }
 };
 </script>
 
