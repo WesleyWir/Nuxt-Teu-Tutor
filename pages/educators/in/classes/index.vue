@@ -148,10 +148,13 @@ import ClassCalendarStatus from "~/enums/ClassStatus";
 import ClassType from "~/enums/ClassType";
 
 export default {
-  data(){
-    return{ 
-      ClassCalendarStatus: ClassCalendarStatus
-    }
+  layout: "internal",
+  middleware: ["auth", "educator_strategy"],
+  auth: "local_educator",
+  data() {
+    return {
+      ClassCalendarStatus: ClassCalendarStatus,
+    };
   },
   async asyncData({ $axios }) {
     try {
@@ -187,46 +190,56 @@ export default {
           break;
       }
     },
-    async completeClassCalendar(id){
-      try{
-        this.displayConfirmMessage('Completar Aula', '', async () => {
-          await this.$axios.patch(`/classes/educators/class-calendars/complete/${id}`)
-          await this.showSuccessMessage('Aula completa!', 1000)
+    async completeClassCalendar(id) {
+      try {
+        this.displayConfirmMessage("Completar Aula", "", async () => {
+          await this.$axios.patch(
+            `/classes/educators/class-calendars/complete/${id}`
+          );
+          await this.showSuccessMessage("Aula completa!", 1000);
           this.$nuxt.refresh();
-        })
-      }catch(e){
-        console.error(e)
+        });
+      } catch (e) {
+        console.error(e);
       }
     },
-    async cancelClassCalendar(id){
-      try{
-        this.displayConfirmMessage('Cancelar Aula', '', async () => {
-          await this.$axios.delete(`/classes/educators/class-calendars/cancel/${id}`)
-          await this.showSuccessMessage('Aula completa!', 1000)
+    async cancelClassCalendar(id) {
+      try {
+        this.displayConfirmMessage("Cancelar Aula", "", async () => {
+          await this.$axios.delete(
+            `/classes/educators/class-calendars/cancel/${id}`
+          );
+          await this.showSuccessMessage("Aula completa!", 1000);
           this.$nuxt.refresh();
-        })
-      }catch(e){
-        console.error(e)
+        });
+      } catch (e) {
+        console.error(e);
       }
     },
-    async toDoClassCalendar(id){
-      try{
-        this.displayConfirmMessage('Alterar "Para Fazer" Aula', '', async () => {
-          await this.$axios.patch(`/classes/educators/class-calendars/to-do/${id}`)
-          await this.showSuccessMessage('Aula para ser feita!', 1000)
-          this.$nuxt.refresh();
-        })
-      }catch(e){
-        console.error(e)
+    async toDoClassCalendar(id) {
+      try {
+        this.displayConfirmMessage(
+          'Alterar "Para Fazer" Aula',
+          "",
+          async () => {
+            await this.$axios.patch(
+              `/classes/educators/class-calendars/to-do/${id}`
+            );
+            await this.showSuccessMessage("Aula para ser feita!", 1000);
+            this.$nuxt.refresh();
+          }
+        );
+      } catch (e) {
+        console.error(e);
       }
-    }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-#classes-items{
-  .class-item{
+#classes-items {
+  .class-item {
     border: gray 3px solid;
     border-radius: 10px;
     padding: 30px;
