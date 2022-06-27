@@ -26,18 +26,18 @@ export default {
   data() {
     return {
       orders: [
-        {
+         {
           id: 1,
           label: "Mais Recente",
-          order: "asc",
+          order: "desc",
           orderBy: "created_at",
         },
         {
           id: 2,
           label: "Mais Antigo",
-          order: "desc",
+          order: "asc",
           orderBy: "created_at",
-        },
+        }
       ],
     };
   },

@@ -13,7 +13,8 @@ export default {
   methods: {
     async createClass(){
       await this.$store.dispatch("studentCalendar/createClass");
-      return this.showSuccessMessage("Aula(s) marcadas com sucesso!", "top");
+      await this.$store.dispatch("studentCalendar/resetState");
+      return this.showSuccessMessage("Aula(s) marcadas com sucesso!", 2000);
       
     }
   }

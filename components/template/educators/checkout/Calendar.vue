@@ -79,7 +79,7 @@
                 class="form-select"
                 @change="onClassCalendarTypeChange(i, $event.target.value)"
               >
-                <option selected>Selecion o tipo de aula</option>
+                <option selected>Selecione o tipo de aula</option>
                 <option value="online">Online</option>
                 <option value="in_person">Presencial</option>
               </select>

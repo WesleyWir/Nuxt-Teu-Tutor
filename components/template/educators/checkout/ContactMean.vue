@@ -2,6 +2,7 @@
   <div
     id="checkout-contact-means"
     class="p-3 d-flex justify-content-center flex-column align-items-center"
+    v-if="possibleContactMeans.length"
   >
     <div class="title">
       <h2 class="fw-bold">Forma de Contato</h2>
