@@ -30,7 +30,6 @@ export default {
         this.links = [
           {id: 0, text: 'Meu Perfil', path: '/educators/in/profile/'},
           {id: 1, text: 'Minhas Aulas', path: '/educators/in/classes/'},
-          {id: 2, text: 'Meios de Pagamento', path: '/students/in/payments/'},
           {id: 3, text: 'Meu Calendário', path: '/students/in/calendary/'},
         ]
         break;

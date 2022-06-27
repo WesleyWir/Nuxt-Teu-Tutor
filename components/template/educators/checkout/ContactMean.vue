@@ -46,7 +46,6 @@ export default {
   async fetch() {
     const id = this.$route.params.id;
     const { data } = await this.$axios.get(`/contact-means/educators/${id}`);
-    console.log(data);
     this.possibleContactMeans = data;
   },
   computed: {

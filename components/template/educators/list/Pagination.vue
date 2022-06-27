@@ -4,7 +4,7 @@
       title="Anterior"
       class="pagination-prev"
       @click="updatePageQuery(pagination_meta.current_page - 1)"
-      v-if="pagination_meta.current_page - 1 >= pagination_meta.first_page"
+      v-show="pagination_meta.current_page - 1 >= pagination_meta.first_page"
       ><i class="fas fa-caret-square-left"></i
     ></a>
     <a
@@ -29,6 +29,7 @@
     <a
       :title="`Página ${pagination_meta.current_page}`"
       class="pagination-item"
+      v-if="pagination_meta.current_page != pagination_meta.last_page"
       >{{ pagination_meta.current_page }}</a
     >
     <span
@@ -54,7 +55,7 @@
       title="Próximo"
       class="pagination-next"
       @click="updatePageQuery(pagination_meta.current_page + 1)"
-      v-if="pagination_meta.current_page + 1 <= pagination_meta.last_page"
+      v-show="pagination_meta.current_page + 1 <= pagination_meta.last_page"
       ><i class="fas fa-caret-square-right"></i
     ></a>
   </div>

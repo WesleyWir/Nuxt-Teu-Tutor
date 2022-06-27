@@ -169,7 +169,6 @@ export default {
       );
     },
     async onClassCalendarTypeChange(index, type) {
-      console.log(type)
       return await this.$store.dispatch(
         "studentCalendar/updateClassCalendarType",
         { index, type }

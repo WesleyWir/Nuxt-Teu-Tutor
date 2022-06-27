@@ -49,7 +49,6 @@
 export default {
   props: ["educator"],
   fetch(){
-    console.log(this.educator)
   }
 };
 </script>
